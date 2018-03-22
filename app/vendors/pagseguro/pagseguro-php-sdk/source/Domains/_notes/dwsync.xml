@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="Account.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657142965423" remote="131443036800000000" Dst="1" />
+<file name="AccountCredentials.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657145075427" remote="131443036800000000" Dst="1" />
+<file name="Address.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657145075427" remote="131443036800000000" Dst="1" />
+<file name="ApplicationCredentials.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657145275438" remote="131443036800000000" Dst="1" />
+<file name="Charset.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657146935533" remote="131443036800000000" Dst="1" />
+<file name="Credentials.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657147345557" remote="131443036800000000" Dst="1" />
+<file name="CreditorFees.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657147345557" remote="131443036800000000" Dst="1" />
+<file name="Document.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657151145595" remote="131443036800000000" Dst="1" />
+<file name="Environment.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657151345596" remote="131443036800000000" Dst="1" />
+<file name="Error.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657153245598" remote="131443036800000000" Dst="1" />
+<file name="Item.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657153445599" remote="131443036800000000" Dst="1" />
+<file name="Log.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657155257601" remote="131443036800000000" Dst="1" />
+<file name="Metadata.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657155257601" remote="131443036800000000" Dst="1" />
+<file name="Notification.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657155413602" remote="131443036800000000" Dst="1" />
+<file name="Parameter.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657157129605" remote="131443036800000000" Dst="1" />
+<file name="PaymentMethod.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657157441605" remote="131443036800000000" Dst="1" />
+<file name="Permission.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657159157608" remote="131443036800000000" Dst="1" />
+<file name="Phone.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657159469609" remote="131443036800000000" Dst="1" />
+<file name="PreApproval.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657161341612" remote="131443036800000000" Dst="1" />
+<file name="Sender.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657213282696" remote="131443037400000000" Dst="1" />
+<file name="Shipping.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657213282696" remote="131443037400000000" Dst="1" />
+<file name="ShippingCost.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657215182699" remote="131443037400000000" Dst="1" />
+<file name="ShippingType.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657215582700" remote="131443037400000000" Dst="1" />
+<file name="Split.php" server="ftp.camargocoffee.com.br/httpdocs/2017/" local="131449657816850564" remote="131443037400000000" Dst="1" />
+</dwsync>
