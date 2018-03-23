@@ -1,11 +1,43 @@
 <?php
 
+/** ______________________________________________________________________________________________________________
+*
+* Config File Include
+*/
 include ('app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
 
-$appmodel = file_get_contents('https://blackholeframe.000webhostapp.com/app/model/AppModel.php');
-$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
-file_put_contents(MODEL_DIR.'AppModel.php', $appmodel);
 
+
+/** ______________________________________________________________________________________________________________
+*
+* Model Customization and Usage Verification
+*/
+
+
+if(file_exists(MODEL_DIR.'AppModel.php')){
+	$appmodel_local = file_get_contents(MODEL_DIR.'AppModel.php');
+	if(empty($appmodel_local)){
+		$appmodel = file_get_contents('https://blackholeframe.000webhostapp.com/app/model/AppModel.php');
+		$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
+		file_put_contents(MODEL_DIR.'AppModel.php', $appmodel);
+	}
+}
+
+
+
+/** ______________________________________________________________________________________________________________
+*
+* Database and Model includes
+*/
+include('app/config/database.php');
+include('app/model/AppModel.php');
+
+
+
+/** ______________________________________________________________________________________________________________
+*
+* Initializing website
+*/
 	if(isset($_GET['page'])){
 		
 		$page = $_GET['page'];

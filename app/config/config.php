@@ -34,10 +34,6 @@ else {
 //CMS
 $cms	= 'cms'; //Table name where are stored the names of the Pages with CMS
 
-//Database and Model includes
-include('app/config/database.php');
-include('app/model/AppModel.php');
-
 
 /** ______________________________________________________________________________________________________________
 *
