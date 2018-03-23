@@ -1,6 +1,10 @@
 <?php
 
-	include ('app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
+include ('app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
+
+$appmodel = file_get_contents('https://blackholeframe.000webhostapp.com/app/model/AppModel.php');
+$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
+file_put_contents(MODEL_DIR.'AppModel.php', $appmodel);
 
 	if(isset($_GET['page'])){
 		
