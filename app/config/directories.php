@@ -29,6 +29,7 @@
 	define('CONFIG_DIR', APP_DIR . DS . 'config' . DS);
 	define('VENDORS_DIR', APP_DIR . DS . 'vendors' . DS);
 	define('CONTROLLER_DIR', APP_DIR . DS . 'controller' . DS);
+	define('MODEL_DIR', $_SERVER['DOCUMENT_ROOT'] . SERVER_DIR . APP_DIR . DS . 'model' . DS);
 	define('ADMIN', 'admin'.DS);
 	
 	//RELATIVES
