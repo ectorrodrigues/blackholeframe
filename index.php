@@ -13,7 +13,9 @@ include ('app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
 * Model Customization and Usage Verification
 */
 
-if($auto_update_models == 'yes'){
+//APPMODEL -------------------------------------------------------------------------------------
+
+if($auto_update_appmodel == 'yes'){
 
 	if(file_exists(MODEL_DIR.'AppModel.php')){
 
@@ -42,7 +44,25 @@ if($auto_update_models == 'yes'){
 		}
 
 	}
-	
+
+}
+
+//ADMINMODEL -------------------------------------------------------------------------------------
+
+if($auto_update_adminmodel == 'yes'){
+
+	if(file_exists(MODEL_DIR.'AdminModel.php')){
+
+		$appmodel_local = file_get_contents(MODEL_DIR.'AppModel.php');
+		$appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/app/model/AdminModel.php');
+
+		if(empty($appmodel_local)){
+			$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
+			file_put_contents(MODEL_DIR.'AppModel.php', $appmodel);
+		}
+
+	}
+
 }
 
 
