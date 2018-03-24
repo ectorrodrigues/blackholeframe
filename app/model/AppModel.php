@@ -198,7 +198,7 @@ function load($url,$options=array()) {
         if($options['session'] and !$options['session_close']) $GLOBALS['_binget_curl_session'] = $ch; //Dont close the curl session. We may need it later - save it to a global variable
         else curl_close($ch);  //If the session option is not set, close the session.
    
-} 
+} //endfunction
 
 
 /*----------------------------------------------------------------------------------------------------------------------------------------*/
@@ -289,7 +289,7 @@ function contruct_page($page, $archive){
 			include (PAGES_DIR . $page . DS . 'index.php');
 		}
 
-}
+} //endfunction
 
 
 /*----------------------------------------------------------------------------------------------------------------------------------------*/
@@ -373,7 +373,7 @@ function loop_page($table, $content, $where, $extras, $orderby, $order, $limit){
 	}	
 
 	$conn = NULL;
-}
+} //endfunction
 
 
 /*----------------------------------------------------------------------------------------------------------------------------------------*/
@@ -438,7 +438,7 @@ function loop($table, $content, $where, $extras, $order, $asc_desc, $limit){
 	}	
 
 	$conn = NULL;
-}
+} //endfunction
 
 
 
@@ -563,7 +563,7 @@ function loop_nested($table, $content, $where, $extras, $order, $asc_desc, $limi
 	}	
 
 	$conn = NULL;
-}
+} //endfunction
 
 
 /*----------------------------------------------------------------------------------------------------------------------------------------*/
@@ -586,24 +586,24 @@ function slug($str){
 	$slug = array( ' '=>'-', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E', 'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b' );
 	$slug = strtolower(strtr( $str, $slug ));
 	return $slug;
-}
+} //endfunction
 
 
 function date_formating($str){
 	$date_formating = date("d/m/Y", strtotime($str));
 	return $date_formating;
-}
+} //endfunction
 
 function date_formating_sem_ano($str){
 	$date_formating = date("d/m", strtotime($str));
 	return $date_formating;
-}
+} //endfunction
 
 function remove_underlines($str){
 	$remove_underlines = array( '_'=>' ');
 	$remove_underlines = strtolower(strtr( $str, $remove_underlines ));
 	return $remove_underlines;
-}
+} //endfunction
 
 function limit_chars($str){
   $length = 550;
@@ -614,7 +614,6 @@ function limit_chars($str){
     $str=substr($str,0,$length) . '...';
     return $str;
   }
-}
-
+} //endfunction
 
 </pre>
