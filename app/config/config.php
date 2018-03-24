@@ -8,6 +8,7 @@
 
 if(!defined('DS')){ define('DS', '/');}
 
+//SITE NAME
 $sitename = explode(DS, $_SERVER['PHP_SELF']);
 if(!defined('SITE_NAME')){ 
 	define('SITE_NAME', $sitename[1]);
@@ -30,6 +31,9 @@ if(file_exists($directories)){
 else { 
 	include ('../../..'. DS . 'config' . DS . 'directories.php'); 
 }
+
+//Automatic Update Model files to the newest version from CDN
+$auto_update_models = 'yes'; // yes or no *yes is default
 
 //CMS
 $cms	= 'cms'; //Table name where are stored the names of the Pages with CMS
