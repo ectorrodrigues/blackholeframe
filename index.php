@@ -29,7 +29,6 @@ $last_update_time = $query->fetchColumn();
 $time_now = date("Y-m-d H:i:s");
 $time_allowed = date('Y-m-d H:i:s',strtotime('+1 hour',strtotime($last_update_time)));
 
-
 if($time_now > $time_allowed) {
 
 	if($auto_update_appmodel == 'yes'){
@@ -44,6 +43,7 @@ if($time_now > $time_allowed) {
 				file_put_contents(MODEL_DIR.'AppModel.php', $appmodel);
 			}
 			else{
+
 				preg_match_all("'function (.*?)\('si", $appmodel_local, $functions); 
 				$functions = $functions[1];	
 
@@ -82,6 +82,10 @@ if($time_now > $time_allowed) {
 		}
 
 	}
+
+	$query = $conn->prepare("INSERT INTO update_time_control (id, time) VALUES('', :time_now)"); 
+	$query->bindParam(':time_now', $time_now);
+	$query->execute();
 
 }
 
