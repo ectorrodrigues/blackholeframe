@@ -33,8 +33,10 @@ else {
 }
 
 //Automatic Update Model files to the newest version from CDN
-$auto_update_appmodel 	= 'yes'; // yes or no *yes is default
-$auto_update_adminmodel	= 'yes'; // yes or no *yes is default
+$auto_update_appmodel 		= 'yes'; // yes or no *yes is default
+$auto_update_adminmodel		= 'yes'; // yes or no *yes is default
+$auto_update_form_helper	= 'yes'; // yes or no *yes is default
+$auto_update_list_helper	= 'yes'; // yes or no *yes is default
 
 //CMS
 $cms	= 'cms'; //Table name where are stored the names of the Pages with CMS

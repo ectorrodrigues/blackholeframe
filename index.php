@@ -6,6 +6,7 @@
 */
 include ('app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
 
+
 /** ______________________________________________________________________________________________________________
 *
 * Database file include
@@ -77,6 +78,41 @@ if($time_now > $time_allowed) {
 			if(empty($adminmodel_local)){
 				$adminmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $adminmodel);
 				file_put_contents(MODEL_DIR.'AdminModel.php', $adminmodel);
+			}
+
+		}
+
+	}
+
+//FORM HELPER -------------------------------------------------------------------------------------
+	if($auto_update_form_helper == 'yes'){
+
+		if(file_exists(HELPER_DIR.'form.php')){
+
+			$appmodel_local = file_get_contents($_SERVER['DOCUMENT_ROOT'] . SERVER_DIR . HELPER_DIR.'form.php');
+			$appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/app/view/helper/form.php');
+
+			if(empty($appmodel_local)){
+				$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
+				file_put_contents($_SERVER['DOCUMENT_ROOT'] . SERVER_DIR . HELPER_DIR.'form.php', $appmodel);
+			}
+
+		}
+
+	}
+
+
+//LIST HELPER -------------------------------------------------------------------------------------
+	if($auto_update_list_helper == 'yes'){
+
+		if(file_exists($_SERVER['DOCUMENT_ROOT'] . SERVER_DIR . HELPER_DIR.'list.php')){
+
+			$appmodel_local = file_get_contents($_SERVER['DOCUMENT_ROOT'] . SERVER_DIR . HELPER_DIR.'list.php');
+			$appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/app/view/helper/list.php');
+
+			if(empty($appmodel_local)){
+				$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
+				file_put_contents($_SERVER['DOCUMENT_ROOT'] . SERVER_DIR . HELPER_DIR.'list.php', $appmodel);
 			}
 
 		}
