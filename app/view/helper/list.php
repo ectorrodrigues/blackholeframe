@@ -1,4 +1,4 @@
-<?php
+<pre>
 
 	foreach($conn->query("SELECT titulo FROM ".$cms." WHERE id ='".$id_item."' ") as $row) {
 		$titulo_table = $row['titulo'];
@@ -89,4 +89,4 @@
 		';
 	}
 
-?>
+</pre>

@@ -1,5 +1,4 @@
-<?php
-	//include ('app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
+<pre>
 	
 	$id		= $_GET['id'];
 	$action	= $_GET['action'];
@@ -146,3 +145,5 @@
 
 <script>$(".bt_add").css("display", "none")</script>
 <script type="text/javascript">$("#preco").maskMoney();</script>
+
+</pre>

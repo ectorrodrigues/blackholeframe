@@ -20,7 +20,7 @@ include('app/config/database.php');
 
 //APPMODEL -------------------------------------------------------------------------------------
 
-//Starts with a verification of the last update. It only proceed if the last updade was done more than 1 hour ago, otherwise it will not update. I is an hourly update.
+//Starts with a verification of the last update. It only proceed if the last updade was done more than 1 hour ago, otherwise it will not update. It is an hourly update.
 
 $conn = db();
 $query = $conn->prepare("SELECT time FROM update_time_control ORDER BY id DESC limit 1"); 
@@ -88,7 +88,6 @@ if($time_now > $time_allowed) {
 	$query->execute();
 
 }
-
 
 
 /** ______________________________________________________________________________________________________________
