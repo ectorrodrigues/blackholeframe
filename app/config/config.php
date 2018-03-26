@@ -32,7 +32,7 @@ else {
 	include ('../../..'. DS . 'config' . DS . 'directories.php'); 
 }
 
-//Automatic Update Model files to the newest version from CDN
+//Automatic Update files to the newest version from CDN
 $auto_update_appmodel 		= 'yes'; // yes or no *yes is default
 $auto_update_adminmodel		= 'yes'; // yes or no *yes is default
 $auto_update_form_helper	= 'yes'; // yes or no *yes is default
