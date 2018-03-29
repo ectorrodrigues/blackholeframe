@@ -1,5 +1,4 @@
 <pre>
-	
 	$id		= $_GET['id'];
 	$action	= $_GET['action'];
 
@@ -11,7 +10,7 @@
 	}
 
 	$conn = db();
-	foreach($conn->query("SELECT title FROM ".$cms." WHERE id = '".$id."' ") as $row) {
+	foreach($conn->query("SELECT title FROM cms WHERE id = '".$id."' ") as $row) {
 		$title		= $row['title'];
 	}
 
@@ -129,7 +128,7 @@
 					<div class="content-item-thumb inline" style="background-image:url('.IMG_DIR.$title.DS.$img.');">
 					</div>
 					<div class="col2 inline" align="right">
-						<a href="'.DS.'brazilboots'.DS.ADMIN.'controller'.DS.'gallery'.DS.$id.DS.$id_img.'"><div class="bt_delete inline transition"><i class="fa fa-times" aria-hidden="true"></i></div></a>
+						<a href="'.DS.'brazilboots'.DS.ADMIN.'model'.DS.'gallery'.DS.$id.DS.$id_img.'"><div class="bt_delete inline transition"><i class="fa fa-times" aria-hidden="true"></i></div></a>
 					</div>
 				</div>
 				';
@@ -141,9 +140,10 @@
 
 	echo '<input type="submit" class="submit" value="enviar" />
 	</form>';
-?>
-
-<script>$(".bt_add").css("display", "none")</script>
-<script type="text/javascript">$("#preco").maskMoney();</script>
+	
+	echo '
+	<script>$(".bt_add").css("display", "none")</script>
+	<script type="text/javascript">$("#preco").maskMoney();</script>
+	';
 
 </pre>
