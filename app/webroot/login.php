@@ -1,7 +1,6 @@
-<?php 
-    //include ('app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
+<pre>
     require (ELEMENTS_DIR .'head.php'); 
-?>
+</pre>
 
 
 <body style="background-color: #eee !important;">
@@ -15,13 +14,13 @@
     <div class="container middle-padding-top" align="center">
         <div class="content col5 login-screen" align="center">
 
-        <?php
+        <pre>
         	if(!isset($_COOKIE['login'])){
         		echo 'Login<p></p>';
         	} else {
         		echo 'cookie setado';
         	}
-        ?>
+        </pre>
 
 			<form action="<?= ROOT.'admin'.DS?>" method="post" enctype="multipart/form-data">
 		    	<input type="text" name="user" placeholder="usuario" />
