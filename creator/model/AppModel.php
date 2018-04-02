@@ -131,7 +131,6 @@ if($page == 'new'){
 
 			//MAKING FOLDERS AND POPULATE THEM WITH FILES
 			if (!file_exists('../../index.php')) { create_files('', 'index.php'); }
-			if (!file_exists('../../remove_cookies.php')) { create_files('', 'remove_cookies.php'); }
 			if (!file_exists('../../.htaccess')) { create_files('', '.htaccess'); }
 
 
