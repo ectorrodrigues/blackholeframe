@@ -1,8 +1,11 @@
 
-<?php include ('view/elements/site/top.php'); ?>
-
-
 <?php 
+
+	if (file_exists('../bigbang.php')) { 
+		delete('../bigbang.php');
+	}
+
+	include ('view/elements/site/top.php'); 
 	
 	if(empty($_GET['page'])){
 		include('view/pages/home/index.php'); 
