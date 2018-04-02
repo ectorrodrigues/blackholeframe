@@ -1,4 +1,4 @@
-<pre>
+<?php
 try { 
 
 	$servername	= 'localhost';
@@ -11,4 +11,4 @@ try {
 }
 catch (PDOException $e) {
 }
-</pre>
+?>

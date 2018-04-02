@@ -10,21 +10,21 @@
 
 			<form action="model/AppModel.php?page=configurations" method="post" enctype="multipart/form-data">
 
-				<pre> require('config/database.php'); </pre>
+				<?php require('config/database.php'); ?>
 
 				<div class="form-group col-lg-12">
-					<pre>
+					<?php
 						//$conn = db();
 						$query 	= $conn->prepare("SELECT content FROM config WHERE title = 'Site Title'"); 
 						$query->execute();
 						$value = $query->fetchColumn();
-					</pre>
+					?>
 					<label>Site Title</label>
-				    <input type="text" name="site_title" class="form-control" value="<pre> echo $value; </pre>" >
+				    <input type="text" name="site_title" class="form-control" value="<?= $value ?>" >
 				</div>
 
 				<div class="form-group col-lg-12">
-					<pre>
+					<?php
 						$array = array("Auto_Update_AppModel", "Auto_Update_AdminModel", "Auto_Update_Helper_List", "Auto_Update_Helper_Form");
 
 						//$conn = db();
@@ -54,11 +54,11 @@
 							';
 						
 						}
-					</pre>
+					?>
 				</div>
 
 				<div class="form-group col-lg-12">
-					<pre>
+					<?php
 						foreach($conn->query("SELECT * FROM input_types") as $row) {
 
 							$title 		= $row['title'];
@@ -70,7 +70,7 @@
 							';	
 
 						}
-					</pre>
+					?>
 				</div>
 
 				<div class="form-group col-md-12 padding-top-bottom text-right">
@@ -80,7 +80,7 @@
 			</form>
 
 			<div class="form-group col-lg-12 text-right">
-				<a href="../creator" class="btn-back" >
+				<a href="../_creator" class="btn-back" >
 					<i class="fas fa-undo-alt"></i> voltar
 				</a>
 			</div>

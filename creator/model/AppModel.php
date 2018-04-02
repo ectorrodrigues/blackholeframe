@@ -1,4 +1,4 @@
-<pre>
+<?php
 
 	$sitename = explode('/', $_SERVER['PHP_SELF']);
 	$sitename = $sitename[1];
@@ -410,15 +410,15 @@ function fechar() {
 }
 </script>
 
-<link rel="stylesheet" type="text/css" href="<pre> echo CSS_DIR; </pre>gallery.css" /> 
+<link rel="stylesheet" type="text/css" href="<?=CSS_DIR?>gallery.css" /> 
 
-<pre>  $path = "'.ROOT.'/app/webroot/img/'.$title.'/"; </pre>
+<?php  $path = "'.ROOT.'/app/webroot/img/'.$title.'/"; ?>
 
-	<div id="main_photo" onclick="lightbox()" style="background-image:url(<pre> echo $path.$img; </pre>);">
+	<div id="main_photo" onclick="lightbox()" style="background-image:url(<?php echo $path.$img; ?>);">
     </div>
     
     <div id="thumbstrip">
-    <pre>
+    <?php
 		
 		echo "
 			<input type="button" id="thumb" 
@@ -450,7 +450,7 @@ function fechar() {
 			/>";
 		
 		}
-	</pre>
+	?>
     </div>
 ';
 
@@ -528,5 +528,5 @@ function fechar() {
 		</div>
 	</div>';
 
-</pre>
+?>
 
