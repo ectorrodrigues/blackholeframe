@@ -1,4 +1,4 @@
-<pre> include ('view/elements/site/head.php'); </pre>
+<?php include ('view/elements/site/head.php'); ?>
 
 <body>
 
