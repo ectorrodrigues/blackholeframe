@@ -22,7 +22,7 @@
 
 	.row{
 		width:100%;
-		padding:170px 0 5px 0;
+		padding:140px 0 5px 0;
 	}
 
 	.col{
