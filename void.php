@@ -22,7 +22,7 @@
 
 	.row{
 		width:100%;
-		padding:140px 0 5px 0;
+		padding:100px 0 5px 0;
 	}
 
 	.col{
@@ -75,23 +75,23 @@
 	<div class="container-fluid" align="center">
 
 		<div class="row" align="center">
+		
 			<div class="col">
 				<h2>1.</h2>
 				At beggining there was the void.<br>
-				Start the Big Bang.<br>
-				<a href="https://blackholeframe.000webhostapp.com/bigbang.php"><strong>Right Click Here and Save As</strong></a><br/>
-				<small>*"Save As" to your localhost site's root</small>
-			</div>
-		
-
-			<div class="col">
-				<h2>2.</h2>
-				<input type="text" class="sitename" value="" placeholder="What's Your website's name" /><br>
+				<strong>Start the Big Bang.</strong><br><br>
+				<input type="text" class="sitename" value="" placeholder="what's your website's name" /><br>
 				<small>
 					*Type the same as your wamp project<br>
 					e.g. <strong>localhost/mysite</strong> > <strong>"mysite"</strong> is your website's name.<br>
 					(no special chars allowed)
 				</small>
+			</div>
+
+			<div class="col">
+				<h2>2.</h2>
+				<a href="https://blackholeframe.000webhostapp.com/bigbang.php"><strong>Right Click Here and Save As</strong></a><br/>
+				<small>*"Save As" to your localhost site's root</small>
 			</div>
 		
 

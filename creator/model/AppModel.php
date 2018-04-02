@@ -37,13 +37,13 @@
 
 		global $results_echo;
 
-		$appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/app/'.$dir.'/'.$filename);
+		$appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/'.$dir.$filename);
 
-		if(strpos($appmodel, '<pre>') == true){
-			$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
+		if(strpos($appmodel, '<?php') == true){
+			$appmodel = str_replace(array("<?php", "?>"), array("<?php", "?>" ), $appmodel);
 		}
 
-		file_put_contents('../../app/'.$dir.'/'.$filename, $appmodel);
+		file_put_contents('../../'.$dir.$filename, $appmodel);
 
 		$results_echo .= '<strong>'.$filename.'</strong> sucessfuly created. <br>';
 	}
@@ -88,7 +88,7 @@ if($page == 'new'){
 
 		    $query 	= $pdo->prepare("INSERT INTO users (id, title, email, password, keypass) VALUES('1', :title, :email, :password, :keypass)"); 
 			$query->bindParam(':title', $user);
-			$query->bindParam(':email',$email);
+			$query->bindParam(':email', $email);
 			$query->bindParam(':password', $password);
 			$query->bindParam(':keypass', $password);
 			$query->execute();
@@ -99,13 +99,13 @@ if($page == 'new'){
 		    $pdo->exec($sql);
 		    $results_echo .= "<strong>Config</strong> Table sucessfully created.<br />";
 
-		    $query 	= $pdo->prepare("INSERT INTO config (id, title, content) 
-		    	VALUES ('', 'Database Name', '".$db_name."'), 
-		    	('', 'Site_Title', 'Title of your Site'), 
-		    	('', 'Auto_Update_AppModel', 'yes'),
-		    	('', 'Auto_Update_AdminModel', 'yes'),
-		    	('', 'Auto_Update_Helper_List', 'yes'),
-		    	('', 'Auto_Update_Helper_Form', 'yes')
+		    $query 	= $pdo->prepare("INSERT INTO config (title, content) VALUES 
+		    	('Database Name', '".$db_name."'), 
+		    	('Site_Title', 'Title of your Site'), 
+		    	('Auto_Update_AppModel', 'yes'), 
+		    	('Auto_Update_AdminModel', 'yes'), 
+		    	('Auto_Update_Helper_List', 'yes'), 
+		    	('Auto_Update_Helper_Form', 'yes')
 		    	"); 
 			$query->execute();
 			$results_echo .= "<strong>Config</strong> Table Updated.<br />";
@@ -114,27 +114,32 @@ if($page == 'new'){
 		    $pdo->exec($sql);
 		    $results_echo .= "<strong>Input_types</strong> Table sucessfully created.<br />";
 
-		    $query 	= $pdo->prepare("INSERT INTO input_types (id, title, content) 
-		    	VALUES ('', 'array_fields_hidden', 'id'), 
-		    	('', 'array_fields_text', 'title'),
-		    	('', 'array_fields_number', 'sku, price'),
-		    	('', 'array_fields_select', 'status, id_category, id_subcategory, id_posts'),
-		    	('', 'array_fields_img', 'img, photo, icon'),
-		    	('', 'array_fields_textarea', 'text, description, addres'),
-		    	('', 'array_fields_date', 'date'),
-		    	('', 'array_fields_time', 'hour, time' ),
-		    	('', 'array_galleries', 'products, blog, news' )
+		    $query 	= $pdo->prepare("INSERT INTO input_types (title, content) VALUES 
+		    	('array_fields_hidden', 'id'), 
+		    	('array_fields_text', 'title'),
+		    	('array_fields_number', 'sku, price'),
+		    	('array_fields_select', 'status, id_category, id_subcategory, id_posts'),
+		    	('array_fields_img', 'img, photo, icon'),
+		    	('array_fields_textarea', 'text, description, addres'),
+		    	('array_fields_date', 'date'),
+		    	('array_fields_time', 'hour, time' ),
+		    	('array_galleries', 'products, blog, news' )
 		    	"); 
 			$query->execute();
 			$results_echo .= "<strong>Input_types</strong> Table Updated.<br />";
 
 
 			//MAKING FOLDERS AND POPULATE THEM WITH FILES
+			if (!file_exists('../../index.php')) { create_files('', 'index.php'); }
+			if (!file_exists('../../remove_cookies.php')) { create_files('', 'remove_cookies.php'); }
+			if (!file_exists('../../.htaccess')) { create_files('', '.htaccess'); }
+
+
 			if (!file_exists('../../app')) { mkdir('../../app', 0777, true); }
 			if (!file_exists('../../app/config')) { mkdir('../../app/config', 0777, true); }
-			create_files('config', 'config.php');
-			create_files('config', 'database.php');
-			create_files('config', 'directories.php');
+			create_files('app/config/', 'config.php');
+			create_files('app/config/', 'database.php');
+			create_files('app/config/', 'directories.php');
 
 			
 			if (!file_exists('../../app/controller')) { mkdir('../../app/controller', 0777, true); }
@@ -144,11 +149,11 @@ if($page == 'new'){
 			if (!file_exists('../../app/view')) { mkdir('../../app/view', 0777, true); }
 				if (!file_exists('../../app/view/elements')) { mkdir('../../app/view/elements', 0777, true); }
 					if (!file_exists('../../app/view/elements/site')) { mkdir('../../app/view/elements/site', 0777, true); }
-					create_files('view/elements/site', 'banners.php');
-					create_files('view/elements/site', 'footer.php');
-					create_files('view/elements/site', 'head.php');
-					create_files('view/elements/site', 'menu.php');
-					create_files('view/elements/site', 'top.php');
+					create_files('app/view/elements/site/', 'banners.php');
+					create_files('app/view/elements/site/', 'footer.php');
+					create_files('app/view/elements/site/', 'head.php');
+					create_files('app/view/elements/site/', 'menu.php');
+					create_files('app/view/elements/site/', 'top.php');
 
 				if (!file_exists('../../app/view/helper')) { mkdir('../../app/view/helper', 0777, true); }
 				if (!file_exists('../../app/view/pages')) { mkdir('../../app/view/pages', 0777, true); }
@@ -158,11 +163,11 @@ if($page == 'new'){
 
 			if (!file_exists('../../app/webroot')) { mkdir('../../app/webroot', 0777, true); }
 				if (!file_exists('../../app/webroot/css')) { mkdir('../../app/webroot/css', 0777, true); }
-					create_files('webroot/css', 'main.css');
-					create_files('webroot/css', 'admin.css');
-					create_files('webroot/css', 'carousel.css');
-					create_files('webroot/css', 'mobile.css');
-					create_files('webroot/css', 'gallery.css');
+					create_files('app/webroot/css/', 'main.css');
+					create_files('app/webroot/css/', 'admin.css');
+					create_files('app/webroot/css/', 'carousel.css');
+					create_files('app/webroot/css/', 'mobile.css');
+					create_files('app/webroot/css/', 'gallery.css');
 
 				if (!file_exists('../../app/webroot/files')) { mkdir('../../app/webroot/files', 0777, true); }
 				if (!file_exists('../../app/webroot/img')) { mkdir('../../app/webroot/img', 0777, true); }

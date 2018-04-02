@@ -1,4 +1,4 @@
-<pre>
+<?php
 
 /** ______________________________________________________________________________________________________________
 *
@@ -41,7 +41,9 @@ if($time_now > $time_allowed) {
 			$appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/app/model/AppModel.php');
 
 			if(empty($appmodel_local)){
-				$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
+				if(strpos($appmodel, '<pre>') == true){
+					$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
+				}
 				file_put_contents(MODEL_DIR.'AppModel.php', $appmodel);
 			}
 			else{
@@ -77,7 +79,9 @@ if($time_now > $time_allowed) {
 			$adminmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/app/model/AdminModel.php');
 
 			if(empty($adminmodel_local)){
-				$adminmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $adminmodel);
+				if(strpos($appmodel, '<pre>') == true){
+					$adminmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $adminmodel);
+				}
 				file_put_contents(MODEL_DIR.'AdminModel.php', $adminmodel);
 			}
 
@@ -94,7 +98,9 @@ if($time_now > $time_allowed) {
 			$appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/app/view/helper/form.php');
 
 			if(empty($appmodel_local)){
-				$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
+				if(strpos($appmodel, '<pre>') == true){
+					$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
+				}
 				file_put_contents($_SERVER['DOCUMENT_ROOT'] . SERVER_DIR . HELPER_DIR.'form.php', $appmodel);
 			}
 
@@ -112,7 +118,9 @@ if($time_now > $time_allowed) {
 			$appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/app/view/helper/list.php');
 
 			if(empty($appmodel_local)){
-				$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
+				if(strpos($appmodel, '<pre>') == true){
+					$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
+				}
 				file_put_contents($_SERVER['DOCUMENT_ROOT'] . SERVER_DIR . HELPER_DIR.'list.php', $appmodel);
 			}
 
@@ -199,4 +207,4 @@ include('app/model/AppModel.php');
 		include (WEBROOT_DIR . 'index.php');
 	}
 
-</pre>
+?>
