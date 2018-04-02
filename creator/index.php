@@ -1,8 +1,8 @@
 
-<pre> include ('view/elements/site/top.php'); </pre>
+<?php include ('view/elements/site/top.php'); ?>
 
 
-<pre> 
+<?php 
 	
 	if(empty($_GET['page'])){
 		include('view/pages/home/index.php'); 
@@ -10,7 +10,7 @@
 	else {
 		include('view/pages/'.$_GET['page'].'/index.php');
 	}
-</pre>
+?>
 	
 </body>
 
