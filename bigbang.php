@@ -14,47 +14,46 @@
 			$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
 		}
 
-		file_put_contents('creator/app/'.$dir.'/'.$filename, $appmodel);
+		file_put_contents('creator/'.$dir.'/'.$filename, $appmodel);
 
 		$results_echo .= '<strong>'.$filename.'</strong> sucessfuly created. <br>';
 	}
 
 	if (!file_exists('creator')) { mkdir('creator', 0777, true); }
-	if (!file_exists('creator/app')) { mkdir('creator/app', 0777, true); }
 	
-	if (!file_exists('creator/app/config')) { mkdir('creator/app/config', 0777, true); }
-		create_files('creator/app/config', 'database.php');
+	if (!file_exists('creator/config')) { mkdir('creator/config', 0777, true); }
+		create_files('creator/config', 'database.php');
 
-	if (!file_exists('creator/app/model')) { mkdir('creator/app/model', 0777, true); }
-		create_files('creator/app/model', 'AppModel.php');
+	if (!file_exists('creator/model')) { mkdir('creator/model', 0777, true); }
+		create_files('creator/model', 'AppModel.php');
 
-	if (!file_exists('creator/app/view')) { mkdir('creator/app/view', 0777, true); }
-		if (!file_exists('creator/app/view/elements')) { mkdir('creator/app/view/elements', 0777, true); }
-			if (!file_exists('creator/app/view/elements/site')) { mkdir('creator/app/view/elements/site', 0777, true); }
-				create_files('creator/app/view/elements/site', 'head.php');
-				create_files('creator/app/view/elements/site', 'footer.php');
-				create_files('creator/app/view/elements/site', 'top.php');
+	if (!file_exists('creator/view')) { mkdir('creator/view', 0777, true); }
+		if (!file_exists('creator/view/elements')) { mkdir('creator/view/elements', 0777, true); }
+			if (!file_exists('creator/view/elements/site')) { mkdir('creator/view/elements/site', 0777, true); }
+				create_files('creator/view/elements/site', 'head.php');
+				create_files('creator/view/elements/site', 'footer.php');
+				create_files('creator/view/elements/site', 'top.php');
 
-		if (!file_exists('creator/app/view/pages')) { mkdir('creator/app/view/pages', 0777, true); }
-			if (!file_exists('creator/app/view/pages/configurations')) { mkdir('creator/app/view/pages/configurations', 0777, true); }
-				create_files('creator/app/view/pages/configurations', 'index.php');
+		if (!file_exists('creator/view/pages')) { mkdir('creator/view/pages', 0777, true); }
+			if (!file_exists('creator/view/pages/configurations')) { mkdir('creator/view/pages/configurations', 0777, true); }
+				create_files('creator/view/pages/configurations', 'index.php');
 
-			if (!file_exists('creator/app/view/pages/home')) { mkdir('creator/app/view/pages/home', 0777, true); }
-				create_files('creator/app/view/pages/home', 'index.php');
+			if (!file_exists('creator/view/pages/home')) { mkdir('creator/view/pages/home', 0777, true); }
+				create_files('creator/view/pages/home', 'index.php');
 
-			if (!file_exists('creator/app/view/pages/new')) { mkdir('creator/app/view/pages/new', 0777, true); }
-				create_files('creator/app/view/pages/new', 'index.php');
+			if (!file_exists('creator/view/pages/new')) { mkdir('creator/view/pages/new', 0777, true); }
+				create_files('creator/view/pages/new', 'index.php');
 
-			if (!file_exists('creator/app/view/pages/pages')) { mkdir('creator/app/view/pages/pages', 0777, true); }
-				create_files('creator/app/view/pages/pages', 'index.php');
+			if (!file_exists('creator/view/pages/pages')) { mkdir('creator/view/pages/pages', 0777, true); }
+				create_files('creator/view/pages/pages', 'index.php');
 
-	if (!file_exists('creator/app/webroot')) { mkdir('creator/app/webroot', 0777, true); }
-		create_files('creator/app/webroot', 'index.php');
+	if (!file_exists('creator/webroot')) { mkdir('creator/webroot', 0777, true); }
+		create_files('creator/webroot', 'index.php');
 
-		if (!file_exists('creator/app/webroot/css')) { mkdir('creator/app/webroot/css', 0777, true); }
-			create_files('creator/app/webroot/css', 'main.css');
+		if (!file_exists('creator/webroot/css')) { mkdir('creator/webroot/css', 0777, true); }
+			create_files('creator/webroot/css', 'main.css');
 
-		if (!file_exists('creator/app/webroot/files')) { mkdir('creator/app/webroot/files', 0777, true); }
+		if (!file_exists('creator/webroot/files')) { mkdir('creator/webroot/files', 0777, true); }
 
 
 
