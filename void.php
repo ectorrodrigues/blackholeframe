@@ -22,37 +22,43 @@
 
 	.row{
 		width:100%;
-		padding:200px 0 5px 0;
+		padding:170px 0 5px 0;
 	}
 
 	.col{
-		width:230px;
+		width:300px;
 		text-align: left;
-	}
-
-	.btn{
-		background-color: #000 !important;
-	  	color: #50FFFC;
-	  	border:solid;
-	  	border-color: #50FFFC;
-	  	border-width:1px;
-	  	padding:10px;
-	  	border-radius:5px;
-	  	text-decoration:none;
-	}
-	.btn:hover{
-	  	background-color: #50FFFC !important;
-	  	color: #000;
-	  	border:none;
+		margin: 25px 0;
 	}
 
 	a{
 		color: #fff;
 		text-decoration: none;
 	}
+	a:hover{
+	  	color: #50FFFC;
+	}
 
 	.start{
 		cursor: pointer;
+	}
+
+	input{
+		border-radius: 8px;
+		padding: 10px 7px;
+		border:none;
+	}
+
+	.pointer{
+		cursor: pointer;
+	}
+
+	.pointer:hover{
+		color: #50FFFC;
+	}
+
+	h2{
+		color: #fff;
 	}
 </style>
 
@@ -60,20 +66,40 @@
 <body>
 
 <script type="text/javascript">
-	$('a').click(function(){
-  var iframe = document.createElement("iframe"); 
-  iframe.src = 'https://blackholeframe.000webhostapp.com/bigbang.php'; 
-  iframe.style.display = "none"; 
-  document.body.appendChild(iframe);
-  return false;
-});
+	function gotoroot(){
+		var sitename = $(".sitename").val();
+		window.location.replace("http://localhost/"+sitename+"/bigbang.php")
+	}
 </script>
 
 	<div class="container-fluid" align="center">
+
 		<div class="row" align="center">
 			<div class="col">
+				<h2>1.</h2>
 				At beggining there was the void.<br>
-				<a href="https://blackholeframe.000webhostapp.com/bigbang.php"><strong>Start here the Big Bang.</strong></a>
+				<strong>Start the Big Bang.</strong><br>
+				<a href="https://blackholeframe.000webhostapp.com/bigbang.php">Right Click and Save As</a><br/>
+				<small>*"Save As" to your localhost site's root</small>
 			</div>
+		
+
+			<div class="col">
+				<h2>2.</h2>
+				<input type="text" class="sitename" value="" placeholder="What's Your website's name" /><br>
+				<small>
+					*Type the same as your wamp project<br>
+					e.g. <strong>localhost/mysite</strong> > <strong>"mysite"</strong> is your website's name.<br>
+					(no special chars allowed)
+				</small>
+			</div>
+		
+
+			<div class="col pointer" onclick="gotoroot()">
+				<h2>3.</h2>
+				After download the file, <strong> click here to begin.</strong>
+			</div>
+
 		</div>
+
 	</div>
