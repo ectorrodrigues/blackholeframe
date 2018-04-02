@@ -20,6 +20,7 @@
 	}
 
 	if (!file_exists('creator')) { mkdir('creator', 0777, true); }
+		create_files('creator', 'index.php');
 	
 	if (!file_exists('creator/config')) { mkdir('creator/config', 0777, true); }
 		create_files('creator/config', 'database.php');
@@ -48,7 +49,6 @@
 				create_files('creator/view/pages/pages', 'index.php');
 
 	if (!file_exists('creator/webroot')) { mkdir('creator/webroot', 0777, true); }
-		create_files('creator/webroot', 'index.php');
 
 		if (!file_exists('creator/webroot/css')) { mkdir('creator/webroot/css', 0777, true); }
 			create_files('creator/webroot/css', 'main.css');
