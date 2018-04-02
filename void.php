@@ -78,8 +78,8 @@
 			<div class="col">
 				<h2>1.</h2>
 				At beggining there was the void.<br>
-				<strong>Start the Big Bang.</strong><br>
-				<a href="https://blackholeframe.000webhostapp.com/bigbang.php">Right Click and Save As</a><br/>
+				Start the Big Bang.<br>
+				<a href="https://blackholeframe.000webhostapp.com/bigbang.php"><strong>Right Click Here and Save As</strong></a><br/>
 				<small>*"Save As" to your localhost site's root</small>
 			</div>
 		

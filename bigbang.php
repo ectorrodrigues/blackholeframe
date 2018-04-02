@@ -14,7 +14,7 @@
 			$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
 		}
 
-		file_put_contents('creator/'.$dir.'/'.$filename, $appmodel);
+		file_put_contents($dir.'/'.$filename, $appmodel);
 
 		$results_echo .= '<strong>'.$filename.'</strong> sucessfuly created. <br>';
 	}
