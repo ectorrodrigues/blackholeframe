@@ -8,6 +8,7 @@
 
 if(!defined('DS')){ define('DS', '/');}
 
+//SITE NAME
 $sitename = explode(DS, $_SERVER['PHP_SELF']);
 if(!defined('SITE_NAME')){ 
 	define('SITE_NAME', $sitename[1]);
@@ -31,12 +32,14 @@ else {
 	include ('../../..'. DS . 'config' . DS . 'directories.php'); 
 }
 
+//Automatic Update files to the newest version from CDN
+$auto_update_appmodel 		= 'yes'; // yes or no *yes is default
+$auto_update_adminmodel		= 'yes'; // yes or no *yes is default
+$auto_update_form_helper	= 'yes'; // yes or no *yes is default
+$auto_update_list_helper	= 'yes'; // yes or no *yes is default
+
 //CMS
 $cms	= 'cms'; //Table name where are stored the names of the Pages with CMS
-
-//Database and Model includes
-include('app/config/database.php');
-include('app/model/AppModel.php');
 
 
 /** ______________________________________________________________________________________________________________

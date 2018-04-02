@@ -1,6 +1,4 @@
-<?php
-	//include ('app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
-	
+<pre>
 	$id		= $_GET['id'];
 	$action	= $_GET['action'];
 
@@ -12,13 +10,13 @@
 	}
 
 	$conn = db();
-	foreach($conn->query("SELECT titulo FROM ".$cms." WHERE id = '".$id."' ") as $row) {
-		$titulo		= $row['titulo'];
+	foreach($conn->query("SELECT title FROM cms WHERE id = '".$id."' ") as $row) {
+		$title		= $row['title'];
 	}
 
 	echo '<form action="'.ROOT.ADMIN.'model'.DS.$action.DS.$id.DS.$item.'" method="post" enctype="multipart/form-data">';
 
-	$query = $conn->prepare("DESCRIBE ".$titulo);
+	$query = $conn->prepare("DESCRIBE ".$title);
 	$query->execute();
 	$table_fields = $query->fetchAll(PDO::FETCH_COLUMN);
 
@@ -27,7 +25,7 @@
 		$inputs = '';
 
 		if($action == 'edit'){
-			foreach($conn->query("SELECT * FROM ".$titulo." WHERE id = '".$item."' ") as $row_item) {
+			foreach($conn->query("SELECT * FROM ".$title." WHERE id = '".$item."' ") as $row_item) {
 				$value		= $row_item[$field];
 				//if($field == 'data'){  $value = '2018-01-01';}
 			}
@@ -56,11 +54,11 @@
 
 			foreach($conn->query("SELECT * FROM ".$field) as $row) {
 				$id_select 		= $row['id'];
-				$titulo_select	= $row['titulo'];
+				$title_select	= $row['title'];
 
 				if($id == $id_select){ $selected = 'selected="selected"'; } else { $selected = ''; }
 
-				$inputs	.= '<option value="'.$id_select.'" '.$selected.'>'.$titulo_select.'</option>';
+				$inputs	.= '<option value="'.$id_select.'" '.$selected.'>'.$title_select.'</option>';
 			}
 
 			$inputs	.= '</select>';
@@ -111,7 +109,7 @@
 		echo $inputs;
 	}
 
-	if(in_array($titulo, $array_galeries, TRUE)){
+	if(in_array($title, $array_galeries, TRUE)){
 
 		if($action == 'add'){
 			
@@ -121,16 +119,16 @@
 
 			echo '<p><label>Fotos:</label><input type="file" name="filesToUpload[]" id="filesToUpload" multiple></p>';
 
-			foreach($conn->query("SELECT * FROM ".$titulo."_galeria WHERE id_".$titulo." = '".$item."' ") as $row) {
+			foreach($conn->query("SELECT * FROM ".$title."_galeria WHERE id_".$title." = '".$item."' ") as $row) {
 				$img		= $row['img'];
 				$id_img		= $row['id'];
 
 				echo '
 				<div class="content-item">
-					<div class="content-item-thumb inline" style="background-image:url('.IMG_DIR.$titulo.DS.$img.');">
+					<div class="content-item-thumb inline" style="background-image:url('.IMG_DIR.$title.DS.$img.');">
 					</div>
 					<div class="col2 inline" align="right">
-						<a href="'.DS.'brazilboots'.DS.ADMIN.'controller'.DS.'gallery'.DS.$id.DS.$id_img.'"><div class="bt_delete inline transition"><i class="fa fa-times" aria-hidden="true"></i></div></a>
+						<a href="'.DS.'brazilboots'.DS.ADMIN.'model'.DS.'gallery'.DS.$id.DS.$id_img.'"><div class="bt_delete inline transition"><i class="fa fa-times" aria-hidden="true"></i></div></a>
 					</div>
 				</div>
 				';
@@ -142,7 +140,10 @@
 
 	echo '<input type="submit" class="submit" value="enviar" />
 	</form>';
-?>
+	
+	echo '
+	<script>$(".bt_add").css("display", "none")</script>
+	<script type="text/javascript">$("#preco").maskMoney();</script>
+	';
 
-<script>$(".bt_add").css("display", "none")</script>
-<script type="text/javascript">$("#preco").maskMoney();</script>
+</pre>

@@ -1,7 +1,7 @@
-<?php 
+<pre> 
 	//include ('app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
 	require (ELEMENTS_DIR .'head.php'); 
-?>
+</pre>
 
 
 <body>
@@ -12,30 +12,20 @@
 	</div>
 
 	<div class="col2 inline menu-gallery">
-		<?php
-			$conn = db();
-									
-			$content = '
+				
+		<loop>
+		<loop_sql><?= 'table=cms;where= ;extras= ;orderby=id;order=ASC;limit= ;'; ?></loop_sql>
 			<div class="menu-item">
-				<a href="'.ROOT.ADMIN.'{id}">
-					{function->remove_underlines->titulo}
+				<a href="<?=ROOT.ADMIN?>{id}">
+					{function->remove_underlines->title}
 				</a>
 			</div>
-			';
-
-			foreach_fetch(	
-			/*table*/$cms,
-			/*content*/$content, 
-			/*where*/"",
-			/*extras*/"", 
-			/*order*/"id", 
-			/*asc_desc*/"ASC",
-			/*limit*/"" );
-		?>
+		</loop>
+		
 	</div>
 
 	<div class="col8 inline content margin-left">
-		<?php
+		<pre>
 			$url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 			if (preg_match('#[0-9]#',$url)){ 
@@ -60,7 +50,7 @@
 			}
 				
 			$conn = null;
-		?>
+		</pre>
 	</div>
     
 </div>

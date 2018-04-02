@@ -1,4 +1,4 @@
-<?php
+<pre>
 define('DS', DIRECTORY_SEPARATOR);
 include ('..' . DS . 'config' . DS . 'directories.php');
 
@@ -9,5 +9,4 @@ setcookie('login', null, -1, '/');
 setcookie('login', null, -1, '/');
 
 header('Location:'.ROOT);
-
-?>
+</pre>
