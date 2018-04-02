@@ -2,8 +2,6 @@
 
 	//This file gets the creator system, to start everything
 
-	header("Content-Type: application/x-download");
-
 	$results_echo = '';
 
 	function create_files($dir, $filename){
