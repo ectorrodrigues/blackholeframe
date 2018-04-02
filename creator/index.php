@@ -2,7 +2,7 @@
 <?php 
 
 	if (file_exists('../bigbang.php')) { 
-		delete('../bigbang.php');
+		unlink('../bigbang.php');
 	}
 
 	include ('view/elements/site/top.php'); 
