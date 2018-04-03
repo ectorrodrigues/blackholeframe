@@ -38,8 +38,13 @@
 	function create_files($dir, $filename){
 
 		global $results_echo;
+		global $db_name;
 
 		$appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/'.$dir.$filename);
+
+		if($filename == 'database.php'){
+			$appmodel = str_replace('databasename', $db_name, $appmodel);
+		}
 
 		if(strpos($appmodel, '<?php') == true){
 			$appmodel = str_replace(array("<?php", "?>"), array("<?php", "?>" ), $appmodel);

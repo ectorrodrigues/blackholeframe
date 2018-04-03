@@ -68,7 +68,7 @@
 <script type="text/javascript">
 	function gotoroot(){
 		var sitename = $(".sitename").val();
-		window.location.replace("http://localhost/"+sitename+"/bigbang.php")
+		window.location.replace("http://localhost/"+sitename+"/bigbang.php?databasename="+sitename)
 	}
 </script>
 

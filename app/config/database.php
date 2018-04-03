@@ -3,7 +3,7 @@
 		static $conn;
 
 		$servername	= 'localhost';
-		$dbname		= 'blackholeframe';
+		$dbname		= 'databasename';
 		$username	= 'root';
 		$password	= '';
 			

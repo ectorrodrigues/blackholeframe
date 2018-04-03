@@ -4,12 +4,19 @@
 
 	$results_echo = '';
 
+	$databasename = $_GET['databasename'];
+
 	function create_files($dir, $filename){
 
 		global $results_echo;
+		global $databasename;
 
 		$appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/'.$dir.'/'.$filename);
 
+		if($filename == 'database.php'){
+			$appmodel = str_replace('databasename', $databasename, $appmodel);
+		}
+		
 		if(strpos($appmodel, '<pre>') == true){
 			$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
 		}
