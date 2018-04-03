@@ -1,10 +1,10 @@
-<pre>
+<?php
 	require (ELEMENTS_DIR .'head.php'); 
-</pre>
+?>
 
 <body> 
 
-	<pre> 
+	<?php 
 
 		include (ELEMENTS_DIR.'top.php'); 
 
@@ -31,6 +31,6 @@
 		}
 
 		include (ELEMENTS_DIR .'footer.php'); 
-	</pre>
+	?>
 	
 </body>
