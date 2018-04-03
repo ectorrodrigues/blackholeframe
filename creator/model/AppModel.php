@@ -145,9 +145,9 @@ if($page == 'new'){
 			// Create the menu table and update it only with home link.
 			$sql = "CREATE TABLE menu ( id INT(255) UNSIGNED AUTO_INCREMENT PRIMARY KEY, title VARCHAR(50), link VARCHAR(500) )";
 		    $pdo->exec($sql);
-		    $results_echo .= "<strong>Input_types</strong> Table sucessfully created.<br />";
+		    $results_echo .= "<strong>Menu</strong> Table sucessfully created.<br />";
 
-		    $query 	= $pdo->prepare("INSERT INTO input_types (title, link) VALUES ('home', 'home') "); 
+		    $query 	= $pdo->prepare("INSERT INTO menu (title, link) VALUES ('home', 'home') "); 
 			$query->execute();
 			$results_echo .= "<strong>Menu</strong> Table Updated.<br />";
 
