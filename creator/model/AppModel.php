@@ -24,10 +24,12 @@
 	function addtext($title, $page){
 		$file    = '../../app/view/pages/'.$title.'/'.$page;
 	    $text = 
-	    '	<div class="container">
-	    <div class="col8">
-	    </div>
-	</div>
+	    '	<div class="container-fluid">
+	    		<div class="row">
+				    <div class="col">
+				    </div>
+			    </div>
+			</div>
 	    ';
 
 	    file_put_contents($file, $text);

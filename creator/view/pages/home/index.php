@@ -3,7 +3,7 @@
 
 		<div class="col-lg-4 text-center">
 			<a href="?page=new">
-				<div class="rounded-box border">
+				<div class="button spin circle">
 					1.<br>
 					New
 				</div>
@@ -16,7 +16,7 @@
 
 		<div class="col-lg-4 text-center">
 			<a href="?page=configurations">
-				<div class="rounded-box border transition">
+				<div class="button spin circle">
 					2.<br>
 					Configs
 				</div>
@@ -30,7 +30,7 @@
 
 		<div class="col-lg-4 text-center">
 			<a href="?page=pages">
-				<div class="rounded-box border transition">
+				<div class="button spin circle">
 					3.<br>
 					Pages
 				</div>
