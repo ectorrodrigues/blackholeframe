@@ -1,10 +1,5 @@
 
 <?php 
-
-	if (file_exists('../bigbang.php')) { 
-		unlink('../bigbang.php');
-	}
-
 	include ('view/elements/site/top.php'); 
 	
 	if(empty($_GET['page'])){
