@@ -46,8 +46,8 @@
 			$appmodel = str_replace('databasename', $db_name, $appmodel);
 		}
 
-		if(strpos($appmodel, '<?php') == true){
-			$appmodel = str_replace(array("<?php", "?>"), array("<?php", "?>" ), $appmodel);
+		if(strpos($appmodel, '<pre>') == true){
+			$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
 		}
 
 		file_put_contents('../../'.$dir.$filename, $appmodel);
