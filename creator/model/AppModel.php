@@ -181,6 +181,9 @@ if($page == 'new'){
 					create_files('app/view/elements/site/', 'top.php');
 
 				if (!file_exists('../../app/view/helper')) { mkdir('../../app/view/helper', 0777, true); }
+					create_files('app/view/helper/', 'list.php');
+					create_files('app/view/helper/', 'form.php');
+
 				if (!file_exists('../../app/view/pages')) { mkdir('../../app/view/pages', 0777, true); }
 					if (!file_exists('../../app/view/pages/home')) { mkdir('../../app/view/pages/home', 0777, true); }
 					$my_file = '../../app/view/pages/home/index.php';
@@ -370,7 +373,7 @@ if($page == 'pages'){
 
 	// CREATE DIRECTORY AND INDEX.PHP ------------------------------------------------------------------------
 
-	if($directory = 'yes'){
+	if($directory == 'yes'){
 		if (!file_exists('../../app/view/pages/'.$title)) {
 		    mkdir('../../app/view/pages/'.$title, 0777, true);
 		    $my_file = '../../app/view/pages/'.$title.'/index.php';

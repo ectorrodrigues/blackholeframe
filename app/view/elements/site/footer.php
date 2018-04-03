@@ -11,12 +11,12 @@
 			<?php
 
 				$content = '
-					<strong>{telefone_geral}</strong><br/>
-					{email_geral}<br/>
-					{endereco}<br/>
+					<strong>{phone}</strong><br/>
+					{email}<br/>
+					{addres}<br/>
 				';
 
-				loop(	/*table*/"dados_gerais",
+				loop(	/*table*/"contact_infos",
 						/*content*/$content, 
 						/*where*/"",
 						/*extras*/"", 
@@ -26,10 +26,6 @@
 			?>
 
 		</div>
-
-		<p class="padding-top">
-			<img src="<?=IMG_DIR.'icone.svg'?>" style="width: 50px;" class="padding-top rotate" /><br/>
-		</p>
 
 	</div>
 

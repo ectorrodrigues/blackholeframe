@@ -1,4 +1,4 @@
-<pre>
+<?php
 	$id		= $_GET['id'];
 	$action	= $_GET['action'];
 
@@ -146,4 +146,4 @@
 	<script type="text/javascript">$("#preco").maskMoney();</script>
 	';
 
-</pre>
+?>
