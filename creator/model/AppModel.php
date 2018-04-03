@@ -216,72 +216,72 @@ if($page == 'configurations'){
 	$array_fields_time 			= $_POST['array_fields_time'];
 	$array_galleries 			= $_POST['array_galleries'];
 
-	$query 	= $pdo->prepare("UPDATE config SET content = :item WHERE title = 'Site_Title'"); 
+	$query 	= $conn->prepare("UPDATE config SET content = :item WHERE title = 'Site_Title'"); 
 	$query->bindParam(':item', $site_title);
 	$query->execute();
 	$results_echo .= "<strong>Site_Title</strong> Column Updated.<br />";
 
-	$query 	= $pdo->prepare("UPDATE config SET content = :item WHERE title = 'Auto_Update_AppModel'"); 
+	$query 	= $conn->prepare("UPDATE config SET content = :item WHERE title = 'Auto_Update_AppModel'"); 
 	$query->bindParam(':item', $Auto_Update_AppModel);
 	$query->execute();
 	$results_echo .= "<strong>Auto_Update_AppModel</strong> Column Updated.<br />";
 
-	$query 	= $pdo->prepare("UPDATE config SET content = :item WHERE title = 'Auto_Update_AdminModel'"); 
+	$query 	= $conn->prepare("UPDATE config SET content = :item WHERE title = 'Auto_Update_AdminModel'"); 
 	$query->bindParam(':item', $Auto_Update_AdminModel);
 	$query->execute();
 	$results_echo .= "<strong>Auto_Update_AdminModel</strong> Column Updated.<br />";
 
-	$query 	= $pdo->prepare("UPDATE config SET content = :item WHERE title = 'Auto_Update_Helper_List'"); 
+	$query 	= $conn->prepare("UPDATE config SET content = :item WHERE title = 'Auto_Update_Helper_List'"); 
 	$query->bindParam(':item', $Auto_Update_Helper_List);
 	$query->execute();
 	$results_echo .= "<strong>Auto_Update_Helper_List</strong> Column Updated.<br />";
 
-	$query 	= $pdo->prepare("UPDATE config SET content = :item WHERE title = 'Auto_Update_Helper_Form'"); 
+	$query 	= $conn->prepare("UPDATE config SET content = :item WHERE title = 'Auto_Update_Helper_Form'"); 
 	$query->bindParam(':item', $Auto_Update_Helper_Form);
 	$query->execute();
 	$results_echo .= "<strong>Auto_Update_Helper_Form</strong> Column Updated.<br />";
 
-	$query 	= $pdo->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_hidden'"); 
+	$query 	= $conn->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_hidden'"); 
 	$query->bindParam(':item', $array_fields_hidden);
 	$query->execute();
 	$results_echo .= "<strong>array_fields_hidden</strong> Column Updated.<br />";
 
-	$query 	= $pdo->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_text'"); 
+	$query 	= $conn->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_text'"); 
 	$query->bindParam(':item', $array_fields_text);
 	$query->execute();
 	$results_echo .= "<strong>array_fields_text</strong> Column Updated.<br />";
 
-	$query 	= $pdo->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_number'"); 
+	$query 	= $conn->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_number'"); 
 	$query->bindParam(':item', $array_fields_number);
 	$query->execute();
 	$results_echo .= "<strong>array_fields_number</strong> Column Updated.<br />";
 
-	$query 	= $pdo->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_select'"); 
+	$query 	= $conn->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_select'"); 
 	$query->bindParam(':item', $array_fields_select);
 	$query->execute();
 	$results_echo .= "<strong>array_fields_select</strong> Column Updated.<br />";
 
-	$query 	= $pdo->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_img'"); 
+	$query 	= $conn->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_img'"); 
 	$query->bindParam(':item', $array_fields_img);
 	$query->execute();
 	$results_echo .= "<strong>array_fields_img</strong> Column Updated.<br />";
 
-	$query 	= $pdo->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_textarea'"); 
+	$query 	= $conn->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_textarea'"); 
 	$query->bindParam(':item', $array_fields_textarea);
 	$query->execute();
 	$results_echo .= "<strong>array_fields_textarea</strong> Column Updated.<br />";
 
-	$query 	= $pdo->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_date'"); 
+	$query 	= $conn->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_date'"); 
 	$query->bindParam(':item', $array_fields_date);
 	$query->execute();
 	$results_echo .= "<strong>array_fields_date</strong> Column Updated.<br />";
 
-	$query 	= $pdo->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_time'"); 
+	$query 	= $conn->prepare("UPDATE input_types SET content = :item WHERE title = 'array_fields_time'"); 
 	$query->bindParam(':item', $array_fields_time);
 	$query->execute();
 	$results_echo .= "<strong>array_fields_time</strong> Column Updated.<br />";
 
-	$query 	= $pdo->prepare("UPDATE input_types SET content = :item WHERE title = 'array_galleries'"); 
+	$query 	= $conn->prepare("UPDATE input_types SET content = :item WHERE title = 'array_galleries'"); 
 	$query->bindParam(':item', $array_galleries);
 	$query->execute();
 	$results_echo .= "<strong>array_galleries</strong> Column Updated.<br />";
@@ -532,7 +532,7 @@ function fechar() {
 		</div>
 		<div class="row" align="center">
 			<div class="col">
-				<a href="/'.$sitename.'/creator?page='.$page.'" class="btn" >
+				<a href="/'.$sitename.'/creator/index.php?page='.$page.'" class="btn" >
 					voltar
 				</a>
 			</div>
