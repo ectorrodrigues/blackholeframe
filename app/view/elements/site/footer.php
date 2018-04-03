@@ -13,7 +13,7 @@
 				$content = '
 					<strong>{phone}</strong><br/>
 					{email}<br/>
-					{addres}<br/>
+					{address}<br/>
 				';
 
 				loop(	/*table*/"contact_infos",

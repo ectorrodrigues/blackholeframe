@@ -7,6 +7,7 @@
     <meta http-equiv="Expires" content="-1">
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?=CSS_DIR?>main.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,500,600,700,700i,900" rel="stylesheet">
     <link rel="shortcut icon" href="<?=FILES_DIR ?>favicon.ico" type="image/x-icon">
     <link rel="icon"  href="<?=FILES_DIR ?>favicon.ico" type="image/x-icon">

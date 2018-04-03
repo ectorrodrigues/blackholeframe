@@ -89,6 +89,11 @@ if($page == 'new'){
 		    $pdo->exec($sql);
 		    $results_echo .= "<strong>Update Time Control</strong> Table sucessfully created.<br />";
 
+		    $time_allowed = date('Y-m-d H:i:s',strtotime('-1 hour',date("Y-m-d H:i:s")));
+		    $query = $pdo->prepare("INSERT INTO update_time_control (time) VALUES ('id') "); 
+			$query->execute();
+			$results_echo .= "<strong>Update Time Control</strong> Table Updated.<br />";
+
 		    // Create the users table and update it
 		    $sql = "CREATE TABLE users ( id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, title VARCHAR(50), email VARCHAR(80), password VARCHAR(150), keypass VARCHAR(150) )";
 		    $pdo->exec($sql);
@@ -240,7 +245,7 @@ if($page == 'configurations'){
 
 	$logo 	= $_FILES['logo']['name'];
 	$img 	= uniqid().$logo;
-	$_UP['folder']	= './../app/webroot/files/';
+	$_UP['folder']	= '../../app/webroot/files/';
 	move_uploaded_file($_FILES['logo']['tmp_name'], $_UP['folder'] . $img);
 
 	$query 	= $conn->prepare("UPDATE config SET content = :item WHERE title = 'Logo'"); 

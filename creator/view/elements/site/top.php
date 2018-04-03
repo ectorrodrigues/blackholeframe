@@ -13,5 +13,5 @@
 	</div>
 
 	<div class="col-lg-12 text-center logo">
-		<img src="webroot/files/logo.png" />
+		<img src="htpp://mova.ppg.br/resources/blackholeframe/img/logo.png" />
 	</div>
