@@ -14,13 +14,13 @@
     <div class="container middle-padding-top" align="center">
         <div class="content col5 login-screen" align="center">
 
-        <pre>
+        <?php
         	if(!isset($_COOKIE['login'])){
         		echo 'Login<p></p>';
         	} else {
         		echo 'cookie setado';
         	}
-        </pre>
+        ?>
 
 			<form action="<?= ROOT.'admin'.DS?>" method="post" enctype="multipart/form-data">
 		    	<input type="text" name="user" placeholder="usuario" />

@@ -153,6 +153,8 @@ include('app/model/AppModel.php');
 
 		if($page == 'admin' || $page == 'login'){
 
+			include('app/model/AdminModel.php');
+
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				
 				if(!empty($_POST['user']) && !empty($_POST['password'])){
@@ -196,7 +198,7 @@ include('app/model/AppModel.php');
 					}
 
 				} else {
-					include (WEBROOT_DIR.DS.'login.php');
+					include (WEBROOT_DIR . 'login.php');
 				}
 			}
 		} else {

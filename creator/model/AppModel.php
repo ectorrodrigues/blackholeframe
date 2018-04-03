@@ -156,6 +156,10 @@ if($page == 'new'){
 			$query->execute();
 			$results_echo .= "<strong>Menu</strong> Table Updated.<br />";
 
+			 $query 	= $pdo->prepare("INSERT INTO cms (title) VALUES ('menu') "); 
+			$query->execute();
+			$results_echo .= "<strong>Menu</strong> Table Added to CMS.<br />";
+
 
 			//MAKING FOLDERS AND POPULATE THEM WITH FILES
 			if (!file_exists('../../index.php')) { create_files('', 'index.php'); }
@@ -196,6 +200,9 @@ if($page == 'new'){
 
 			if (!file_exists('../../app/webroot')) { mkdir('../../app/webroot', 0777, true); }
 				create_files('app/webroot/', 'index.php');
+				create_files('app/webroot/', 'login.php');
+				create_files('app/webroot/', 'admin.php');
+				create_files('app/webroot/', 'logout.php');
 
 				if (!file_exists('../../app/webroot/css')) { mkdir('../../app/webroot/css', 0777, true); }
 					create_files('app/webroot/css/', 'main.css');

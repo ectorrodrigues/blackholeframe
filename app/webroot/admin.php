@@ -1,4 +1,7 @@
-<?php require (ELEMENTS_DIR .'head.php'); ?>
+<?php
+	include ('../app/model/AppModel.php');  
+	require (ELEMENTS_DIR .'head.php'); 
+?>
 
 <body>
 <div class="container">
@@ -9,19 +12,24 @@
 
 	<div class="col2 inline menu-gallery">
 				
-		<loop>
-		<loop_sql><?= 'table=cms;where= ;extras= ;orderby=id;order=ASC;limit= ;'; ?></loop_sql>
-			<div class="menu-item">
-				<a href="<?=ROOT.ADMIN?>{id}">
-					{function->remove_underlines->title}
-				</a>
-			</div>
-		</loop>
+		<?php
+			foreach($conn->query("SELECT * FROM menu") as $row) {
+				$id		= $row["id"];						
+				$title	= $row["title"];
+				$link	= $row["link"];	
+
+				echo '<div class="menu-item">
+					<a href="'.ROOT.ADMIN.$id.'">
+						'.$title.'
+					</a>
+				</div>';
+			}
+		?>
 		
 	</div>
 
 	<div class="col8 inline content margin-left">
-		<pre>
+		<?php
 			$url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 			if (preg_match('#[0-9]#',$url)){ 
@@ -46,7 +54,7 @@
 			}
 				
 			$conn = null;
-		</pre>
+		?>
 	</div>
     
 </div>
