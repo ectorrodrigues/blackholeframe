@@ -150,6 +150,8 @@ if($page == 'new'){
 			
 			if (!file_exists('../../app/controller')) { mkdir('../../app/controller', 0777, true); }
 			if (!file_exists('../../app/model')) { mkdir('../../app/model', 0777, true); }
+				create_files('app/model/', 'AppModel.php');
+
 			if (!file_exists('../../app/vendors')) { mkdir('../../app/vendors', 0777, true); }
 
 			if (!file_exists('../../app/view')) { mkdir('../../app/view', 0777, true); }

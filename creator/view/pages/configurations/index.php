@@ -14,7 +14,7 @@
 
 				<div class="form-group col-lg-12">
 					<?php
-						$query 	= $conn->prepare("SELECT content FROM config WHERE title = 'Site Title'"); 
+						$query 	= $conn->prepare("SELECT content FROM config WHERE title = 'Site_Title'"); 
 						$query->execute();
 						$value = $query->fetchColumn();
 					?>
