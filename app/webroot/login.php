@@ -1,6 +1,6 @@
-<pre>
+<?php
     require (ELEMENTS_DIR .'head.php'); 
-</pre>
+?>
 
 
 <body style="background-color: #eee !important;">

@@ -208,7 +208,6 @@ a{ Text-decoration: none !important; color:#666;}
 .menu{
 	position: relative !important;
 	padding: 25px 0;
-	color: #fff;
 	display: inline-block;
     text-align: right;
     vertical-align: middle;
@@ -225,7 +224,7 @@ a{ Text-decoration: none !important; color:#666;}
 
 .menu a{
 	margin:0 0 0 20px;
-	color: #fff;
+	color: #000;
 	font-weight: 600;
 	font-size: 12px;
 	vertical-align: middle;
@@ -233,7 +232,7 @@ a{ Text-decoration: none !important; color:#666;}
 }
 
 .menu a:hover{
-	color:#ffca05;
+	color:#000;
 }
 
 .content-item{
@@ -527,11 +526,7 @@ textarea{
 
 .footer{
 	height: 400px;
-	background-color: #005e9c;
-	border-top: solid;
-    border-top-style: solid;
-    border-top-color: #FDB813;
-    border-top-width: 6px;
+	background-color: #333;
 }
 
 .footer .col8{

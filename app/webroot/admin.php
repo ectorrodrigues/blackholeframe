@@ -1,8 +1,4 @@
-<pre> 
-	//include ('app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
-	require (ELEMENTS_DIR .'head.php'); 
-</pre>
-
+<?php require (ELEMENTS_DIR .'head.php'); ?>
 
 <body>
 <div class="container">

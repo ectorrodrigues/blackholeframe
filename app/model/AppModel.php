@@ -218,7 +218,7 @@ function contruct_page($page, $archive){
     $site   = explode('/', $_SERVER['PHP_SELF']);
     $path   = 'http://'.$_SERVER['HTTP_HOST'].DS.$site[1].DS.PAGES_DIR.$page.DS;   
 
-    if($archive == 'ver.php'){
+    if($archive == 'item.php'){
         $id = '&id='.$id;
     }  else {
         $id = '';

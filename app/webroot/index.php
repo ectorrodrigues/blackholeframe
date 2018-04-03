@@ -20,12 +20,12 @@
 
 			$page 	= $_GET['page'];
 
-			if(strpos($url, "ver") == false){
+			if(strpos($url, "/item/") == false){
 				$archive = 'index.php';
 				contruct_page($page, $archive);
 			}else{
 				$id 	= $_GET['id'];
-				$archive = 'ver.php';
+				$archive = 'item.php';
 				contruct_page($page, $archive);
 			}
 		}

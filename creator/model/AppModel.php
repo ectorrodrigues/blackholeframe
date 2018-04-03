@@ -12,7 +12,7 @@
 	if(isset($_POST['db_lenght'])){ 		$db_lenght 		= $_POST['db_lenght']; }
 	if(isset($_POST['directory'])){ 		$directory 		= $_POST['directory']; }
 	if(isset($_POST['cms'])){ 				$cms 			= $_POST['cms']; }
-	if(isset($_POST['ver'])){ 				$ver 			= $_POST['ver']; }
+	if(isset($_POST['item'])){ 				$item 			= $_POST['item']; }
 	if(isset($_POST['gallery'])){ 			$gallery 		= $_POST['gallery']; }
 
 	require('../config/database.php');
@@ -386,12 +386,12 @@ if($page == 'pages'){
 	}
 
 
-	// CREATE VER.PHP --------------------------------------------------------------------------------------------
+	// CREATE ITEM.PHP --------------------------------------------------------------------------------------------
 
-    if($ver == 'yes'){
-    	$my_file = '../../app/view/pages/'.$title.'/ver.php';
+    if($item == 'yes'){
+    	$my_file = '../../app/view/pages/'.$title.'/item.php';
 	    fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
-	    addtext($title, 'ver.php');
+	    addtext($title, 'item.php');
 		$results_echo .= "<strong>Ver.php</strong> Created.<br />";
 	} else {
 		$results_echo .= "<strong>Ver.php</strong> NOT Created.<br />";
