@@ -1,5 +1,5 @@
 <?php
-
+	//Get Sitename
 	$sitename = explode('/', $_SERVER['PHP_SELF']);
 	$sitename = $sitename[1];
 
@@ -21,6 +21,7 @@
 
 	$results_echo = '';
 
+	//function to add some text to newly created indexes
 	function addtext($title, $page){
 		$file    = '../../app/view/pages/'.$title.'/'.$page;
 	    $text = 
@@ -35,6 +36,7 @@
 	    file_put_contents($file, $text);
 	}
 
+	// function to create files (cloning them from github's master project)
 	function create_files($dir, $filename){
 
 		global $results_echo;
@@ -70,20 +72,24 @@ if($page == 'new'){
 			 
 		// Attempt create database query execution
 		try{
+			// Create the main database
 			$sql = "CREATE DATABASE ".$_POST['db_name']." CHARACTER SET utf8 COLLATE utf8_unicode_ci;";
 			$pdo->exec($sql);
 			$sql = "USE ".$_POST['db_name'];
 			$pdo->exec($sql);
 			$results_echo .= "<strong>DATABASE</strong> sucessfully created.<br />";
 
+			//Create the CMS table. Here we will tell wich content should be editable from our admin
 		    $sql = "CREATE TABLE cms ( id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, title VARCHAR(50) )";
 		    $pdo->exec($sql);
 		    $results_echo .= "<strong>CMS</strong> Table sucessfully created.<br />";
 
+		    //Table to store latest time of access. If geater than 1 hour, the specified files will be automatically updated to the last version avaible on github's master project.
 		    $sql = "CREATE TABLE update_time_control ( id INT(255) UNSIGNED AUTO_INCREMENT PRIMARY KEY, time DATETIME)";
 		    $pdo->exec($sql);
 		    $results_echo .= "<strong>Update Time Control</strong> Table sucessfully created.<br />";
 
+		    // Create the users table and update it
 		    $sql = "CREATE TABLE users ( id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, title VARCHAR(50), email VARCHAR(80), password VARCHAR(150), keypass VARCHAR(150) )";
 		    $pdo->exec($sql);
 		    $results_echo .= "<strong>Users</strong> Table sucessfully created.<br />";
@@ -101,7 +107,7 @@ if($page == 'new'){
 			$query->execute();
 			$results_echo .= "<strong>Users</strong> Table Updated.<br />";
 
-
+			// Create the config table and update it. Here's the data that will be fetched by our config.php file
 			$sql = "CREATE TABLE config ( id INT(255) UNSIGNED AUTO_INCREMENT PRIMARY KEY, title VARCHAR(50), content VARCHAR(500) )";
 		    $pdo->exec($sql);
 		    $results_echo .= "<strong>Config</strong> Table sucessfully created.<br />";
@@ -117,6 +123,7 @@ if($page == 'new'){
 			$query->execute();
 			$results_echo .= "<strong>Config</strong> Table Updated.<br />";
 
+			// Create the input_types table and update it. This table tells for our config.php file, what input types the specified fields will assume
 			$sql = "CREATE TABLE input_types ( id INT(255) UNSIGNED AUTO_INCREMENT PRIMARY KEY, title VARCHAR(50), content VARCHAR(500) )";
 		    $pdo->exec($sql);
 		    $results_echo .= "<strong>Input_types</strong> Table sucessfully created.<br />";
@@ -134,6 +141,15 @@ if($page == 'new'){
 		    	"); 
 			$query->execute();
 			$results_echo .= "<strong>Input_types</strong> Table Updated.<br />";
+
+			// Create the menu table and update it only with home link.
+			$sql = "CREATE TABLE menu ( id INT(255) UNSIGNED AUTO_INCREMENT PRIMARY KEY, title VARCHAR(50), link VARCHAR(500) )";
+		    $pdo->exec($sql);
+		    $results_echo .= "<strong>Input_types</strong> Table sucessfully created.<br />";
+
+		    $query 	= $pdo->prepare("INSERT INTO input_types (title, link) VALUES ('home', 'home') "); 
+			$query->execute();
+			$results_echo .= "<strong>Menu</strong> Table Updated.<br />";
 
 
 			//MAKING FOLDERS AND POPULATE THEM WITH FILES
@@ -188,12 +204,9 @@ if($page == 'new'){
 			} catch(PDOException $e){
 			    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 			}
-			 
+
 			// Close connection
 			unset($pdo);
-
-		    
-
 		}
 
 		catch(PDOException $e) {
@@ -203,7 +216,7 @@ if($page == 'new'){
 }
 
 
-
+//Update the configurations
 if($page == 'configurations'){
 
 	$site_title 				= $_POST['site_title'];
@@ -294,7 +307,7 @@ if($page == 'configurations'){
 }
 
 
-
+//Creating pages and tables.
 if($page == 'pages'){
 
 	// CREATE DATABASE ---------------------------------------------------------------------------------------
@@ -485,8 +498,10 @@ function fechar() {
 
 }
 
-	$conn = null;
+$conn = null;
 
+
+	//Echoing results with some styling
 
 	echo '
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,500,600,700,700i,900" rel="stylesheet">
