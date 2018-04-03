@@ -10,19 +10,34 @@
 
 			<?php
 
-				$content = '
-					<strong>{phone}</strong><br/>
-					{email}<br/>
-					{address}<br/>
-				';
-
+				$content = '<strong>{content}</strong><br/>';
 				loop(	/*table*/"config",
 						/*content*/$content, 
-						/*where*/"",
+						/*where*/" title = 'Phone'",
 						/*extras*/"", 
-						/*order*/"id", 
-						/*asc_desc*/"ASC",
+						/*order*/"", 
+						/*asc_desc*/"",
 						/*limit*/"");
+
+				$content = '{content}<br/>';
+				loop(	/*table*/"config",
+						/*content*/$content, 
+						/*where*/" title = 'Email'",
+						/*extras*/"", 
+						/*order*/"", 
+						/*asc_desc*/"",
+						/*limit*/"");
+
+				$content = '{content}<br/>';
+				loop(	/*table*/"config",
+						/*content*/$content, 
+						/*where*/" title = 'Address'",
+						/*extras*/"", 
+						/*order*/"", 
+						/*asc_desc*/"",
+						/*limit*/"");
+
+
 			?>
 
 		</div>
