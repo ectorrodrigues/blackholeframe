@@ -128,7 +128,7 @@ if($time_now > $time_allowed) {
 
 	}
 
-	$query = $conn->prepare("INSERT INTO update_time_control (id, time) VALUES('', :time_now)"); 
+	$query = $conn->prepare("INSERT INTO update_time_control (time) VALUES(:time_now)"); 
 	$query->bindParam(':time_now', $time_now);
 	$query->execute();
 
