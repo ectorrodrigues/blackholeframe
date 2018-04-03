@@ -9,7 +9,7 @@
 				</div>
 			</a>
 			<div class="infos col-lg-10 offset-lg-1">
-				Get started.<br>
+				<strong>Get started.</strong><br>
 				Here you create your database, and clone the files and directories from the blackholeframe git.
 			</div>
 		</div>
@@ -22,8 +22,8 @@
 				</div>
 			</a>
 			<div class="infos col-lg-10 offset-lg-1">
-				The config.php settings.<br>
-				Set all the configuration used on your site. <br>
+				<strong>The config.php settings.</strong><br>
+				Set all the config used on your site. <br>
 				Stuff like the site name, input types for the CMS and so on.
 			</div>
 		</div>
@@ -36,7 +36,8 @@
 				</div>
 			</a>
 			<div class="infos col-lg-10 offset-lg-1">
-				Create the pages that will be displayed on your site, and their respective tables on the database. Or even just tables for store some data.
+				<strong>Create the pages and tables.</strong><br> 
+				Pages of your site, and their respective tables on the database. Or even just tables for store some data.
 			</div>
 		</div>
 

@@ -13,5 +13,5 @@
 	</div>
 
 	<div class="col-lg-12 text-center logo">
-		<img src="webroot/files/favicon.png" width="35" />  Black Hole
+		<img src="webroot/files/logo.png" />
 	</div>

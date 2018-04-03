@@ -28,6 +28,7 @@ body{
 
 a{
   color: #fff !important;
+  font-size: 12px;
 }
 
 a:hover{
@@ -35,8 +36,9 @@ a:hover{
 }
 
 .infos {
-  color: #666;
+  color: #999;
   margin-top: 20px;
+  font-size: 13px;
 }
 
 .transition{
@@ -106,7 +108,7 @@ h3{
 }
 
 .logo{
-  padding: 80px 0;
+  padding: 50px 0 30px 0;
   color: #000;
   text-shadow: -1px 0 #999, 0 1px #999, 1px 0 #999, 0 -1px #999;
   font-size: 30px;
