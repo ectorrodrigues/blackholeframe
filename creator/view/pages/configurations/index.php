@@ -23,6 +23,11 @@
 				</div>
 
 				<div class="form-group col-lg-12">
+					<label>Logo</label>
+				    <input type="file" name="logo" class="form-control">
+				</div>
+
+				<div class="form-group col-lg-12">
 					<?php
 						$array = array("Auto_Update_AppModel", "Auto_Update_AdminModel", "Auto_Update_Helper_List", "Auto_Update_Helper_Form");
 

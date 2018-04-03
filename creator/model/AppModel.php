@@ -114,6 +114,7 @@ if($page == 'new'){
 
 		    $query 	= $pdo->prepare("INSERT INTO config (title, content) VALUES 
 		    	('Database Name', '".$db_name."'), 
+		    	('Logo', 'logo.svg'), 
 		    	('Site_Title', 'Title of your Site'), 
 		    	('Auto_Update_AppModel', 'yes'), 
 		    	('Auto_Update_AdminModel', 'yes'), 
@@ -236,6 +237,16 @@ if($page == 'configurations'){
 	$array_fields_date 			= $_POST['array_fields_date'];
 	$array_fields_time 			= $_POST['array_fields_time'];
 	$array_galleries 			= $_POST['array_galleries'];
+
+	$logo 	= $_FILES['logo']['name'];
+	$img 	= uniqid().$logo;
+	$_UP['folder']	= './../app/webroot/files/';
+	move_uploaded_file($_FILES['logo']['tmp_name'], $_UP['folder'] . $img);
+
+	$query 	= $conn->prepare("UPDATE config SET content = :item WHERE title = 'Logo'"); 
+	$query->bindParam(':item', $img);
+	$query->execute();
+	$results_echo .= "<strong>Logo</strong> Column Updated.<br />";
 
 	$query 	= $conn->prepare("UPDATE config SET content = :item WHERE title = 'Site_Title'"); 
 	$query->bindParam(':item', $site_title);
