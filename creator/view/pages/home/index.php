@@ -3,7 +3,7 @@
 
 		<div class="col-lg-4 text-center">
 			<a href="?page=new">
-				<div class="rounded-box border transition">
+				<div class="rounded-box border">
 					1.<br>
 					New
 				</div>
@@ -31,7 +31,7 @@
 		<div class="col-lg-4 text-center">
 			<a href="?page=pages">
 				<div class="rounded-box border transition">
-					3<br>
+					3.<br>
 					Pages
 				</div>
 			</a>
