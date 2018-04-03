@@ -89,11 +89,6 @@ if($page == 'new'){
 		    $pdo->exec($sql);
 		    $results_echo .= "<strong>Update Time Control</strong> Table sucessfully created.<br />";
 
-		    $time = date("Y-m-d H:i:s");
-		    $query = $pdo->prepare("INSERT INTO update_time_control (time) VALUES ('".$time."') "); 
-			$query->execute();
-			$results_echo .= "<strong>Update Time Control</strong> Table Updated.<br />";
-
 		    // Create the users table and update it
 		    $sql = "CREATE TABLE users ( id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, title VARCHAR(50), email VARCHAR(80), password VARCHAR(150), keypass VARCHAR(150) )";
 		    $pdo->exec($sql);
