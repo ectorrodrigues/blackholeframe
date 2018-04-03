@@ -170,6 +170,8 @@ if($page == 'new'){
 		    		if (!file_exists('../../app/view/pages/home/index.php')) { fopen($my_file, 'w') or die('Cannot open file:  '.$my_file); }
 
 			if (!file_exists('../../app/webroot')) { mkdir('../../app/webroot', 0777, true); }
+				create_files('app/webroot/', 'index.php');
+
 				if (!file_exists('../../app/webroot/css')) { mkdir('../../app/webroot/css', 0777, true); }
 					create_files('app/webroot/css/', 'main.css');
 					create_files('app/webroot/css/', 'admin.css');
