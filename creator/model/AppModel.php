@@ -89,8 +89,8 @@ if($page == 'new'){
 		    $pdo->exec($sql);
 		    $results_echo .= "<strong>Update Time Control</strong> Table sucessfully created.<br />";
 
-		    $time_allowed = date('Y-m-d H:i:s',strtotime('-1 hour',date("Y-m-d H:i:s")));
-		    $query = $pdo->prepare("INSERT INTO update_time_control (time) VALUES ('id') "); 
+		    $time_allowed = strtotime('-1 hour',date("Y-m-d H:i:s"));
+		    $query = $pdo->prepare("INSERT INTO update_time_control (time) VALUES ('".$time_allowed."') "); 
 			$query->execute();
 			$results_echo .= "<strong>Update Time Control</strong> Table Updated.<br />";
 
