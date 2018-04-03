@@ -16,7 +16,7 @@
 					{address}<br/>
 				';
 
-				loop(	/*table*/"contact_infos",
+				loop(	/*table*/"config",
 						/*content*/$content, 
 						/*where*/"",
 						/*extras*/"", 

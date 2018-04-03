@@ -80,8 +80,16 @@
 						</div>
 
 						<div class="form-group col-lg-3">
-					    	<label>Create Ver.php?</label>
-							<select name="ver" class="form-control">
+					    	<label>Menu?</label>
+							<select name="menu" class="form-control">
+							    <option value="yes">YES</option>
+							    <option value="no">NO</option>
+							</select>
+						</div>
+
+						<div class="form-group col-lg-3">
+					    	<label>Create Item.php?</label>
+							<select name="item" class="form-control">
 							    <option value="no">NO</option>
 							    <option value="yes">yes</option>
 							</select>

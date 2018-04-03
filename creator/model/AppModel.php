@@ -12,6 +12,7 @@
 	if(isset($_POST['db_lenght'])){ 		$db_lenght 		= $_POST['db_lenght']; }
 	if(isset($_POST['directory'])){ 		$directory 		= $_POST['directory']; }
 	if(isset($_POST['cms'])){ 				$cms 			= $_POST['cms']; }
+	if(isset($_POST['menu'])){ 				$menu 			= $_POST['menu']; }
 	if(isset($_POST['item'])){ 				$item 			= $_POST['item']; }
 	if(isset($_POST['gallery'])){ 			$gallery 		= $_POST['gallery']; }
 
@@ -26,11 +27,11 @@
 		$file    = '../../app/view/pages/'.$title.'/'.$page;
 	    $text = 
 	    '	<div class="container-fluid">
-	    		<div class="row">
-				    <div class="col">
-				    </div>
-			    </div>
+	    <div class="row">
+			<div class="col">
 			</div>
+		</div>
+	</div>
 	    ';
 
 	    file_put_contents($file, $text);
@@ -399,6 +400,23 @@ if($page == 'pages'){
 		$query->bindParam(':last_id', $last_id);
 		$query->execute();
 		$results_echo .= "<strong>CMS</strong> Updated.<br />";
+	}
+
+
+	// ADD TO MENU --------------------------------------------------------------------------------------------
+
+    if($menu == 'yes'){
+    	$query 	= $conn->prepare("SELECT id from menu ORDER BY id DESC LIMIT 1"); 
+		$query->execute();
+		$last_id = $query->fetchColumn();
+		$last_id = ($last_id+1);
+
+	    $query 	= $conn->prepare("INSERT INTO menu (id, title, link) VALUES(:last_id, :title, :link)"); 
+		$query->bindParam(':title', $title);
+		$query->bindParam(':link', $title);
+		$query->bindParam(':last_id', $last_id);
+		$query->execute();
+		$results_echo .= "<strong>Menu</strong> Updated.<br />";
 	}
 
 
