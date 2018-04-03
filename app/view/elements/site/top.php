@@ -5,7 +5,17 @@
 
 			<div class="logo col2 vertical-align" align="left">
 				<a href="<?=SERVER_DIR?>">
-					<img src="<?=IMG_DIR.'logo_negativo.svg'?>" />
+					<?php
+					$content = '<img src="'.FILES_DIR.'{content}" />';
+					loop(
+					/*table*/"config",
+					/*content*/$content, 
+					/*where*/" title = 'Logo' ",
+					/*extras*/"", 
+					/*order*/"", 
+					/*asc_desc*/"",
+					/*limit*/"");
+					?>
 				</a>
 			</div>
 			

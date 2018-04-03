@@ -29,6 +29,36 @@
 
 				<div class="form-group col-lg-12">
 					<?php
+						$query 	= $conn->prepare("SELECT content FROM config WHERE title = 'Phone'"); 
+						$query->execute();
+						$value = $query->fetchColumn();
+					?>
+					<label>Phone</label>
+				    <input type="text" name="phone" class="form-control" value="<?= $value ?>" >
+				</div>
+
+				<div class="form-group col-lg-12">
+					<?php
+						$query 	= $conn->prepare("SELECT content FROM config WHERE title = 'Email'"); 
+						$query->execute();
+						$value = $query->fetchColumn();
+					?>
+					<label>Email</label>
+				    <input type="email" name="email" class="form-control" value="<?= $value ?>" >
+				</div>
+
+				<div class="form-group col-lg-12">
+					<?php
+						$query 	= $conn->prepare("SELECT content FROM config WHERE title = 'Address'"); 
+						$query->execute();
+						$value = $query->fetchColumn();
+					?>
+					<label>Address</label>
+				    <input type="text" name="address" class="form-control" value="<?= $value ?>" >
+				</div>
+
+				<div class="form-group col-lg-12">
+					<?php
 						$array = array("Auto_Update_AppModel", "Auto_Update_AdminModel", "Auto_Update_Helper_List", "Auto_Update_Helper_Form");
 
 						foreach($array as $update_title) {

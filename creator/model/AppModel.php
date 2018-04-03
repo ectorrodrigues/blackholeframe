@@ -116,6 +116,9 @@ if($page == 'new'){
 		    	('Database Name', '".$db_name."'), 
 		    	('Logo', 'logo.svg'), 
 		    	('Site_Title', 'Title of your Site'), 
+		    	('Phone', '45 99999-9999'),
+		    	('Email', 'contact@blackholeframe.com'),
+		    	('Address', 'Lorem Ipsum St., New York'),
 		    	('Auto_Update_AppModel', 'yes'), 
 		    	('Auto_Update_AdminModel', 'yes'), 
 		    	('Auto_Update_Helper_List', 'yes'), 
@@ -224,6 +227,9 @@ if($page == 'new'){
 if($page == 'configurations'){
 
 	$site_title 				= $_POST['site_title'];
+	$phone 						= $_POST['phone'];
+	$email 						= $_POST['email'];
+	$address 					= $_POST['address'];
 	$Auto_Update_AppModel 		= $_POST['Auto_Update_AppModel'];
 	$Auto_Update_AdminModel 	= $_POST['Auto_Update_AdminModel'];
 	$Auto_Update_Helper_List 	= $_POST['Auto_Update_Helper_List'];
@@ -252,6 +258,21 @@ if($page == 'configurations'){
 	$query->bindParam(':item', $site_title);
 	$query->execute();
 	$results_echo .= "<strong>Site_Title</strong> Column Updated.<br />";
+
+	$query 	= $conn->prepare("UPDATE config SET content = :item WHERE title = 'Phone'"); 
+	$query->bindParam(':item', $phone);
+	$query->execute();
+	$results_echo .= "<strong>Phone</strong> Column Updated.<br />";
+
+	$query 	= $conn->prepare("UPDATE config SET content = :item WHERE title = 'Email'"); 
+	$query->bindParam(':item', $email);
+	$query->execute();
+	$results_echo .= "<strong>Email</strong> Column Updated.<br />";
+
+	$query 	= $conn->prepare("UPDATE config SET content = :item WHERE title = 'Address'"); 
+	$query->bindParam(':item', $address);
+	$query->execute();
+	$results_echo .= "<strong>Address</strong> Column Updated.<br />";
 
 	$query 	= $conn->prepare("UPDATE config SET content = :item WHERE title = 'Auto_Update_AppModel'"); 
 	$query->bindParam(':item', $Auto_Update_AppModel);
