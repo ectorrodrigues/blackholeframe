@@ -5,7 +5,6 @@
 * MAIN 
 * Here comes the MAIN configuration stuff
 */
-
 if(!defined('DS')){ define('DS', '/');}
 
 //SITE NAME
