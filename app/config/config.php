@@ -19,7 +19,11 @@ if(!isset($_COOKIE['site'])){
 	$site = $_COOKIE['site'];
 }
 
-define('SITE_TITLE', 'BlackHole');
+$conn = db();
+foreach($conn->query("SELECT content FROM config WHERE title = 'Site_Title' ") as $row) {
+	$site_title		= $row['content'];
+}
+define('SITE_TITLE', $site_title);
 
 //DIRECTORIES
 $directories = 'app/config/directories.php';
@@ -32,28 +36,12 @@ else {
 }
 
 //Automatic Update files to the newest version from CDN
-$conn = db();
-$query = $conn->prepare("SELECT content FROM config WHERE title = 'Auto_Update_AppModel'");
-$query->execute();
-$result_update_appmodel = $query->fetchColumn();
-
-$query = $conn->prepare("SELECT content FROM config WHERE title = 'Auto_Update_AdminModel'");
-$query->execute();
-$result_update_adminmodel = $query->fetchColumn();
-
-$query = $conn->prepare("SELECT content FROM config WHERE title = 'Auto_Update_Helper_List'");
-$query->execute();
-$result_update_list = $query->fetchColumn();
-
-$query = $conn->prepare("SELECT content FROM config WHERE title = 'Auto_Update_Helper_Form'");
-$query->execute();
-$result_update_form = $query->fetchColumn();
-
-
-$auto_update_appmodel 		= $result_update_appmodel; // yes or no *yes is default
-$auto_update_adminmodel		= $result_update_adminmodel; // yes or no *yes is default
-$auto_update_form_helper	= $result_update_form; // yes or no *yes is default
-$auto_update_list_helper	= $result_update_list; // yes or no *yes is default
+$update_array = array('auto_update_appmodel', 'auto_update_adminmodel', 'auto_update_helper_form', 'auto_update_helper_list');
+foreach ($update_array as $update_array_value) {
+	$query = $conn->prepare("SELECT content FROM config WHERE title = '".$update_array_value."'");
+	$query->execute();
+	$$update_array_value = $query->fetchColumn();
+}
 
 //CMS
 $cms	= 'cms'; //Table name where are stored the names of the Pages with CMS
@@ -68,13 +56,12 @@ $cms	= 'cms'; //Table name where are stored the names of the Pages with CMS
 //FORM
 # Form input types assumed by the form inputs (*If not defined below, the input will assume Text Type)
 
-
 $input_arrays = array('array_fields_hidden', 'array_fields_text', 'array_fields_number', 'array_fields_select', 'array_fields_img', 'array_fields_textarea', 'array_fields_date', 'array_fields_time', 'array_galeries');
 
 foreach ($input_arrays as $input_arrays_value) {
 	$query = $conn->prepare("SELECT content FROM input_types WHERE title = '".$input_arrays_value."'");
 	$query->execute();
-	$$input_arrays_value = "'".implode("', '", explode(",", $query->fetchColumn()))."'";
+	$$input_arrays_value = explode(", ", $query->fetchColumn());
 }
 
 ?>

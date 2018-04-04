@@ -106,7 +106,7 @@
 				</div>
 
 				<div class="form-group col-md-12 padding-top-bottom text-right">
-					<button type="submit" class="btn btn-primary transition">Create</button>
+					<button type="submit" class="btn btn-primary transition">Update</button>
 				</div>
 
 			</form>

@@ -1,3 +1,22 @@
+<style>
+	.container{
+		display:none;
+	}
+	#loading {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 100;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 1);
+		background-image: url("http://mova.ppg.br/resources/blackholeframe/img/blackhole-loading.gif");
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+</style>
+
 <?php
 	//Get Sitename
 	$sitename = explode('/', $_SERVER['PHP_SELF']);
@@ -620,4 +639,26 @@ $conn = null;
 	</div>';
 
 ?>
+
+<div id="loading"></div>
+
+<script type="text/javascript">
+function onReady(callback) {
+  var intervalId = window.setInterval(function() {
+    if (document.getElementsByTagName('body')[0] !== undefined) {
+      window.clearInterval(intervalId);
+      callback.call(this);
+    }
+  }, 1000);
+}
+
+function setVisible(selector, visible) {
+  document.querySelector(selector).style.display = visible ? 'block' : 'none';
+}
+
+onReady(function() {
+  setVisible('.container', true);
+  setVisible('#loading', false);
+});
+</script>
 
