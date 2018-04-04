@@ -4,7 +4,7 @@
 
 	include ('../config/directories.php');
 	include ('../config/database.php');
-
+	
 	$array_galeries = array('produtos', 'noticias'); // Here we tell the pages that will have some gallery within
 
 	$action	= $_GET['action'];
@@ -25,7 +25,6 @@
 		$query = $conn->prepare("DESCRIBE ".$table);
 		$query->execute();
 		$table_fields = $query->fetchAll(PDO::FETCH_COLUMN);
-
 
 		$columns		= '';
 		$columns_val	= '';

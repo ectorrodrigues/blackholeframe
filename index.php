@@ -152,9 +152,7 @@ include('app/model/AppModel.php');
 		$page = $_GET['page'];
 
 		if($page == 'admin' || $page == 'login'){
-
-			include('app/model/AdminModel.php');
-
+			
 			if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				
 				if(!empty($_POST['user']) && !empty($_POST['password'])){
@@ -174,7 +172,7 @@ include('app/model/AppModel.php');
 						setcookie('login', $keypass, time() + (14400 * 30), "/");
 						include (WEBROOT_DIR . 'admin.php');
 					} else {
-						header('Location:'.ROOT);
+						include (WEBROOT_DIR . 'login.php');
 					}
 
 				} else {

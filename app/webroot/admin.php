@@ -1,5 +1,8 @@
 <?php
-	include ('../app/model/AppModel.php');  
+	setcookie("status", "", time() - 3600);
+	unset($_COOKIE['status']);
+	setcookie('status', null, -1, '/');
+
 	require (ELEMENTS_DIR .'head.php'); 
 ?>
 
@@ -13,10 +16,9 @@
 	<div class="col2 inline menu-gallery">
 				
 		<?php
-			foreach($conn->query("SELECT * FROM menu") as $row) {
+			foreach($conn->query("SELECT * FROM cms") as $row) {
 				$id		= $row["id"];						
 				$title	= $row["title"];
-				$link	= $row["link"];	
 
 				echo '<div class="menu-item">
 					<a href="'.ROOT.ADMIN.$id.'">

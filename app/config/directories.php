@@ -5,6 +5,11 @@
 
 	// DIRECTORY_SEPARATOR
 	if(!defined('DS')){ define('DS', DIRECTORY_SEPARATOR);}
+
+	$sitename = explode('/', $_SERVER['PHP_SELF']);
+	if(!defined('SITE_NAME')){ 
+		define('SITE_NAME', $sitename[1]);
+	}
 	
 	if(strpos($url, "admin") == true){
 		define('SERVER_DIR', DS . SITE_NAME . DS);
