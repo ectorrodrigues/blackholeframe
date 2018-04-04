@@ -32,10 +32,27 @@ else {
 }
 
 //Automatic Update files to the newest version from CDN
-$auto_update_appmodel 		= 'yes'; // yes or no *yes is default
-$auto_update_adminmodel		= 'yes'; // yes or no *yes is default
-$auto_update_form_helper	= 'yes'; // yes or no *yes is default
-$auto_update_list_helper	= 'yes'; // yes or no *yes is default
+$query = $conn->prepare("SELECT content FROM config WHERE title = 'Auto_Update_AppModel'");
+$query->execute();
+$result_update_appmodel = $query->fetchColumn();
+
+$query = $conn->prepare("SELECT content FROM config WHERE title = 'Auto_Update_AdminModel'");
+$query->execute();
+$result_update_adminmodel = $query->fetchColumn();
+
+$query = $conn->prepare("SELECT content FROM config WHERE title = 'Auto_Update_Helper_List'");
+$query->execute();
+$result_update_list = $query->fetchColumn();
+
+$query = $conn->prepare("SELECT content FROM config WHERE title = 'Auto_Update_Helper_Form'");
+$query->execute();
+$result_update_form = $query->fetchColumn();
+
+
+$auto_update_appmodel 		= $result_update_appmodel; // yes or no *yes is default
+$auto_update_adminmodel		= $result_update_adminmodel; // yes or no *yes is default
+$auto_update_form_helper	= $result_update_form; // yes or no *yes is default
+$auto_update_list_helper	= $result_update_list; // yes or no *yes is default
 
 //CMS
 $cms	= 'cms'; //Table name where are stored the names of the Pages with CMS
@@ -49,7 +66,11 @@ $cms	= 'cms'; //Table name where are stored the names of the Pages with CMS
 
 //FORM
 # Form input types assumed by the form inputs (*If not defined below, the input will assume Text Type)
-$array_fields_hidden	= array('id', 'id_cms', 'id_pedidos', 'sessao');
+$query = $conn->prepare("SELECT content FROM input_types WHERE title = 'array_fields_hidden'");
+$query->execute();
+$result_fields_hidden = $query->fetchColumn();
+
+$array_fields_hidden	= array($result_fields_hidden);
 $array_fields_text		= array('titulo', 'preco');
 $array_fields_number	= array('sku', 'preco');
 $array_fields_select	= array('status', 'id_categorias', 'id_noticias', 'area', 'professor', 'coordenador', 'curso', 'cursos', 'status');
