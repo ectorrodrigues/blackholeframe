@@ -32,6 +32,7 @@ else {
 }
 
 //Automatic Update files to the newest version from CDN
+$conn = db();
 $query = $conn->prepare("SELECT content FROM config WHERE title = 'Auto_Update_AppModel'");
 $query->execute();
 $result_update_appmodel = $query->fetchColumn();
@@ -66,21 +67,14 @@ $cms	= 'cms'; //Table name where are stored the names of the Pages with CMS
 
 //FORM
 # Form input types assumed by the form inputs (*If not defined below, the input will assume Text Type)
-$query = $conn->prepare("SELECT content FROM input_types WHERE title = 'array_fields_hidden'");
-$query->execute();
-$result_fields_hidden = $query->fetchColumn();
 
-$array_fields_hidden	= array($result_fields_hidden);
-$array_fields_text		= array('titulo', 'preco');
-$array_fields_number	= array('sku', 'preco');
-$array_fields_select	= array('status', 'id_categorias', 'id_noticias', 'area', 'professor', 'coordenador', 'curso', 'cursos', 'status');
-$array_fields_img		= array('img', 'foto', 'icone');
-$array_fields_textarea	= array('descricao', 'texto', 'endereco', 'matriz_curricular', 'ementas', 'regulamento');
-$array_fields_date		= array('data');
-$array_fields_time		= array('horario');
-$array_galeries 		= array('produtos', 'noticias');
 
-//GALLERY
-$array_galeries = array('produtos', 'noticias', 'idades', 'intercambios'); //Pages that have gallery
+$input_arrays = array('array_fields_hidden', 'array_fields_text', 'array_fields_number', 'array_fields_select', 'array_fields_img', 'array_fields_textarea', 'array_fields_date', 'array_fields_time', 'array_galeries');
+
+foreach ($input_arrays as $input_arrays_value) {
+	$query = $conn->prepare("SELECT content FROM input_types WHERE title = '".$input_arrays_value."'");
+	$query->execute();
+	$$input_arrays_value = "'".implode("', '", explode(",", $query->fetchColumn()))."'";
+}
 
 ?>
