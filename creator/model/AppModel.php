@@ -224,7 +224,7 @@ if($page == 'new'){
 				create_files('app/webroot/', 'logout.php');
 
 				if (!file_exists('../../app/webroot/css')) { mkdir('../../app/webroot/css', 0777, true); }
-					create_files('app/webroot/css/', 'main.css');
+					create_files('app/webroot/css/', 'style.css');
 					create_files('app/webroot/css/', 'admin.css');
 					create_files('app/webroot/css/', 'carousel.css');
 					create_files('app/webroot/css/', 'mobile.css');
