@@ -58,7 +58,7 @@
 	if (!file_exists('creator/webroot')) { mkdir('creator/webroot', 0777, true); }
 
 		if (!file_exists('creator/webroot/css')) { mkdir('creator/webroot/css', 0777, true); }
-			create_files('creator/webroot/css', 'main.css');
+			create_files('creator/webroot/css', 'style.css');
 
 		if (!file_exists('creator/webroot/files')) { mkdir('creator/webroot/files', 0777, true); }
 
