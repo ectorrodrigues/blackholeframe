@@ -179,19 +179,16 @@ if($page == 'new'){
 			$query->execute();
 			$results_echo .= "<strong>Menu</strong> Table Added to CMS.<br />";
 
-
 			//MAKING FOLDERS AND POPULATE THEM WITH FILES
 			if (!file_exists('../../index.php')) { create_files('', 'index.php'); }
 			if (!file_exists('../../.htaccess')) { create_files('', '.htaccess'); }
-
 
 			if (!file_exists('../../app')) { mkdir('../../app', 0777, true); }
 			if (!file_exists('../../app/config')) { mkdir('../../app/config', 0777, true); }
 			create_files('app/config/', 'config.php');
 			create_files('app/config/', 'database.php');
 			create_files('app/config/', 'directories.php');
-
-			
+	
 			if (!file_exists('../../app/controller')) { mkdir('../../app/controller', 0777, true); }
 			if (!file_exists('../../app/model')) { mkdir('../../app/model', 0777, true); }
 				create_files('app/model/', 'AppModel.php');
@@ -248,7 +245,6 @@ if($page == 'new'){
 	    }
 
 }
-
 
 //Update the configurations
 if($page == 'configurations'){
@@ -368,7 +364,6 @@ if($page == 'configurations'){
 
 }
 
-
 //Creating pages and tables.
 if($page == 'pages'){
 
@@ -411,8 +406,6 @@ if($page == 'pages'){
 	    }
 	}
 
-
-
     // ADD TO CMS --------------------------------------------------------------------------------------------
 
     if($cms == 'yes'){
@@ -427,7 +420,6 @@ if($page == 'pages'){
 		$query->execute();
 		$results_echo .= "<strong>CMS</strong> Updated.<br />";
 	}
-
 
 	// ADD TO MENU --------------------------------------------------------------------------------------------
 
@@ -445,8 +437,6 @@ if($page == 'pages'){
 		$results_echo .= "<strong>Menu</strong> Updated.<br />";
 	}
 
-
-
 	// CREATE DIRECTORY AND INDEX.PHP ------------------------------------------------------------------------
 
 	if($directory == 'yes'){
@@ -460,7 +450,6 @@ if($page == 'pages'){
 			$results_echo .= "<strong>Index.php</strong> NOT Created.<br />";
 		}
 	}
-
 
 	// CREATE ITEM.PHP --------------------------------------------------------------------------------------------
 
@@ -579,7 +568,6 @@ function fechar() {
 
 $conn = null;
 
-
 	//Echoing results with some styling
 
 	echo '
@@ -661,4 +649,3 @@ onReady(function() {
   setVisible('#loading', false);
 });
 </script>
-
