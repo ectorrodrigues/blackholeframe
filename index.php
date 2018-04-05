@@ -87,7 +87,7 @@ if($time_now > $time_allowed) {
 	}
 
 //FORM HELPER -------------------------------------------------------------------------------------
-	if($auto_update_form_helper == 'yes'){
+	if($auto_update_helper_form == 'yes'){
 
 		if(file_exists(HELPER_DIR.'form.php')){
 
@@ -107,7 +107,7 @@ if($time_now > $time_allowed) {
 
 
 //LIST HELPER -------------------------------------------------------------------------------------
-	if($auto_update_list_helper == 'yes'){
+	if($auto_update_helper_list == 'yes'){
 
 		if(file_exists($_SERVER['DOCUMENT_ROOT'] . SERVER_DIR . HELPER_DIR.'list.php')){
 
