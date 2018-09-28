@@ -38,12 +38,12 @@ function load($url,$options=array()) {
         'http_code'    => 200
     );
     $response = '';
-    
+
     $send_header = array(
         'Accept' => 'text/*',
         'User-Agent' => 'BinGet/1.00.A (http://www.bin-co.com/php/scripts/load/)'
     ) + $options['headers']; // Add custom headers provided by the user.
-    
+
     if($options['cache']) {
         $cache_folder = joinPath(sys_get_temp_dir(), 'php-load-function');
         if(isset($options['cache_folder'])) $cache_folder = $options['cache_folder'];
@@ -52,24 +52,24 @@ function load($url,$options=array()) {
             mkdir($cache_folder, 0777);
             umask($old_umask);
         }
-        
+
         $cache_file_name = md5($url) . '.cache';
         $cache_file = joinPath($cache_folder, $cache_file_name); //Don't change the variable name - used at the end of the function.
-        
+
         if(file_exists($cache_file)) { // Cached file exists - return that.
             $response = file_get_contents($cache_file);
-            
+
             //Seperate header and content
             $separator_position = strpos($response,"\r\n\r\n");
             $header_text = substr($response,0,$separator_position);
             $body = substr($response,$separator_position+4);
-            
+
             foreach(explode("\n",$header_text) as $line) {
                 $parts = explode(": ",$line);
                 if(count($parts) == 2) $headers[$parts[0]] = chop($parts[1]);
             }
             $headers['cached'] = true;
-            
+
             if(!$options['return_info']) return $body;
             else return array('headers' => $headers, 'body' => $body, 'info' => array('cached'=>true));
         }
@@ -77,7 +77,7 @@ function load($url,$options=array()) {
 
     if(isset($options['post_data'])) { //There is an option to specify some data to be posted.
         $options['method'] = 'post';
-        
+
         if(is_array($options['post_data'])) { //The data is in array format.
             $post_data = array();
             foreach($options['post_data'] as $key=>$value) {
@@ -108,18 +108,18 @@ function load($url,$options=array()) {
     ///////////////////////////// Curl /////////////////////////////////////
     //If curl is available, use curl to get the data.
    //Don't use curl if it is specifically stated to use fsocketopen in the options
-        
+
         if(isset($options['post_data'])) { //There is an option to specify some data to be posted.
             $page = $url;
             $options['method'] = 'post';
-            
+
             if(is_array($options['post_data'])) { //The data is in array format.
                 $post_data = array();
                 foreach($options['post_data'] as $key=>$value) {
                     $post_data[] = "$key=" . urlencode($value);
                 }
                 $url_parts['query'] = implode('&', $post_data);
-            
+
             } else { //Its a string
                 $url_parts['query'] = '';
             }
@@ -133,10 +133,10 @@ function load($url,$options=array()) {
 
         if($options['session'] and isset($GLOBALS['_binget_curl_session'])) $ch = $GLOBALS['_binget_curl_session']; //Session is stored in a global variable
         else $ch = curl_init('localhost');
-        
+
         curl_setopt($ch, CURLOPT_URL, $page) or die("Invalid cURL Handle Resouce");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); //Just return the data - not print the whole thing.
-      
+
         curl_setopt($ch, CURLOPT_NOBODY, !($options['return_body'])); //The content - if true, will not download the contents. There is a ! operation - don't remove it.
         $tmpdir = NULL; //This acts as a flag for us to clean up temp files
         if(isset($options['method']) and $options['method'] == 'post' and isset($url_parts['query'])) {
@@ -150,12 +150,12 @@ function load($url,$options=array()) {
                             //  :TODO:
                             $dir = sys_get_temp_dir();
                             $prefix = 'load';
-                            
+
                             if (substr($dir, -1) != '/') $dir .= '/';
                             do {
                                 $path = $dir . $prefix . mt_rand(0, 9999999);
                             } while (!mkdir($path, $mode));
-                        
+
                             $tmpdir = $path;
                         }
                         $tmpfile = $tmpdir.'/'.$data['filename'];
@@ -176,12 +176,12 @@ function load($url,$options=array()) {
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $url_parts['query']);
             }
         }
-      
-        curl_setopt($ch, CURLOPT_COOKIEJAR, "/tmp/binget-cookie.txt"); 
+
+        curl_setopt($ch, CURLOPT_COOKIEJAR, "/tmp/binget-cookie.txt");
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($ch, CURLOPT_MAXREDIRS, 5);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-       	
+
         global $response;
         $response = curl_exec($ch);
 
@@ -190,10 +190,10 @@ function load($url,$options=array()) {
         }
 
         $info = curl_getinfo($ch); //Some information on the fetch
-        
+
         if($options['session'] and !$options['session_close']) $GLOBALS['_binget_curl_session'] = $ch; //Dont close the curl session. We may need it later - save it to a global variable
         else curl_close($ch);  //If the session option is not set, close the session.
-   
+
 } //endfunction
 
 
@@ -216,7 +216,7 @@ function contruct_page($page, $archive){
     global $items2content;
 
     $site   = explode('/', $_SERVER['PHP_SELF']);
-    $path   = 'http://'.$_SERVER['HTTP_HOST'].DS.$site[1].DS.PAGES_DIR.$page.DS;   
+    $path   = 'http://'.$_SERVER['HTTP_HOST'].DS.$site[1].DS.PAGES_DIR.$page.DS;
 
     if($archive == 'item.php'){
         $id = '&id='.$id;
@@ -224,16 +224,19 @@ function contruct_page($page, $archive){
         $id = '';
     }
 
+    //echo $path.$archive.'?page='.$page.$id;
+
 	$file 	= $path.$archive.'?page='.$page.$id;
-	load($file, '');  
+	load($file, '');
+
     $source = $response;
 
 	if(!empty(preg_match_all("'<loop>(.*?)</loop>'si", $source, $match))){
 
-		preg_match_all("'<loop>(.*?)</loop>'si", $source, $match); 
+		preg_match_all("'<loop>(.*?)</loop>'si", $source, $match);
         $content = $match[0];
 
-		$match_count = preg_match_all("'<loop_sql>(.*?)</loop_sql>'si", $source, $match); 
+		$match_count = preg_match_all("'<loop_sql>(.*?)</loop_sql>'si", $source, $match);
         $sql_options = $match[1];
 
         $x = 0;
@@ -249,12 +252,12 @@ function contruct_page($page, $archive){
             $order      = $value['order'];
             $limit      = $value['limit'];
 
-            loop_page( 
+            loop_page(
                 $table,
                 $cont,
                 $where,
-                $extras, 
-                $orderby, 
+                $extras,
+                $orderby,
                 $order,
                 $limit
             );
@@ -267,12 +270,13 @@ function contruct_page($page, $archive){
 
 		$final = str_replace($get_to_replace, $get_result, $source);
 
-		$show_source = show_source($_SERVER['DOCUMENT_ROOT'].'\blackholeframe\app\config\directories.php', 'false');
+		$show_source = show_source($_SERVER['DOCUMENT_ROOT'].'\ctesop\app\config\directories.php', 'false');
 		$show_source = str_replace(array('define</span><span style="color: #007700">(</span><span style="color: #DD0000">', '</span><span style="color: #007700">'), array("<start>", "</start>"), $show_source);
 		$show_source = str_replace("'", "", $show_source);
 		preg_match_all("'<start>(.*?)</start>'si", $show_source, $match); $dirs = $match[1];
 
 		$dirs_value_array = array();
+
 		foreach ($dirs as $dirs_value) {
 			if(strpos($final, $dirs_value) == true){
 				$final = str_replace($dirs_value, constant($dirs_value), $final);
@@ -287,7 +291,7 @@ function contruct_page($page, $archive){
         }
 
         echo $final;
-           
+
 		} else {
 			include (PAGES_DIR . $page . DS . 'index.php');
 		}
@@ -325,10 +329,10 @@ function loop_page($table, $content, $where, $extras, $orderby, $order, $limit){
 	}
 	$items_functions_clean 		= implode(",", $items_functions_clean);
 	$items_functions_clean 		= rtrim($items_functions_clean, ",");
-	$items_functions_clean 		= str_replace(",,", ",", $items_functions_clean);	
+	$items_functions_clean 		= str_replace(",,", ",", $items_functions_clean);
 	$columns_functions_clean 	= $items_functions_clean;
 
-	
+
 	/*--------------------------------------------------------*/
 
 	$conn = db();
@@ -359,21 +363,21 @@ function loop_page($table, $content, $where, $extras, $orderby, $order, $limit){
 
 	    		if(strpos($value, "function->") === false){
 					 $items2[] = $obj->$value;
-				} 
+				}
 				else {
 					$functions_clean_exploded = explode("->",$value);
 					$functions_cleaning = $functions_clean_exploded[1]($obj->$functions_clean_exploded[2]);
 					$items2[] = $functions_cleaning;
 				}
-			  
-			} 
+
+			}
 
 			$items2content .= str_replace($items, $items2, $content);
 
 	    }
 
 	    $get_result[] = $items2content;
-	}	
+	}
 
 	$conn = NULL;
 } //endfunction
@@ -405,7 +409,7 @@ function loop($table, $content, $where, $extras, $order, $asc_desc, $limit){
 	}
 	$items_functions_clean 		= implode(",", $items_functions_clean);
 	$items_functions_clean 		= rtrim($items_functions_clean, ",");
-	$items_functions_clean 		= str_replace(",,", ",", $items_functions_clean);	
+	$items_functions_clean 		= str_replace(",,", ",", $items_functions_clean);
 	$columns_functions_clean 	= $items_functions_clean;
 	/*--------------------------------------------------------*/
 
@@ -436,11 +440,11 @@ function loop($table, $content, $where, $extras, $order, $asc_desc, $limit){
 					$functions_cleaning = $functions_clean_exploded[1]($obj->$functions_clean_exploded[2]);
 					$items2[] = $functions_cleaning;
 				}
-			   
+
 			}
 	        echo str_replace($items, $items2, $content);
 	    }
-	}	
+	}
 
 	$conn = NULL;
 } //endfunction
@@ -478,7 +482,7 @@ function loop_nested($table, $content, $where, $extras, $order, $asc_desc, $limi
 	}
 	$items_functions_clean 		= implode(",", $items_functions_clean);
 	$items_functions_clean 		= rtrim($items_functions_clean, ",");
-	$items_functions_clean 		= str_replace(",,", ",", $items_functions_clean);	
+	$items_functions_clean 		= str_replace(",,", ",", $items_functions_clean);
 	$columns_functions_clean 	= $items_functions_clean;
 
 
@@ -494,7 +498,7 @@ function loop_nested($table, $content, $where, $extras, $order, $asc_desc, $limi
 	}
 	$items_functions_clean_nest = implode(",", $items_functions_clean_nest);
 	$items_functions_clean_nest = rtrim($items_functions_clean_nest, ",");
-	$items_functions_clean_nest = str_replace(",,", ",", $items_functions_clean_nest);	
+	$items_functions_clean_nest = str_replace(",,", ",", $items_functions_clean_nest);
 	$columns_functions_clean_nest = $items_functions_clean_nest;
 
 	/*-----------------------------------------------*/
@@ -562,10 +566,10 @@ function loop_nested($table, $content, $where, $extras, $order, $asc_desc, $limi
 				}
 			}
 
-			
+
 
 	    }
-	}	
+	}
 
 	$conn = NULL;
 } //endfunction
@@ -607,9 +611,9 @@ function remove_underlines($str){
 } //endfunction
 
 function limit_chars($str){
-  $length = 550;
+  $length = 500;
   if(strlen($str)<=$length){
-    echo $str;
+    return $str;
   }
   else{
     $str=substr($str,0,$length) . '...';
@@ -627,8 +631,8 @@ function activebanner($str){
     }
 
     $i_activebanner++;
-
     return $str;
+
 } //endfunction
 
 ?>
