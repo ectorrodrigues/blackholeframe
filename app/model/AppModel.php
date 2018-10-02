@@ -267,7 +267,7 @@ function contruct_page($page, $archive){
 
 		$final = str_replace($get_to_replace, $get_result, $source);
 
-		$show_source = show_source($_SERVER['DOCUMENT_ROOT'].'\blackholeframe\app\config\directories.php', 'false');
+		$show_source = show_source($_SERVER['DOCUMENT_ROOT'].'\\'.$site[1].'\app\config\directories.php', 'false');
 		$show_source = str_replace(array('define</span><span style="color: #007700">(</span><span style="color: #DD0000">', '</span><span style="color: #007700">'), array("<start>", "</start>"), $show_source);
 		$show_source = str_replace("'", "", $show_source);
 		preg_match_all("'<start>(.*?)</start>'si", $show_source, $match); $dirs = $match[1];
