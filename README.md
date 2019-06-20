@@ -1,37 +1,35 @@
 # blackholeframe
 Black Hole Framework
 
-/*
-
 These are my studies on a framework intended to help on the creation of websites and web applications.
 
 It is called Black Hole because the core of it only have 1 file to get all working, so it is extremely condensed.
 
 
-USAGE
+## USAGE
 
-PRE SETUP
+## PRE SETUP
 To start using the only pre setup you need is an server running on your computer aka: Xampp or similar.
 (of course, php, mysql and that stuff is required, but it is usually already on server defaults)
 
-0 --------------------------
+## 0 --------------------------
 Browse to bit.ly/blackholefw
 There you will find a screen with instructions for instalattion
 
-1 --------------------------
+## 1 --------------------------
 Enter the name of your project, just lowercase letters and numbers, without spaces.
 This will be use for a full range of things, including the name of the path of your project
 
-2 --------------------------
+## 2 --------------------------
 Right click, and save the file "bigbang.php" on the the root folder of your project. (The folder who have to be the same name you gave above)
 
-3 --------------------------
+## 3 --------------------------
 Click on the indication to start. On doing it all the files will be downloaded to your project folder, and you will be able to start customize your project.
 
 That's it.
 
 
-MECHANICS
+## MECHANICS
 To customize your pages, edit the index and other files inside [yourproject]/app/view/pages/[pagename]
 You can code as you wish on these files.
 
@@ -42,6 +40,7 @@ See the following example:
 DB
 Table items
 
+```
 id | title | content
 ----------------------
 1  | John  | lorem
@@ -49,11 +48,13 @@ id | title | content
 2  | Maria | ipsum
 ----------------------
 3  | Jack  | dolor
+```
 
 ----------------------------------------------------
 
-/app/view/pages/items
+## /app/view/pages/items
 
+```
 <loop>
   <loop_sql><?= "table=items;where= ;extras= ;orderby=id;order=ASC;limit= ;"; ?></loop_sql>
 
@@ -65,11 +66,11 @@ id | title | content
   </div>
 
 </loop>
-
+```
 ----------------------------------------------------
 
 The example above will produce the following html output:
-
+```
 <h1>
   John
 </h1>
@@ -90,5 +91,4 @@ The example above will produce the following html output:
 <div class="col-10">
   dolor
 </div>
-
-*/
+```
