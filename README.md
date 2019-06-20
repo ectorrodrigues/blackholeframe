@@ -6,7 +6,8 @@ These are my studies on a framework intended to help on the creation of websites
 It is called Black Hole because the core of it only have 1 file to get all working, so it is extremely condensed.
 
 
-## USAGE
+# USAGE
+
 
 ## PRE SETUP
 To start using the only pre setup you need is an server running on your computer aka: Xampp or similar.
@@ -33,10 +34,12 @@ That's it.
 
 
 ## MECHANICS
-To customize your pages, edit the index and other files inside [yourproject]/app/view/pages/[pagename]
+To customize your pages, edit the index and other files inside [yourproject]/app/view/pages/[pagename].
+
 You can code as you wish on these files.
 
-To create a loop, requesting from the database to show some information you need to put your content between de <loop> markers. Inside this loop markers you should put the <loop_sql> marker, which will pass the paramameters who will be send to construct the sql request to the database.
+To create a loop, requesting from the database to show some information, you need to put your content between de <loop> markers. Inside this loop markers you should put the <loop_sql> marker, which will pass the paramameters who will be send to construct the sql request to the database.
+
 To tell what column from database you want to be show, you need to put it between keys.
 See the following example:
 
