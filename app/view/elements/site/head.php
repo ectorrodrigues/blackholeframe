@@ -28,14 +28,5 @@
     <link rel="shortcut icon" href="<?=FILES_DIR ?>favicon.ico" type="image/x-icon">
     <link rel="icon"  href="<?=FILES_DIR ?>favicon.ico" type="image/x-icon">
 
-    <!-- Admin related stuff. Include CSS, CKeditor, Maskmoney -->
-     <?php
-        if(strpos($_SERVER['REQUEST_URI'], "/admin")){
-            echo '<link rel="stylesheet" type="text/css" href="'.SERVER_DIR.'app/webroot/css/admin.css" />';
-            echo '<script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>';
-            echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>';
-        }
-    ?>
-
     <title><?=SITE_TITLE?></title>
 </head>

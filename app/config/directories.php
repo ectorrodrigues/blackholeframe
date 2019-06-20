@@ -13,7 +13,7 @@
 
 	$localhost_check = $_SERVER['HTTP_HOST'];
 	if (strpos($localhost_check, 'localhost') !== false) {
-    $site_host = $_SERVER['DOCUMENT_ROOT'] . DS . SITE_NAME . DS;
+    $site_host = 'http://localhost' . DS . SITE_NAME . DS;
 	} else {
 		$site_host = $_SERVER['DOCUMENT_ROOT'];
 	}
