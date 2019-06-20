@@ -6,6 +6,8 @@ These are my studies on a framework intended to help on the creation of websites
 It is called Black Hole because the core of it only have 1 file to get all working, so it is extremely condensed.
 
 
+
+
 # USAGE
 
 
@@ -44,7 +46,7 @@ To tell what column from database you want to be show, you need to put it betwee
 See the following example:
 
 ## DB
-### Table items
+### Table Name > items
 
 ```
 id | title | content
@@ -58,7 +60,7 @@ id | title | content
 
 ----------------------------------------------------
 
-### /app/view/pages/items
+### File > /app/view/pages/items/index.php
 
 ```
 <loop>
