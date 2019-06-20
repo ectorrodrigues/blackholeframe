@@ -1,12 +1,12 @@
 <?php
-	require (ELEMENTS_DIR .'head.php'); 
+	require (ELEMENTS_DIR .'head.php');
 ?>
 
-<body> 
+<body>
 
-	<?php 
+	<?php
 
-		include (ELEMENTS_DIR.'top.php'); 
+		include (ELEMENTS_DIR.'top.php');
 
 		$url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
@@ -14,7 +14,7 @@
 
 			$page = 'home';
 			$archive = 'index.php';
-			contruct_page($page, $archive);
+			construct_page($page, $archive);
 
 		} else {
 
@@ -30,7 +30,7 @@
 			}
 		}
 
-		include (ELEMENTS_DIR .'footer.php'); 
+		include (ELEMENTS_DIR .'footer.php');
 	?>
-	
+
 </body>
