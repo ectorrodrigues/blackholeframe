@@ -28,6 +28,7 @@ function load($url,$options=array()) {
     );
 
     // Sets the default options.
+    $options = (array) $default_options;
     foreach($default_options as $opt=>$value) {
         if(!isset($options[$opt])) $options[$opt] = $value;
     }
@@ -205,94 +206,81 @@ function load($url,$options=array()) {
 
 $array_counter 	= 0;
 $get_to_replace	= array();
-$get_result 	= array();
+$get_result     = array();
 
-function contruct_page($page, $archive){
+function construct_page($page, $archive){
+//This gets the contents inside the <loop> tags, parse them and calls for loop_page()
 
 	global $response;
-    global $id;
-    global $get_to_replace;
-    global $get_result;
-    global $items2content;
+  global $id;
+  global $get_to_replace;
+  global $get_result;
+  global $items2content;
 
-    $site   = explode('/', $_SERVER['PHP_SELF']);
-    $path   = 'http://'.$_SERVER['HTTP_HOST'].DS.$site[1].DS.PAGES_DIR.$page.DS;
+  $site   = explode('/', $_SERVER['PHP_SELF']);
+  $path   = 'http://'.$_SERVER['HTTP_HOST'].DS.$site[1].DS.PAGES_DIR.$page.DS;
 
-    if($archive == 'item.php'){
-        $id = '&id='.$id;
-    }  else {
-        $id = '';
-    }
-
-    //echo $path.$archive.'?page='.$page.$id;
+  if($archive == 'item.php'){
+      $id = '&id='.$id;
+  }  else {
+      $id = '';
+  }
 
 	$file 	= $path.$archive.'?page='.$page.$id;
 	load($file, '');
 
-    $source = $response;
+  $source = $response;
+  $preg   = preg_match_all("'<loop>(.*?)</loop>'si", $source, $match);
 
-	if(!empty(preg_match_all("'<loop>(.*?)</loop>'si", $source, $match))){
+	if(!empty($preg)){
 
 		preg_match_all("'<loop>(.*?)</loop>'si", $source, $match);
-        $content = $match[0];
+    $content = $match[0];
 
 		$match_count = preg_match_all("'<loop_sql>(.*?)</loop_sql>'si", $source, $match);
-        $sql_options = $match[1];
+    $sql_options = $match[1];
 
-        $x = 0;
+    $x = 0;
+    foreach ($content as $cont) {
 
-        foreach ($content as $cont) {
+      parse_str(strtr($sql_options[$x], "=;", "=&"), $value);
 
-            parse_str(strtr($sql_options[$x], "=;", "=&"), $value);
+      $table    = $value['table'];
+      $where    = $value['where'];
+      $extras   = $value['extras'];
+      $orderby  = $value['orderby'];
+      $order    = $value['order'];
+      $limit    = $value['limit'];
 
-            $table      = $value['table'];
-            $where      = $value['where'];
-            $extras     = $value['extras'];
-            $orderby    = $value['orderby'];
-            $order      = $value['order'];
-            $limit      = $value['limit'];
+      loop_page($table,$cont,$where,$extras,$orderby,$order,$limit);
+      $x++;
 
-            loop_page(
-                $table,
-                $cont,
-                $where,
-                $extras,
-                $orderby,
-                $order,
-                $limit
-            );
+      $get_to_replace[] = $cont;
 
-            $x++;
-
-            $get_to_replace[] = $cont;
-
-        }
+    }
 
 		$final = str_replace($get_to_replace, $get_result, $source);
 
-<<<<<<< HEAD
-		$show_source = show_source($_SERVER['DOCUMENT_ROOT'].'\ctesop\app\config\directories.php', 'false');
+    // Replacing directories
+		$show_source = show_source($_SERVER['DOCUMENT_ROOT'].DS.$site[1].DS.'app'.DS.'config'.DS.'directories.php', 'false');
 		$show_source = str_replace(array('define</span><span style="color: #007700">(</span><span style="color: #DD0000">', '</span><span style="color: #007700">'), array("<start>", "</start>"), $show_source);
 		$show_source = str_replace("'", "", $show_source);
-		preg_match_all("'<start>(.*?)</start>'si", $show_source, $match); $dirs = $match[1];
-
+		preg_match_all("'<start>(.*?)</start>'si", $show_source, $match);
+    $dirs = $match[1];
 		$dirs_value_array = array();
-
 		foreach ($dirs as $dirs_value) {
 			if(strpos($final, $dirs_value) == true){
 				$final = str_replace($dirs_value, constant($dirs_value), $final);
 			}
 		}
 
-        //Cleaning <loop> markers
-        $final = str_replace(array("<loop>", "</loop>"), array("", ""), $final);
-        preg_match_all("'<loop_sql>(.*?)</loop_sql>'si", $final, $match); $loop_sql = $match[0];
-        foreach ($loop_sql as $value) {
-            $final = str_replace($value, "", $final);
-        }
-
-        echo $final;
-
+    //vCleaning <loop> markers
+    $final = str_replace(array("<loop>", "</loop>"), array("", ""), $final);
+    preg_match_all("'<loop_sql>(.*?)</loop_sql>'si", $final, $match); $loop_sql = $match[0];
+    foreach ($loop_sql as $value) {
+      $final = str_replace($value, "", $final);
+    }
+      echo $final;
 		} else {
 			include (PAGES_DIR . $page . DS . 'index.php');
 		}
@@ -307,8 +295,9 @@ function contruct_page($page, $archive){
 /*-----------------------------------------------------------------------------------------------------------*/
 
 function loop_page($table, $content, $where, $extras, $orderby, $order, $limit){
+// This makes the SQL stuff (Selecting from DB) using the parameters inside {} markers
 
-	global $get_to_replace;
+  global $get_to_replace;
 	global $get_result;
 
 	$content = str_replace('.DS.', DS, $content);
@@ -341,9 +330,7 @@ function loop_page($table, $content, $where, $extras, $orderby, $order, $limit){
 	if($where != ' '){ $where = ' WHERE '.$where; }
 	if($orderby != ' '){ $orderby = ' ORDER BY '.$orderby; }
 	if($order != ' '){ $order = ' '.$order.' '; }
-    if($limit != ' '){ $limit = ' LIMIT '.$limit; }
-
-    //echo $where; die();
+  if($limit != ' '){ $limit = ' LIMIT '.$limit; }
 
 	if ($result = $conn->query("SELECT $columns_functions_clean FROM $table $where $extras $orderby $order $limit")) {
 
@@ -567,9 +554,7 @@ function loop_nested($table, $content, $where, $extras, $order, $asc_desc, $limi
 				}
 			}
 
-
-
-	    }
+	   }
 	}
 
 	$conn = NULL;
@@ -581,7 +566,7 @@ function loop_nested($table, $content, $where, $extras, $order, $asc_desc, $limi
 /*-----------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------------------------------------*/
-/*                                ----------- SMALL FUNCTIONS -----------
+/*                                ----------- OTHER FUNCTIONS -----------
 /*-----------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------------------------------------*/
