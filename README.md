@@ -12,18 +12,21 @@ It is called Black Hole because the core of it only have 1 file to get all worki
 To start using the only pre setup you need is an server running on your computer aka: Xampp or similar.
 (of course, php, mysql and that stuff is required, but it is usually already on server defaults)
 
-## 0 --------------------------
+
+## SETUP
+
+## 0
 Browse to bit.ly/blackholefw
 There you will find a screen with instructions for instalattion
 
-## 1 --------------------------
+## 1
 Enter the name of your project, just lowercase letters and numbers, without spaces.
 This will be use for a full range of things, including the name of the path of your project
 
-## 2 --------------------------
+## 2
 Right click, and save the file "bigbang.php" on the the root folder of your project. (The folder who have to be the same name you gave above)
 
-## 3 --------------------------
+## 3
 Click on the indication to start. On doing it all the files will be downloaded to your project folder, and you will be able to start customize your project.
 
 That's it.
@@ -37,8 +40,8 @@ To create a loop, requesting from the database to show some information you need
 To tell what column from database you want to be show, you need to put it between keys.
 See the following example:
 
-DB
-Table items
+## DB
+### Table items
 
 ```
 id | title | content
@@ -52,7 +55,7 @@ id | title | content
 
 ----------------------------------------------------
 
-## /app/view/pages/items
+### /app/view/pages/items
 
 ```
 <loop>
