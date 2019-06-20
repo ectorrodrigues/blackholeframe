@@ -1,6 +1,8 @@
 # blackholeframe
 Black Hole Framework
 
+/*
+
 These are my studies on a framework intended to help on the creation of websites and web applications.
 
 It is called Black Hole because the core of it only have 1 file to get all working, so it is extremely condensed.
@@ -52,7 +54,7 @@ id | title | content
 
 /app/view/pages/items
 
-// <loop>
+<loop>
   <loop_sql><?= "table=items;where= ;extras= ;orderby=id;order=ASC;limit= ;"; ?></loop_sql>
 
   <h1>
@@ -88,3 +90,5 @@ The example above will produce the following html output:
 <div class="col-10">
   dolor
 </div>
+
+*/
