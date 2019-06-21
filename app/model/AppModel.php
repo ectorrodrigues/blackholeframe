@@ -230,27 +230,45 @@ function construct_page($page, $archive){
 	load($file, '');
 
   $source = $response;
-  $preg   = preg_match_all("'<loop>(.*?)</loop>'si", $source, $match);
 
+  $preg   = preg_match_all("'<loop>(.*?)</loop>'si", $source, $match);
 	if(!empty($preg)){
 
-		preg_match_all("'<loop>(.*?)</loop>'si", $source, $match);
+    preg_match_all("'<loop>(.*?)</loop>'si", $source, $match);
     $content = $match[0];
 
-		$match_count = preg_match_all("'<loop_sql>(.*?)</loop_sql>'si", $source, $match);
-    $sql_options = $match[1];
+    $preg_sql = preg_match_all("'<sql>(.*?)</sql>'si", $source, $match);
+    if(!empty($preg_sql)){
+      $match_count = preg_match_all("'<sql>(.*?)</sql>'si", $source, $match);
+      $sql_options = $match[1];
+    } else {
+      $sql_options = 'no sql';
+    }
 
     $x = 0;
     foreach ($content as $cont) {
 
-      parse_str(strtr($sql_options[$x], "=;", "=&"), $value);
+      if($sql_options == 'no sql'){
 
-      $table    = $value['table'];
-      $where    = $value['where'];
-      $extras   = $value['extras'];
-      $orderby  = $value['orderby'];
-      $order    = $value['order'];
-      $limit    = $value['limit'];
+        $table    = ' '.$page.' ';
+        $where    = ' ';
+        $extras   = ' ';
+        $orderby  = ' ';
+        $order    = ' ';
+        $limit    = ' ';
+
+      } else {
+
+        parse_str(strtr($sql_options[$x], "=;", "=&"), $value);
+
+        if(!isset($value['table'])){ $table = ' '.$page.' '; } else { $table = $value['table']; }
+        if(!isset($value['where'])){ $where = ' '; } else { $where = $value['where']; }
+        if(!isset($value['extras'])){ $extras = ' '; } else { $extras = $value['extras']; }
+        if(!isset($value['orderby'])){ $orderby = ' '; } else { $orderby = $value['orderby']; }
+        if(!isset($value['order'])){ $order = ' '; } else { $order = $value['order']; }
+        if(!isset($value['limit'])){ $limit = ' '; } else { $limit = $value['limit']; }
+
+      }
 
       loop_page($table,$cont,$where,$extras,$orderby,$order,$limit);
       $x++;

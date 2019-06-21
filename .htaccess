@@ -4,9 +4,9 @@ RewriteEngine On
 
 ##SITE
 
-##RewriteCond %(REQUEST_FILENAME) !-f
-##RewriteCond %(REQUEST_FILENAME) !-d
-##RewriteRule ^busca/([a-z0-9]+)/([a-z0-9]+)/?$ index.php?page=produtos&busca=$1&categoria=$2
+RewriteCond %(REQUEST_FILENAME) !-f
+RewriteCond %(REQUEST_FILENAME) !-d
+RewriteRule ^search/([a-z0-9]+)/([a-z0-9]+)/?$ index.php?page=home&search=$1&pagination=$2
 
 RewriteCond %(REQUEST_FILENAME) !-f
 RewriteCond %(REQUEST_FILENAME) !-d
@@ -39,5 +39,4 @@ RewriteCond %(REQUEST_FILENAME) !-f
 RewriteCond %(REQUEST_FILENAME) !-d
 RewriteRule ^admin/model/([a-z0-9]+)/([a-z0-9]+)/([a-z0-9]+)/?$ app/model/AdminModel.php?page=admin&action=$1&id=$2&item=$3
 
-##</IfModule>	
-
+##</IfModule>
