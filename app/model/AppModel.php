@@ -294,7 +294,7 @@ function construct_page($page, $archive){
 
     //vCleaning <loop> markers
     $final = str_replace(array("<loop>", "</loop>"), array("", ""), $final);
-    preg_match_all("'<loop_sql>(.*?)</loop_sql>'si", $final, $match); $loop_sql = $match[0];
+    preg_match_all("'<sql>(.*?)</sql>'si", $final, $match); $loop_sql = $match[0];
     foreach ($loop_sql as $value) {
       $final = str_replace($value, "", $final);
     }
