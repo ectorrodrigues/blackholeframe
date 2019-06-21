@@ -184,6 +184,18 @@ if ($page == 'new') {
             $query->execute();
             $results_echo .= "<strong>Menu</strong> Table Added to CMS.<br />";
 
+            // Create the config table and update it. Here's the data that will be fetched by our config.php file
+            $sql = "CREATE TABLE home ( id INT(255) UNSIGNED AUTO_INCREMENT PRIMARY KEY, title VARCHAR(50), content VARCHAR(500) )";
+            $pdo->exec($sql);
+            $results_echo .= "<strong>Config</strong> Home sucessfully created.<br />";
+
+            $query 	= $pdo->prepare("INSERT INTO home (title, content) VALUES
+		    	('title', 'Hello World.'),
+		    	('description', 'Start to put here your content.<br />This file is: yourproject/app/view/pages/home/index.php')
+		    	");
+            $query->execute();
+            $results_echo .= "<strong>Home</strong> Table Updated.<br />";
+
             //MAKING FOLDERS AND POPULATE THEM WITH FILES
             if (!file_exists('../../index.php')) {
                 create_files('', 'index.php');
@@ -246,6 +258,7 @@ if ($page == 'new') {
             if (!file_exists('../../app/view/pages/home/index.php')) {
                 fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
             }
+            create_files('app/view/pages/home/', 'index.php');
 
             if (!file_exists('../../app/webroot')) {
                 mkdir('../../app/webroot', 0777, true);
