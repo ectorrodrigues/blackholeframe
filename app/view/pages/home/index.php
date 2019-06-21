@@ -6,7 +6,7 @@
 
 			<p>
 				Start to put here your content.<br />
-				This file is: [yourproject]/app/view/pages/home/index.php
+				This file is: yourproject/app/view/pages/home/index.php
 			</p>
 
 		</div>
