@@ -22,7 +22,12 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,500,600,700,700i,900" rel="stylesheet">
 
     <!-- Fontawesome -->
-    <script src="https://use.fontawesome.com/a0bf7d3b26.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!-- CKEDITOR -->
+    <script src="https://cdn.ckeditor.com/4.11.4/full-all/ckeditor.js"></script>
+    <link rel="stylesheet" href="<?=VENDORS_DIR?>aos-master/demo/css/styles.css" />
+    <link rel="stylesheet" href="<?=VENDORS_DIR?>aos-master/dist/aos.css" />
 
     <!-- Icons -->
     <link rel="shortcut icon" href="<?=FILES_DIR ?>favicon.ico" type="image/x-icon">

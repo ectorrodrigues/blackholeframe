@@ -1,5 +1,19 @@
 <?php
-	require (ELEMENTS_DIR .'head.php');
+
+if($_GET['page'] == 'carrinho'){
+
+	 if(!isset($_COOKIE['session'])){
+		session_start();
+			$_SESSION["session"] = uniqid();
+			$session = $_SESSION["session"];
+					setcookie('session', $session, time() + (21600 * 30), "/"); // 86400 = 1 day
+				} else {
+					$param1 = $_COOKIE['session'];
+				}
+}
+
+require (ELEMENTS_DIR .'head.php');
+
 ?>
 
 <body>
