@@ -40,7 +40,18 @@ To customize your pages, edit the index and other files inside [yourproject]/app
 
 You can code as you wish on these files.
 
-To create a loop, requesting from the database to show some information, you need to put your content between de <loop> markers. Inside this loop markers you should put the <loop_sql> marker, which will pass the paramameters who will be send to construct the sql request to the database.
+To create a loop, requesting from the database to show some information, you need to put your content between de <loop></loop> markers. This will get the name of the page you are in, so let's say you are on Items page, it will query the following sql: "SELECT * FROM items".
+
+If you want to customize the sql you can put the parameters between <sql></sql> markers, inside the <loop></loop> markers.
+The parameters are: table, content, where, extras, orderby, order, limit
+You need to write the parameters like that: [parameter]=[value];
+e.g:
+
+<loop>
+ <sql>table=item;orderby=id;order:ASC;</sql>
+</loop>
+
+This will pass the paramameters who will be send to construct the sql request to the database.
 
 To tell what column from database you want to be show, you need to put it between keys.
 See the following example:

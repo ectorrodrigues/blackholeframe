@@ -671,7 +671,7 @@ if(isset($_GET['id_cart_qtd'])){
   $query  = $conn->prepare("DELETE FROM carrinho WHERE title IS NULL OR produto = '' ");
   $query->execute();
 
-  header('Location:http://mova.ppg.br/resources/clientes/nolano/carrinho/item/'.$product.'/');
+  header('Location:http://localhost/'.$site[1].'/carrinho/item/'.$product.'/');
 
 } //endfunction
 
@@ -792,7 +792,7 @@ if(isset($_GET['cart_finish'])){
     <table>
       <tr align="center">
         <td valign="center">
-          <img src="http://mova.ppg.br/resources/clientes/nolano/app/webroot/img/logo-email.png" />
+          <img src="http://localhost/'.$site[1].'/app/webroot/img/logo-email.png" />
         </td>
         <td valign="center" style="text-align:left; padding-left:20px;">
           <p>
@@ -933,8 +933,7 @@ function email($type, $content, $email){
  if(!$mail->send()) {
      echo '<div class="text-danger">Oops something went wrong please try again !</div>';
  } else {
-
-     header('Location:http://mova.ppg.br/resources/clientes/nolano/carrinho');
+     header('Location:http://localhost/'.$site[1].'/carrinho');
  }
 
 } //endfunction
