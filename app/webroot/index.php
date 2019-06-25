@@ -1,6 +1,6 @@
 <?php
 
-if($_GET['page'] == 'carrinho'){
+if($_GET['page'] == 'cart'){
 
 	 if(!isset($_COOKIE['session'])){
 		session_start();
@@ -36,11 +36,11 @@ require (ELEMENTS_DIR .'head.php');
 
 			if(strpos($url, "/item/") == false){
 				$archive = 'index.php';
-				contruct_page($page, $archive);
+				construct_page($page, $archive);
 			}else{
 				$id 	= $_GET['id'];
 				$archive = 'item.php';
-				contruct_page($page, $archive);
+				construct_page($page, $archive);
 			}
 		}
 

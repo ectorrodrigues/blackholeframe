@@ -217,6 +217,33 @@ function construct_page($page, $archive){
   global $get_result;
   global $items2content;
 
+
+  if(!empty($_GET['id'])){
+
+    $id = $_GET['id'];
+
+    if($id == 'cart'){
+
+      $action = $_GET['action'];
+
+      if($action == 'finish'){
+        cart_finish();
+      }
+      elseif($action == 'cart_add' || ($action == 'cart_remove' ){
+        cart_qtd($id, $action);
+      }
+
+    }
+    elseif($id == 'contact'){
+      contact();
+    }
+    elseif($id == 'orderfeedback'){
+      orderfeedback();
+    }
+
+
+  }
+
   $site   = explode('/', $_SERVER['PHP_SELF']);
   $path   = 'http://'.$_SERVER['HTTP_HOST'].DS.$site[1].DS.PAGES_DIR.$page.DS;
 
@@ -253,7 +280,7 @@ function construct_page($page, $archive){
         $table    = ' '.$page.' ';
         $where    = ' ';
         $extras   = ' ';
-        $orderby  = ' ';
+        $orderby = ' ';
         $order    = ' ';
         $limit    = ' ';
 
@@ -608,7 +635,7 @@ function cart_add($session, $str){
     $product_price = $row['price'];
 	}
 
-  $query 	= $conn->prepare("SELECT produto FROM carrinho WHERE session= :session AND produto= :produto");
+  $query 	= $conn->prepare("SELECT produto FROM cart WHERE session= :session AND produto= :produto");
   $query->bindParam(':session', $session);
   $query->bindParam(':produto', $str);
   $query->execute();
@@ -617,67 +644,59 @@ function cart_add($session, $str){
   if ($query->rowCount() > 0){
 
     $product_check = $query->fetchColumn();
-    /*
-      $query 	= $conn->prepare("SELECT qtd FROM carrinho WHERE session= :session AND produto= :produto");
-      $query->bindParam(':session', $session);
-      $query->bindParam(':produto', $str);
-      $query->execute();
-      $product_qtd = $query->fetchColumn();
-      $product_qtd = ($product_qtd+1);
-      $conn->query("UPDATE carrinho SET qtd = '".$product_qtd."' WHERE session = '".$session."' AND produto = '".$str."' ");
-    */
 
   } else {
 
-    $conn->query("INSERT INTO carrinho (title, session, produto, qtd, price) VALUES ('$product_title', '$session', '$str', '1', '$product_price')");
+    $conn->query("INSERT INTO cart (title, session, produto, qtd, price) VALUES ('$product_title', '$session', '$str', '1', '$product_price')");
 
   }
 
-  $query  = $conn->prepare("DELETE FROM carrinho WHERE title IS NULL OR produto = '' ");
+  $query = $conn->prepare("DELETE FROM cart WHERE title IS NULL OR produto = '' ");
   $query->execute();
 
 } //endfunction
 
 
 // CART QUANTITIES HANDLING
-if(isset($_GET['id_cart_qtd'])){
+function cart_qtd($id, $action){
 
-  $id_cart_qtd = $_GET['id_cart_qtd'];
+  $id_cart_qtd = $id;
 
   include ('../config/database.php');
   $conn = db();
 
-  $query 	= $conn->prepare("SELECT qtd FROM carrinho WHERE id= :id");
+  $query 	= $conn->prepare("SELECT qtd FROM cart WHERE id= :id");
   $query->bindParam(':id', $id_cart_qtd);
   $query->execute();
   $qtd = $query->fetchColumn();
 
-  if($_GET['action_cart_qtd'] == 'add'){
+  if($action == 'cart_add'){
     $qtd = ($qtd+1);
-  } else {
+  }
+  elseif($action == 'cart_remove'){
     $qtd = ($qtd-1);
   }
 
-  $query 	= $conn->prepare("UPDATE carrinho SET qtd= :qtd WHERE id= :id");
+  $query = $conn->prepare("UPDATE cart SET qtd= :qtd WHERE id= :id");
   $query->bindParam(':qtd', $qtd);
   $query->bindParam(':id', $id_cart_qtd);
   $query->execute();
 
-  $query    = $conn->prepare("SELECT produto FROM carrinho WHERE id= :id");
+  $query = $conn->prepare("SELECT produto FROM cart WHERE id= :id");
   $query->bindParam(':id', $id_cart_qtd);
   $query->execute();
   $product = $query->fetchColumn();
 
-  $query  = $conn->prepare("DELETE FROM carrinho WHERE title IS NULL OR produto = '' ");
+  $query = $conn->prepare("DELETE FROM cart WHERE title IS NULL OR produto = '' ");
   $query->execute();
 
-  header('Location:http://localhost/'.$site[1].'/carrinho/item/'.$product.'/');
+  header('Location:http://localhost/'.$site[1].'/cart/item/'.$product.'/');
 
 } //endfunction
 
 
 // CART FINISH HANDLING
-if(isset($_GET['cart_finish'])){
+function cart_finish(){
 
   $name     = $_POST['name'];
   $phone    = $_POST['phone'];
@@ -688,20 +707,19 @@ if(isset($_GET['cart_finish'])){
   $date     = date("Y-m-d h:m:s");
   $session  = $_COOKIE['session'];
 
-  include ('../config/database.php');
   $conn = db();
 
-  $query    = $conn->prepare("SELECT sigla FROM estados WHERE cod_estados= :cod_estados");
+  $query = $conn->prepare("SELECT sigla FROM estados WHERE cod_estados= :cod_estados");
   $query->bindParam(':cod_estados', $uf);
   $query->execute();
   $uf  = $query->fetchColumn();
 
-  $query    = $conn->prepare("SELECT nome FROM cidades WHERE cod_cidades= :cod_cidades");
+  $query = $conn->prepare("SELECT nome FROM cidades WHERE cod_cidades= :cod_cidades");
   $query->bindParam(':cod_cidades', $city);
   $query->execute();
-  $city  = $query->fetchColumn();
+  $city = $query->fetchColumn();
 
-  $query 	= $conn->prepare("INSERT INTO clientes (title, email, phone, address, city, uf, date, session) VALUES (:title, :email, :phone, :address, :city, :uf, :date, :session) ");
+  $query = $conn->prepare("INSERT INTO clientes (title, email, phone, address, city, uf, date, session) VALUES (:title, :email, :phone, :address, :city, :uf, :date, :session) ");
   $query->bindParam(':title', $name);
   $query->bindParam(':email', $email);
   $query->bindParam(':phone', $phone);
@@ -717,63 +735,49 @@ if(isset($_GET['cart_finish'])){
   $query->execute();
   $id_cliente = $query->fetchColumn();
 
-  $query  = $conn->prepare("DELETE FROM carrinho WHERE title IS NULL OR produto = '' ");
+  $query = $conn->prepare("DELETE FROM cart WHERE title IS NULL OR produto = '' ");
   $query->execute();
 
   $order = '
-
   <html>
     <head></head>
     <body>
-
     <div align="center" style="background-color:#ddd; text-align:center; padding:50px;">
-
       <div align="center" style="background-color:#fff; text-align:left; padding:50px;">
-
         <h2>// Orçamento</h2>
-
         <hr>
-
         <div style="padding:30px 0;">
-
-        <p>
-          Olá,<br />
-          Segue o orçamento para os itens descritos abaixo na sua solicitação:
-        </p>
-
-        <p>
-        Att,<br />
-        Joao da Silva
-        </p>
-
+          <p>
+            Olá,<br />
+            Segue o orçamento para os itens descritos abaixo na sua solicitação:
+          </p>
+          <p>
+          Att,<br />
+          Joao da Silva
+          </p>
         </div>
-
-        <hr>
-
-      <p>
-      <strong>Cliente:</strong> '.$name.'<br />
-      <strong>E-mail:</strong> '.$email.'<br />
-      <strong>Telefone:</strong> '.$phone.'<br />
-      <strong>Endereco:</strong> '.$address.'<br />
-      <strong>Cidade:</strong> '.$city.'<br />
-      <strong>UF:</strong> '.$uf.'<br />
-      <strong>Data Pedido:</strong> '.$date.'<br />
-      </p>
-
+        <div style="padding:30px 0;">
+          <hr>
+          <p>
+          <strong>Cliente:</strong> '.$name.'<br />
+          <strong>E-mail:</strong> '.$email.'<br />
+          <strong>Telefone:</strong> '.$phone.'<br />
+          <strong>Endereco:</strong> '.$address.'<br />
+          <strong>Cidade:</strong> '.$city.'<br />
+          <strong>UF:</strong> '.$uf.'<br />
+          <strong>Data Pedido:</strong> '.$date.'<br />
+          </p>
+          <p>
+            <table align="left" cellpadding="10">
+            <tbody>
+                <tr style="padding:10px; background-color:#999; color:#fff;">
+                    <th style="padding:10px;">Cod.</th>
+                    <th style="padding:10px;">Produto</th>
+                    <th style="padding:10px;">Qtd.</th>
+                </tr>
   ';
 
-  $order .= '
-  <p>
-      <table align="left" cellpadding="10">
-        <tbody>
-            <tr style="padding:10px; background-color:#999; color:#fff;">
-                <th style="padding:10px;">Cod.</th>
-                <th style="padding:10px;">Produto</th>
-                <th style="padding:10px;">Qtd.</th>
-            </tr>
-  ';
-
-  foreach($conn->query("SELECT * FROM carrinho WHERE session= '".$session."'") as $row) {
+  foreach($conn->query("SELECT * FROM cart WHERE session= '".$session."'") as $row) {
     $order .= '<tr>';
     $order .= '<td style="padding:10px; border-bottom-color:#ddd; border-bottom-style:solid; border-bottom-width:1px;  border-right-color:#ddd; border-right-style:solid; border-right-width:1px;  border-left-color:#ddd; border-left-style:solid; border-left-width:1px;">'.$row['id'].'</td>';
     $order .= '<td style="padding:10px; border-bottom-color:#ddd; border-bottom-style:solid; border-bottom-width:1px;  border-right-color:#ddd; border-right-style:solid; border-right-width:1px;  border-left-color:#ddd; border-left-style:solid; border-left-width:1px;">'.$row['title'].'</td>';
@@ -782,42 +786,40 @@ if(isset($_GET['cart_finish'])){
 	}
 
   $order .= '
-
-  </tr>
-        </tbody>
-      </table>
-    </p>
-
-<p>
-    <table>
-      <tr align="center">
-        <td valign="center">
-          <img src="http://localhost/'.$site[1].'/app/webroot/img/logo-email.png" />
-        </td>
-        <td valign="center" style="text-align:left; padding-left:20px;">
-          <p>
-          (45) 3123-1234<br />
-          contato@nolanosenepol.com
-          </p>
-          <p>
-          Rua lorem ipsum, 123<br />
-          Cidade/UF
-          </p>
-        </td>
-      </tr>
-    </table>
-</p>
-
+            </tr>
+          </tbody>
+        </table>
+      </p>
+    </div>
+    <div>
+      <p>
+        <table>
+          <tr align="center">
+            <td valign="center">
+              <img src="http://localhost/'.$site[1].'/app/webroot/img/logo-email.png" />
+            </td>
+            <td valign="center" style="text-align:left; padding-left:20px;">
+              <p>
+              Phone<br />
+              E-mail
+              </p>
+              <p>
+              Address<br />
+              City/UF
+              </p>
+            </td>
+          </tr>
+        </table>
+      </p>
+    </div>
   </div>
-
 </div>
 
 </body>
 </html>
+';
 
-  ';
-
-  $query 	= $conn->prepare("UPDATE carrinho SET cliente= :id_cliente WHERE session= :session");
+  $query 	= $conn->prepare("UPDATE cart SET cliente= :id_cliente WHERE session= :session");
   $query->bindParam(':id_cliente', $id_cliente);
   $query->bindParam(':session', $session);
   $query->execute();
@@ -835,108 +837,100 @@ if(isset($_GET['cart_finish'])){
   // SEND EMAIL CONTAINING THE ORDER
   email('order', $order, $contato_site);
 
-}
+} //endfunction
 
-if(isset($_GET['orderfeedback'])){
+function orderfeedback(){
   $orderfeedback = $_POST['orderfeedback'];
   $emailfeedback = $_POST['emailfeedback'];
   email('orderfeedback', $orderfeedback, $emailfeedback);
-}
+} //endfunction
 
-if(isset($_GET['contact'])){
+function contact(){
 
   $name     = $_POST['name'];
   $email    = $_POST['email'];
   $message  = $_POST['message'];
 
   $content = '
-
   <html>
   <body>
-
     <div align="center" style="background-color:#ddd; text-align:center; padding:50px;">
       <div align="center" style="background-color:#fff; text-align:left; padding:50px;">
-
         <h2>Contato Site</h2>
-
         <p>
         Nome:'.$name.'<br>
         Email:'.$email.'<br>
         </p>
-
         <p>
         Mensagem:<br>
         '.$message.'<br>
         </>
-
       </div>
     </div>
-
   </body>
   </html>
-
   ';
 
-  include ('../config/database.php');
   $conn = db();
   $query = $conn->prepare("SELECT email FROM contato");
   $query->execute();
   $contato_site = $query->fetchColumn();
 
   email('contact', $content, $contato_site);
-}
+
+} //endfunction
 
 
 function email($type, $content, $email){
 
   if($type == 'order'){
-    $subject = 'Pedido de Orcamento Site';
+    $subject = SITE_TITLE.' - Order';
   }
   elseif($type == 'contact'){
-    $subject = 'Contato Site';
+    $subject = SITE_TITLE.' - Contact';
   }
   if($type == 'orderfeedback'){
-    $subject = 'Nolano Senepol - Orcamento';
+    $subject = SITE_TITLE.' - Order Feedback';
   }
 
   // SENDING EMAIL
- require ($_SERVER['DOCUMENT_ROOT'].'resources/PHPMailer_5.2.0/class.phpmailer.php');
- require ($_SERVER['DOCUMENT_ROOT'].'resources/PHPMailer_5.2.0/class.pop3.php');
- require ($_SERVER['DOCUMENT_ROOT'].'resources/PHPMailer_5.2.0/class.smtp.php');
+  require ($_SERVER['DOCUMENT_ROOT'].'resources/PHPMailer_5.2.0/class.phpmailer.php');
+  require ($_SERVER['DOCUMENT_ROOT'].'resources/PHPMailer_5.2.0/class.pop3.php');
+  require ($_SERVER['DOCUMENT_ROOT'].'resources/PHPMailer_5.2.0/class.smtp.php');
 
- //ini_set('max_execution_time', 0);
- $mail = new PHPMailer;
+  //ini_set('max_execution_time', 0);
+  $mail = new PHPMailer;
 
- //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+  //$mail->SMTPDebug = 3; // Enable verbose debug output
+  $mail->isSMTP(); // Set mailer to use SMTP
+  $mail->Host = HOST;  // Specify main and backup SMTP servers
+  $mail->SMTPAuth = AUTH; // Enable SMTP authentication
+  $mail->Username = EMAIL_USERNAME; // SMTP username
+  $mail->Password = EMAIL_PASSWORD; // SMTP password
+  $mail->SMTPSecure = EMAIL_SECURE; // Enable TLS encryption, `ssl` also accepted
+  $mail->Port = EMAIL_PORT; // TCP port to connect to
+  $mail->CharSet = 'UTF-8';
 
- $mail->isSMTP();                                      // Set mailer to use SMTP
- $mail->Host = 'email-ssl.com.br';  // Specify main and backup SMTP servers
- $mail->SMTPAuth = true;                               // Enable SMTP authentication
- $mail->Username = 'web@mova.ppg.br';                 // SMTP username
- $mail->Password = 'Avantemova2016';                           // SMTP password
- $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
- $mail->Port = 587;                                 // TCP port to connect to
- $mail->CharSet = 'UTF-8';
+  $mail->setFrom(EMAIL_USERNAME, SITE_TITLE);
 
- $mail->setFrom('web@mova.ppg.br', 'Nolano Senepol');
- if($type = 'orderfeedback'){
-   $mail->addAddress($email, 'Nolano Senepol Cliente');     // Add a recipient
- } else {
-   $mail->addAddress('web@mova.ppg.br', 'Nolano Senepol');
- }
- $mail->addReplyTo('web@mova.ppg.br');
- $mail->isHTML(true);                                  // Set email format to HTML
+  // Add a recipient
+  if($type = 'orderfeedback'){
+    $mail->addAddress($email, SITE_TITLE);
+  } else {
+    $mail->addAddress(EMAIL_USERNAME, SITE_TITLE);
+  }
 
- $mail->Subject = $subject;
- $mail->Body    = $content;
+  $mail->addReplyTo(EMAIL_USERNAME);
+  $mail->isHTML(true); // Set email format to HTML
+  $mail->Subject = $subject;
+  $mail->Body    = $content;
 
- if(!$mail->send()) {
-     echo '<div class="text-danger">Oops something went wrong please try again !</div>';
- } else {
-     header('Location:http://localhost/'.$site[1].'/carrinho');
- }
+  if(!$mail->send()) {
+    echo '<div class="text-danger">Oops something went wrong please try again !</div>';
+  } else {
+    header('Location:http://localhost/'.$site[1].'/cart');
+  }
 
 } //endfunction
-
 
 ?>

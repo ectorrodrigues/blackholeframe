@@ -35,6 +35,15 @@ else {
   include ('../../..'. DS . 'config' . DS . 'directories.php');
 }
 
+//EMAIL
+define('HOST', 'email-ssl.com.br');
+define('AUTH', 'true');
+define('EMAIL_USERNAME', 'web@mova.ppg.br');
+define('EMAIL_PASSWORD', 'Avantemova2016');
+define('EMAIL_SECURE', 'tls');
+define('EMAIL_PORT', '587');
+
+
 //Automatic Update files to the newest version from CDN
 $update_array = array('auto_update_appmodel', 'auto_update_adminmodel', 'auto_update_helper_form', 'auto_update_helper_list');
 foreach ($update_array as $update_array_value) {
