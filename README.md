@@ -64,7 +64,7 @@ id | title | content
 
 ```
 <loop>
-  <loop_sql><?= "table=items;where= ;extras= ;orderby=id;order=ASC;limit= ;"; ?></loop_sql>
+  <sql>table=items;</sql>
 
   <h1>
     {title}
