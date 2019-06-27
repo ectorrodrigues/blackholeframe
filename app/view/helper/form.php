@@ -11,7 +11,7 @@
 
   $conn = db();
   foreach($conn->query("SELECT title FROM cms WHERE id = '".$id."' ") as $row) {
-    $title    = $row['title'];
+    $title = $row['title'];
   }
 
   echo '<form action="'.ROOT.ADMIN.'model'.DS.$action.DS.$id.DS.$item.'" method="post" enctype="multipart/form-data">';
@@ -27,7 +27,6 @@
     if($action == 'edit'){
       foreach($conn->query("SELECT * FROM ".$title." WHERE id = '".$item."' ") as $row_item) {
         $value    = $row_item[$field];
-        //if($field == 'data'){  $value = '2018-01-01';}
       }
     } else {
       $value  = '';
@@ -35,28 +34,28 @@
     }
 
     if(in_array($field, $array_fields_hidden, TRUE)){
-      $inputs  .= '<input type="hidden" name="'.$field.'" value="'.$value.'" />';
+      $inputs  .= '<input type="hidden" class="form-control" name="'.$field.'" value="'.$value.'" />';
     }
 
     elseif(in_array($field, $array_fields_text, TRUE)){
-      $inputs  .= '<label>'.$field.':</label><input type="text" name="'.$field.'" id="'.$field.'" placeholder="'.$field.'" value="'.$value.'" />';
+      $inputs  .= '<label>'.$field.':</label><input type="text" class="form-control" name="'.$field.'" id="'.$field.'" placeholder="'.$field.'" value="'.$value.'" />';
     }
 
     elseif(in_array($field, $array_fields_select, TRUE)){
 
-      $inputs  .= '<label>'.$field.':</label><select name="'.$field.'">';
-
-      if($field == "categoria" || $field == "subcategoria" || $field == "area" || $field == "curso"  ){ $field = $field."s";}
-      elseif($field == "id_categorias"){ $field = "categorias";}
-      elseif($field == "professor"){ $field = "professores";}
-      elseif($field == "coordenador"){ $field = "coordenadores";}
-      elseif($field == "id_noticias"){ $field = "noticias";}
+      $inputs  .= '<label>'.$field.':</label><select class="form-control" name="'.$field.'">';
 
       foreach($conn->query("SELECT * FROM ".$field) as $row) {
+
         $id_select     = $row['id'];
         $title_select  = $row['title'];
 
-        if($id == $id_select){ $selected = 'selected="selected"'; } else { $selected = ''; }
+        $query = $conn->prepare("SELECT $field FROM $title WHERE id = :status");
+        $query->bindParam(':status', $item);
+        $query->execute();
+        $id_check = $query->fetchColumn();
+
+        if($id_check == $id_select){ $selected = 'selected="selected"'; } else { $selected = ''; }
 
         $inputs  .= '<option value="'.$id_select.'" '.$selected.'>'.$title_select.'</option>';
       }
@@ -66,33 +65,33 @@
     }
 
     elseif(in_array($field, $array_fields_number, TRUE)){
-      $inputs  .= '<label>'.$field.':</label><input type="number" name="'.$field.'" id="'.$field.'" placeholder="'.$field.'" value="'.$value.'" />';
+      $inputs  .= '<label>'.$field.':</label><input type="number" class="form-control" name="'.$field.'" id="'.$field.'" placeholder="'.$field.'" value="'.$value.'" />';
     }
 
     elseif(in_array($field, $array_fields_price, TRUE)){
-      $inputs  .= '<label>'.$field.':</label><input type="number" name="'.$field.'" id="'.$field.'" placeholder="'.$field.'"  step="any" value="'.$value.'" />';
+      $inputs  .= '<label>'.$field.':</label><input type="number" class="form-control" name="'.$field.'" id="'.$field.'" placeholder="'.$field.'"  step="any" value="'.$value.'" />';
     }
 
     elseif(in_array($field, $array_fields_img, TRUE)){
-      $inputs  .= '<label>'.$field.':</label><input type="file" name="'.$field.'" />';
+      $inputs  .= '<label>'.$field.':</label><input type="file" class="form-control" name="'.$field.'" />';
     }
 
     elseif(in_array($field, $array_fields_time, TRUE)){
-      $inputs  .= '<label>'.$field.':</label><input type="time" name="'.$field.'" />';
+      $inputs  .= '<label>'.$field.':</label><input type="time" class="form-control" name="'.$field.'" />';
     }
 
     elseif(in_array($field, $array_fields_textarea, TRUE)){
-      $inputs  .= '<label>'.$field.':</label><textarea name="'.$field.'">'.$value.'</textarea><script> CKEDITOR.replace( "descricao" );</script><script> CKEDITOR.replace( "endereco" );</script><script> CKEDITOR.replace( "texto" );</script><script> CKEDITOR.replace( "matriz_curricular" );</script><script> CKEDITOR.replace( "ementas" );</script><script> CKEDITOR.replace( "regulamento" );</script>';
+      $inputs  .= '<label>'.$field.':</label><textarea class="form-control" name="'.$field.'">'.$value.'</textarea><script> CKEDITOR.replace( "description" );</script><script> CKEDITOR.replace( "address" );</script><script> CKEDITOR.replace( "texto" );</script>';
     }
 
     elseif($field == "resumo"){
-      //$inputs  .= '<input type="hidden" name="'.$field.'" value="'.$value.'" />';
+      //$inputs  .= '<input type="hidden" class="form-control" name="'.$field.'" value="'.$value.'" />';
       $inputs  .= '<label>'.$field.':</label><div>'.$value.'</div>';
     }
 
     elseif(in_array($field, $array_fields_date, TRUE)){
 
-      $inputs  .= '<label>'.$field.':</label><input type="date" name="'.$field.'" value="'.date("Y-m-d", strtotime($value)).'" />';
+      $inputs  .= '<label>'.$field.':</label><input type="date" class="form-control" name="'.$field.'" value="'.date("Y-m-d", strtotime($value)).'" />';
 
     }
 
@@ -107,7 +106,7 @@
     }
 
     else {
-      $inputs  .= '<label>'.$field.':</label><input type="text" name="'.$field.'"  id="'.$field.'" placeholder="'.$field.'" value="'.$value.'" />';
+      $inputs  .= '<label>'.$field.':</label><input type="text" class="form-control" name="'.$field.'"  id="'.$field.'" placeholder="'.$field.'" value="'.$value.'" />';
     }
 
     echo $inputs;
@@ -117,11 +116,11 @@
 
     if($action == 'add'){
 
-      echo '<p><label>Fotos:</label><input type="file" name="filesToUpload[]" id="filesToUpload" multiple></p>';
+      echo '<p><label>Fotos:</label><input type="file" class="form-control" name="filesToUpload[]" id="filesToUpload" multiple></p>';
 
     } else {
 
-      echo '<p><label>Fotos:</label><input type="file" name="filesToUpload[]" id="filesToUpload" multiple></p>';
+      echo '<p><label>Fotos:</label><input type="file" class="form-control" name="filesToUpload[]" id="filesToUpload" multiple></p>';
 
       foreach($conn->query("SELECT * FROM ".$title."_galeria WHERE id_".$title." = '".$item."' ") as $row) {
         $img    = $row['img'];
@@ -144,7 +143,7 @@
 
   }
 
-  echo '<input type="submit" class="submit" value="enviar" />
+  echo '<button type="submit" class="btn btn-primary mb-2 mt-3">Send</button>
   </form>';
 
   echo '

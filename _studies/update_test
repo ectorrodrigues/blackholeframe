@@ -1,0 +1,20 @@
+<?php
+
+/*
+if($action == 'UPDATE'){
+  foreach ($params as $key => $value) {
+    $column = explode(':', $key);
+    if($arr_count > 1){
+      $columns .= $column[0].' = :'.$column[1].', ';
+    } else {
+      $columns .= $column[0].' = :'.$column[1].' ';
+    }
+  }
+  if($arr_count > 1){
+    $columns = substr($columns, 0, -2);;
+  }
+  $table = $table.' SET '.$columns;
+}
+*/
+
+?>
