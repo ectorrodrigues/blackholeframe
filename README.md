@@ -4,11 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>readme</title>
   <link rel="stylesheet" href="https://stackedit.io/style.css" />
 </head>
 
 <body class="stackedit">
+  <h1>Blackhole Framework</h1>
+  <h3>An ultra-compressed framework.</h3><br>
   <div class="stackedit__html"><p>These are my studies on a framework intended to help on the creation of websites and web applications.</p>
 <p>It is called Black Hole because the core of it only have 1 file to get all working, so it is extremely condensed.</p>
 <h1 id="usage"><a href="https://github.com/ectorrodrigues/blackholeframe/tree/6b008e79a68dce7e8af77fc2db503017205ee942#usage"></a>USAGE</h1>
