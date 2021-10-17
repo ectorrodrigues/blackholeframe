@@ -84,14 +84,14 @@
 
 	<div class="container-fluid" align="center">
 
-		<div class="row" align="center">
+		<div class="row mt-4" align="center">
 			<div class="col">
 				At beggining there was the void.<br>
 				<strong>Start the Big Bang.</strong><br><br>
 			</div>
 		</div>
 
-		<div class="row vertical-align" align="center">
+		<div class="row vertical-align mt-4" align="center">
 			<div class="col-lg-2 offset-lg-2 text-right">
 				<h2>1.</h2>
 			</div>
@@ -100,11 +100,11 @@
 			</div>
 		</div>
 
-		<div class="row vertical-align" align="center">
+		<div class="row vertical-align mt-4" align="center">
 			<div class="col-lg-2 offset-lg-2 text-right">
 				<h2>2.</h2>
 			</div>
-			<div class="col-lg-8 text-left">
+			<div class="col-lg-8 text-left mt-4">
 				<input type="text" class="sitename" value="" placeholder="what's your website's name" /><br>
 				<small>
 					*Type the same as your wamp project<br>
@@ -114,7 +114,7 @@
 			</div>
 		</div>
 
-		<div class="row vertical-align" align="center">
+		<div class="row vertical-align mt-4" align="center">
 			<div class="col-lg-2 offset-lg-2 text-right">
 				<h2>3.</h2>
 			</div>
@@ -125,7 +125,7 @@
 		</div>
 
 
-    <div class="row vertical-align" align="center">
+    <div class="row vertical-align mt-4" align="center">
 			<div class="col-lg-2 offset-lg-2 text-right">
 				<h2>4.</h2>
 			</div>
@@ -138,7 +138,7 @@
 		</div>
 
 
-		<div class="row vertical-align" align="center">
+		<div class="row vertical-align mt-4" align="center">
 			<div class="col-lg-2 offset-lg-2 text-right pointer" onclick="gotoroot()">
 				<h2>5.</h2>
 			</div>
