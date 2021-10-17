@@ -1,7 +1,6 @@
 - When run bigbang, give the same name of the project for the database.
-- Find a way to atribute the user and password for the database at beggining on the AppModel file on Creator (To create the new database), to match the Operational System. ("root", ""  OR  "root", "root").
 - On bigbanging, find a way to download the images or put them online and reference them on layout.
-- Add the item table to database, with the two items filled.
-- Add the item on CMS and on the MENU tables.
+- Add the items table to database, with the two items filled.
+- Add the items on CMS and on the MENU tables.
 - Change the user table to be like the new one. (same columns and stuff)
-- Fix the admin access control. It's accessing anyway.
+- Fix the admin access control.
