@@ -89,7 +89,7 @@ if ($page == 'new') {
         try {
 
             $userdb = $_POST['user'];
-            $passdb = $_POST['pass'];
+            $passdb = $_POST['password'];
             $port = $_POST['port'];
 
             $pdo = new PDO("mysql:host=localhost:".$port.";", $userdb, $passdb);
