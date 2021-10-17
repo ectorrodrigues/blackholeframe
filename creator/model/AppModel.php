@@ -87,7 +87,12 @@
 if ($page == 'new') {
     try {
         try {
-            $pdo = new PDO("mysql:host=localhost;", "root", "root");
+
+            $userdb = $_POST['user'];
+            $passdb = $_POST['pass'];
+            $port = $_POST['port'];
+
+            $pdo = new PDO("mysql:host=localhost:".$port.";", $userdb, $passdb);
             // Set the PDO error mode to exception
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {

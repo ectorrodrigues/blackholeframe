@@ -16,7 +16,7 @@
 		if($filename == 'database.php'){
 			$appmodel = str_replace('databasename', $databasename, $appmodel);
 		}
-		
+
 		if(strpos($appmodel, '<pre>') == true){
 			$appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
 		}
@@ -28,7 +28,7 @@
 
 	if (!file_exists('creator')) { mkdir('creator', 0777, true); }
 		create_files('creator', 'index.php');
-	
+
 	if (!file_exists('creator/config')) { mkdir('creator/config', 0777, true); }
 		create_files('creator/config', 'database.php');
 
@@ -122,6 +122,6 @@ echo '
 
 	sleep(5);
 
-	header('Location:creator/index.php');	
+	header('Location:creator/index.php');
 
 ?>
