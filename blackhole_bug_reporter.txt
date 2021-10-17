@@ -1,8 +1,1 @@
 BlackHole Bug Reporter
-
-- Gallery has to be same as in depaula's project
-- Change banners to be like in depaula's project
-- Change AppModel to delete "<loop>" like in depaula's project
-- Laguage Dealing in form.php like in depaula's project
-- All form.php like in depaula's project (lalebel, and ckeditor handling)
-- Change input and submit width to 100% on admin.css
