@@ -1,0 +1,17 @@
+{
+  "short_name": "Blackholeframe",
+  "name": "Blackholeframe",
+  "description": "Blackholeframe Ultra-compressed framework",
+  "icons": [
+    {
+      "src": "/app/webroot/files/favicon.png",
+      "type": "image/png",
+      "sizes": "64X64"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#fff",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#fff"
+}

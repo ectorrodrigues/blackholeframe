@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+body{
+  font-size: 16px;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+a{
+  text-decoration: none !important;
+  color:#333;
+}
+
+h1, h2{
+  font-weight: 700;
+}
+
+header nav a{
+  margin-left: 30px;
+  color: #333;
+}
+
+footer{
+  background-color: #999;
+  color: #fff;
+}
+
+footer .logo{
+  filter: invert(100%);
+  filter: brightness(1000%);
+}
+
+footer nav a{
+  color:#fff;
+  margin-right: 30px;
+}
+
+footer a{
+  color:#fff;
+}
+
+footer small{
+  font-size: 0.75em;
+}
+
+
+/* -------------------------------------------------------------------------------------------------------
+                                            ADMIN
+--------------------------------------------------------------------------------------------------------*/
+
+
+#admin aside{
+  height: 100vh;
+}
+
+#admin aside a{
+  color:#fff;
+}
+
+#admin .logout{
+  color:#111;
+  font-size: 13px;
+  padding: 15px;
+}
+
+#admin .bt_add{
+  background-color: #27BA00;
+  color:#fff;
+  padding: 12px 15px;
+}
+
+#admin .bt_add:hover{
+  background-color: #1E7507;
+}
+
+#admin .list-item{
+  border:solid 1px #ccc;
+  border-radius: 12px;
+}
+
+#admin .bt_edit{
+  margin-right: 20px;
+}
+
+#admin label{
+  margin-top: 20px;
+}
+
+.ck-editor__editable {
+    min-height: 300px;
+}
+
+
+/* -------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
+**********************************************************************************************************
+                                         MOBILE STYLING
+**********************************************************************************************************
+----------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------*/
+
+
+@media only screen and (min-device-width: 10px) and (max-device-width: 575px) {
+
+  body{
+    font-size: 3em;
+  }
+
+  main{
+    min-height: 1500px;
+  }
+
+  h1, h2{
+    font-size: 1.8em;
+  }
+
+  footer nav a{
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  header nav{
+    display: none;
+  }
+
+}
+
+
+
+/* -------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
+**********************************************************************************************************
+                                         UTILITIES
+**********************************************************************************************************
+----------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------*/
+
+
+.transition{
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-ms-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+.parallax{
+	background-attachment: fixed;
+  background-position: center;
+  background-repeat: repeat;
+}
