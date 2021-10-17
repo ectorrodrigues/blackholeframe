@@ -506,6 +506,7 @@ if ($page == 'pages') {
             $my_file = '../../app/view/pages/'.$title.'/index.php';
             fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
             addtext($title, 'index.php');
+            mkdir('../../app/webroot/img/'.$title, 0777, true);
             echo "<strong>Index.php</strong> Created.<br />";
         } else {
             $results_echo .= "<strong>Index.php</strong> NOT Created.<br />";
