@@ -1,5 +1,6 @@
 
 <footer class="container-fluid">
+  <?php include('../../../../app/config/directories.php'); ?>
 
   <div class="row justify-content-center px-5 py-5">
     <div class="col-lg-2 col-12 text-lg-start text-center py-lg-0 py-5">

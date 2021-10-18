@@ -12,6 +12,7 @@ include('app/config/database.php');
 * Config File Include
 */
 include ('app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
+include ('app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'directories.php');
 
 /** ______________________________________________________________________________________________________________
 *
@@ -227,6 +228,7 @@ include('app/model/AppModel.php');
 		}
 	} else {
 		include (WEBROOT_DIR . 'index.php');
+
 	}
 
 ?>

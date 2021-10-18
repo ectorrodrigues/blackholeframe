@@ -11,17 +11,22 @@
 		define('SITE_NAME', $sitename[1]);
 	}
 
-	$https = $_SERVER['HTTPS'];
+
+	if(isset($_SERVER['HTTPS'])){
+		$https = $_SERVER['HTTPS'];
+	} else {
+		$https ='';
+	}
+
 	if($https == ''){ $https = 'http://'; }else{	$https = 'http://'; }
 	$baseurl = $https.$_SERVER['HTTP_HOST'];
 
 	$localhost_check = $_SERVER['HTTP_HOST'];
 	if (strpos($localhost_check, 'localhost') !== false) {
-		$site_host = 'http://localhost:8000/'.SITE_NAME.'/';
+		$site_host = 'http://localhost/'.SITE_NAME.'/';
 	} else {
 		$site_host = $baseurl.'/';
 	}
-
 
 	if(strpos($url, "admin") == true){
 		define('SERVER_DIR', $site_host);
@@ -52,5 +57,6 @@
 	//RELATIVES
 	define('CONFIG_REL_DIR', '..' . '/' . 'config' . '/');
 	define('IMG_REL_DIR', '..' . '/' . '..' . '/' . '..' . '/' . 'webroot' . '/' . 'img' . '/');
+
 
 ?>

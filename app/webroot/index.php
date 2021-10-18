@@ -6,7 +6,16 @@
 
 	<?php
 		// CONSTRUCTIONG TOP
-		if(empty($page)){ $pagetop = 'home'; } else { $pagetop 	= $_GET['page']; }
+		if(empty($page)){
+			$pagetop = 'home';
+		} else
+		{
+			if(isset($_GET['page'])){
+				$pagetop 	= $_GET['page'];
+			} else {
+				$pagetop = 'home';
+			}
+		}
 		construct_page($pagetop, 'top.php');
 	?>
 
@@ -19,7 +28,7 @@
 				$archive = 'index.php';
 				construct_page($page, $archive);
 			} else {
-				$page 	= $_GET['page'];
+				if(isset($_GET['page'])){ $page 	= $_GET['page']; } else { $page = 'home'; }
 				if(strpos($url, "/item/") == false){
 					$archive = 'index.php';
 					construct_page($page, $archive);
@@ -34,7 +43,18 @@
 
 	<?php
 		// CONSTRUCTIONG FOOTER
-		if(empty($page)){ $pagetop = 'home'; } else { $pagetop 	= $_GET['page']; }
+
+		if(empty($page)){
+			$pagetop = 'home';
+		} else
+		{
+			if(isset($_GET['page'])){
+				$pagetop 	= $_GET['page'];
+			} else {
+				$pagetop = 'home';
+			}
+		}
+
 		construct_page($pagetop, 'footer.php');
 	?>
 

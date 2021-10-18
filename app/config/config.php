@@ -30,6 +30,7 @@ foreach($conn->query("SELECT content FROM config WHERE title = 'Site_Title' ") a
 define('SITE_TITLE', $site_title);
 
 //DIRECTORIES
+/*
 $directories = 'app/config/directories.php';
 
 if(file_exists($directories)){
@@ -38,6 +39,7 @@ if(file_exists($directories)){
 else {
   include ('../../..'. DS . 'config' . DS . 'directories.php');
 }
+*/
 
 //Automatic Update files to the newest version from CDN
 $update_array = array('auto_update_appmodel', 'auto_update_adminmodel', 'auto_update_helper_form', 'auto_update_helper_list');

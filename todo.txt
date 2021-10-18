@@ -4,3 +4,5 @@
 - Add the items on CMS and on the MENU tables.
 - Change the user table to be like the new one. (same columns and stuff)
 - Fix the admin access control.
+- Add "empty" record on DB
+- Manage the PORT on Directories (localhost management)
