@@ -7,5 +7,3 @@
 - Add "empty" record on DB
 - Manage the PORT on Directories (localhost management)
 - Add mobile-menu.php on the list of downloaded files
-- Add logout.php on the list of downloaded files
-- Remove admin.css, caroussel.css, mobile.csss and gallery.css from the list of downloaded files

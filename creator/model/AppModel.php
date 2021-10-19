@@ -119,20 +119,54 @@ if ($page == 'new') {
             $results_echo .= "<strong>Update Time Control</strong> Table sucessfully created.<br />";
 
             // Create the users table and update it
-            $sql = "CREATE TABLE users ( id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, title VARCHAR(50), email VARCHAR(80), password VARCHAR(150), keypass VARCHAR(150) )";
+            $sql = "CREATE TABLE users ( id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, title VARCHAR(50), email VARCHAR(80), password VARCHAR(150), keypass VARCHAR(150), key_iv VARCHAR(150), key_tag VARCHAR(150), created date NOT NULL, updated date NOT NULL, reference VARCHAR(150), active INT(2) )";
             $pdo->exec($sql);
             $results_echo .= "<strong>Users</strong> Table sucessfully created.<br />";
 
-            $user 		= $_POST['user'];
-            $email 		= $_POST['email'];
-            $password 	= $_POST['password'];
-            $password 	= crypt($password, '$1$H2Oc3po$');
+            function encrypting($action, $string, $key_sk, $key_siv){
+              $cypher_method = "AES-256-CBC";
+              $output = false;
+              $key    = $key_sk;
+              $iv     = $key_siv;
+              if ($action == "encrypt"){
+                $output = openssl_encrypt($string, $cypher_method, $key, 0, $iv);
+                $output = base64_encode($output);
+              } else if($action == "decrypt"){
+                $output = base64_decode($string);
+                $output = openssl_decrypt($output, $cypher_method, $key, 0, $iv);
+              }
+              return $output;
+            } //endfunction
 
-            $query 	= $pdo->prepare("INSERT INTO users (id, title, email, password, keypass) VALUES('1', :title, :email, :password, :keypass)");
+            $title = $_POST['user'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $keypass =  $_POST['password'];
+            $created = date("Y-m-d");
+            $updated = date("Y-m-d");
+            $active = '1';
+            $reference = date("Ymdhs").uniqid();
+
+            $key = hash("sha256", SECRET_KEY);
+            $iv = substr(hash("sha256", SECRET_IV), 0, 16);
+            $crypted_password = encrypting("encrypt", $password, $key, $iv);
+
+
+            $query 	= $pdo->prepare("INSERT INTO users (id, title, email, password, keypass, key_iv, key_tag, created, updated, reference, active) VALUES('1', :title, :email, :password, :keypass, :key_iv, :key_tag, :created, :updated, :reference, :active)");
+            title, email, password, keypass, key_iv, key_tag, created, updated, reference, active
+
+
             $query->bindParam(':title', $user);
             $query->bindParam(':email', $email);
-            $query->bindParam(':password', $password);
-            $query->bindParam(':keypass', $password);
+            $query->bindParam(':password', $crypted_password);
+            $query->bindParam(':keypass', $crypted_password);
+            $query->bindParam(':key_iv', $key);
+            $query->bindParam(':key_tag', $iv);
+            $query->bindParam(':created', $created);
+            $query->bindParam(':updated', $updated);
+            $query->bindParam(':reference', $reference);
+            $query->bindParam(':active', $active);
+
             $query->execute();
             $results_echo .= "<strong>Users</strong> Table Updated.<br />";
 
@@ -204,6 +238,7 @@ if ($page == 'new') {
             //MAKING FOLDERS AND POPULATE THEM WITH FILES
             if (!file_exists('../../index.php')) {
                 create_files('', 'index.php');
+                create_files('', 'logout.php');
             }
             if (!file_exists('../../.htaccess')) {
                 create_files('', '.htaccess');
@@ -246,6 +281,7 @@ if ($page == 'new') {
             create_files('app/view/elements/site/', 'head.php');
             create_files('app/view/elements/site/', 'menu.php');
             create_files('app/view/elements/site/', 'top.php');
+            create_files('app/view/elements/site/', 'menu-mobile.php');
 
             if (!file_exists('../../app/view/helper')) {
                 mkdir('../../app/view/helper', 0777, true);
@@ -277,10 +313,6 @@ if ($page == 'new') {
                 mkdir('../../app/webroot/css', 0777, true);
             }
             create_files('app/webroot/css/', 'style.css');
-            create_files('app/webroot/css/', 'admin.css');
-            create_files('app/webroot/css/', 'carousel.css');
-            create_files('app/webroot/css/', 'mobile.css');
-            create_files('app/webroot/css/', 'gallery.css');
 
             if (!file_exists('../../app/webroot/files')) {
                 mkdir('../../app/webroot/files', 0777, true);
