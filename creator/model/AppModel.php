@@ -151,10 +151,7 @@ if ($page == 'new') {
             $iv = substr(hash("sha256", SECRET_IV), 0, 16);
             $crypted_password = encrypting("encrypt", $password, $key, $iv);
 
-
             $query 	= $pdo->prepare("INSERT INTO users (id, title, email, password, keypass, key_iv, key_tag, created, updated, reference, active) VALUES('1', :title, :email, :password, :keypass, :key_iv, :key_tag, :created, :updated, :reference, :active)");
-            title, email, password, keypass, key_iv, key_tag, created, updated, reference, active
-
 
             $query->bindParam(':title', $user);
             $query->bindParam(':email', $email);
