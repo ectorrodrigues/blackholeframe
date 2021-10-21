@@ -8,7 +8,7 @@
 			$servername	= 'localhost';
 			$dbname		= 'blackholeframe';
 			$username	= 'root';
-			$password	= '';
+			$password	= 'root';
 			$port = 3306;
 		} else {
 			$servername	= 'localhost';

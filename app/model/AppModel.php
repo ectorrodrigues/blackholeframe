@@ -607,20 +607,19 @@ function webporiginal($str){
   return $str;
 } //endfunction
 
-$key_sk = random_bytes(32);
-$key_siv = random_bytes(32);
-$key_sk = base64_encode($key_sk);
-$key_siv = base64_encode($key_siv);
+
 
 function encrypting($action, $string, $key_sk, $key_siv){
   $cypher_method = "AES-256-CBC";
   $output = false;
-  $key    = hash("sha256", SECRET_KEY);
-  $iv     = substr(hash("sha256", SECRET_IV), 0, 16);
   if ($action == "encrypt"){
+    $key    = $key_sk;
+    $iv     = $key_siv;
     $output = openssl_encrypt($string, $cypher_method, $key, 0, $iv);
     $output = base64_encode($output);
   } else if($action == "decrypt"){
+    $key    = $key_sk;
+    $iv     = $key_siv;
     $output = base64_decode($string);
     $output = openssl_decrypt($output, $cypher_method, $key, 0, $iv);
   }

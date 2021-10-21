@@ -1,9 +1,7 @@
-- When run bigbang, give the same name of the project for the database.
 - On bigbanging, find a way to download the images or put them online and reference them on layout.
 - Add the items table to database, with the two items filled.
 - Add the items on CMS and on the MENU tables.
-- Change the user table to be like the new one. (same columns and stuff)
-- Fix the admin access control.
 - Add "empty" record on DB
 - Manage the PORT on Directories (localhost management)
-- Add mobile-menu.php on the list of downloaded files
+
+~ When run bigbang, give the same name of the project for the database.

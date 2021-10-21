@@ -179,7 +179,8 @@ include('app/model/AppModel.php');
 						$tag		    = $row['key_tag'];
 					  $iv         = $row['key_iv'];
 					}
-					$crypted_password = encrypting("encrypt", $pass, $tag, $iv);
+
+					$crypted_password = encrypting("encrypt", $pass, $iv, $tag);
 					if($passfetch == $crypted_password){
 						$pass = $passfetch;
 					} else {

@@ -23,7 +23,7 @@
 
 	$localhost_check = $_SERVER['HTTP_HOST'];
 	if (strpos($localhost_check, 'localhost') !== false) {
-		$site_host = 'http://localhost/'.SITE_NAME.'/';
+		$site_host = 'http://localhost:8000/'.SITE_NAME.'/';
 	} else {
 		$site_host = $baseurl.'/';
 	}
