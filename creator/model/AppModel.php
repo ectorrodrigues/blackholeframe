@@ -92,7 +92,7 @@ if ($page == 'new') {
             $passdb = $_POST['password'];
             $port = $_POST['port'];
 
-            $pdo = new PDO("mysql:host=localhost:".$port.";", $userdb, $passdb);
+            $pdo = new PDO("mysql:host=localhost:".$port.";", $userdb, 'root');
             // Set the PDO error mode to exception
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
@@ -123,20 +123,34 @@ if ($page == 'new') {
             $pdo->exec($sql);
             $results_echo .= "<strong>Users</strong> Table sucessfully created.<br />";
 
+            $key_sk = random_bytes(32);
+            $key_siv = random_bytes(32);
+            $key_sk = base64_encode($key_sk);
+            $key_siv = base64_encode($key_siv);
+            $key_sk    = hash("sha256", $key_sk);
+            $key_siv   = substr(hash("sha256", $key_siv), 0, 16);
+
             function encrypting($action, $string, $key_sk, $key_siv){
               $cypher_method = "AES-256-CBC";
               $output = false;
-              $key    = $key_sk;
-              $iv     = $key_siv;
+
               if ($action == "encrypt"){
+                $key    = $key_sk;
+                $iv     = $key_siv;
+                //echo 'key: '.$key.'<br>';
+                //echo 'iv: '.$iv.'<br>';
+
                 $output = openssl_encrypt($string, $cypher_method, $key, 0, $iv);
                 $output = base64_encode($output);
               } else if($action == "decrypt"){
+                $key    = $key_sk;
+                $iv     = $key_siv;
                 $output = base64_decode($string);
                 $output = openssl_decrypt($output, $cypher_method, $key, 0, $iv);
               }
               return $output;
             } //endfunction
+
 
             $title = $_POST['user'];
             $email = $_POST['email'];
@@ -147,18 +161,16 @@ if ($page == 'new') {
             $active = '1';
             $reference = date("Ymdhs").uniqid();
 
-            $key = hash("sha256", SECRET_KEY);
-            $iv = substr(hash("sha256", SECRET_IV), 0, 16);
-            $crypted_password = encrypting("encrypt", $password, $key, $iv);
+            $crypted_password = encrypting("encrypt", $password, $key_sk, $key_siv);
 
             $query 	= $pdo->prepare("INSERT INTO users (id, title, email, password, keypass, key_iv, key_tag, created, updated, reference, active) VALUES('1', :title, :email, :password, :keypass, :key_iv, :key_tag, :created, :updated, :reference, :active)");
 
-            $query->bindParam(':title', $user);
+            $query->bindParam(':title', $title);
             $query->bindParam(':email', $email);
             $query->bindParam(':password', $crypted_password);
             $query->bindParam(':keypass', $crypted_password);
-            $query->bindParam(':key_iv', $key);
-            $query->bindParam(':key_tag', $iv);
+            $query->bindParam(':key_iv', $key_sk);
+            $query->bindParam(':key_tag', $key_siv);
             $query->bindParam(':created', $created);
             $query->bindParam(':updated', $updated);
             $query->bindParam(':reference', $reference);
