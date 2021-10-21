@@ -151,7 +151,7 @@ label{
   border:solid;
   border-color: #50FFFC;
   border-width:1px;
-  
+
 }
 
 .btn:hover{
@@ -179,11 +179,18 @@ label{
 }
 
 .row{
-  
+
 }
 
 .inline{
   display: inline;
+}
+
+h1{
+  color: #ddd;
+  font-weight: 600;
+	margin:50px 0 20px 15px;
+	font-size: 1.3em;
 }
 
 h3{

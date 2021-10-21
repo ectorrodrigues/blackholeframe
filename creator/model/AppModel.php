@@ -92,7 +92,7 @@ if ($page == 'new') {
             $passdb = $_POST['password'];
             $port = $_POST['port'];
 
-            $pdo = new PDO("mysql:host=localhost:".$port.";", $userdb, 'root');
+            $pdo = new PDO("mysql:host=localhost:".$port.";", $userdb, $passdb);
             // Set the PDO error mode to exception
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
@@ -154,8 +154,8 @@ if ($page == 'new') {
 
             $title = $_POST['user'];
             $email = $_POST['email'];
-            $password = $_POST['password'];
-            $keypass =  $_POST['password'];
+            $password = $_POST['passworadmin'];
+            $keypass =  $_POST['passworadmin'];
             $created = date("Y-m-d");
             $updated = date("Y-m-d");
             $active = '1';
@@ -194,7 +194,8 @@ if ($page == 'new') {
 		    	('Auto_Update_AppModel', 'no'),
 		    	('Auto_Update_AdminModel', 'no'),
 		    	('Auto_Update_Helper_List', 'no'),
-		    	('Auto_Update_Helper_Form', 'no')
+		    	('Auto_Update_Helper_Form', 'no'),
+          ('empty', '')
 		    	");
             $query->execute();
             $results_echo .= "<strong>Config</strong> Table Updated.<br />";

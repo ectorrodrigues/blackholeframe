@@ -10,29 +10,38 @@
 
 			<form action="model/AppModel.php?page=new" method="post" enctype="multipart/form-data">
 
+					<h1>// DATABASE</h1>
+
 					<div class="form-group col-lg-12">
 						<label>Database Name</label>
 					    <input type="text" name="db_name" class="form-control" >
 					</div>
 
 					<div class="form-group col-lg-12">
-					    <label>Username</label>
+					    <label>Database Username</label>
 					    <input type="text" name="user" class="form-control" placeholder="The user you already use for your local database. (Mainly 'root')">
 					</div>
 
 					<div class="form-group col-lg-12">
-					    <label>E-mail</label>
-					    <input type="email" name="email" class="form-control">
-					</div>
-
-					<div class="form-group col-lg-12">
-					    <label>Password</label>
+					    <label>Database Password</label>
 					    <input type="text" name="password" class="form-control" placeholder="The pass you already use for your local database. (Mainly 'root' or nothing)">
 					</div>
 
 					<div class="form-group col-lg-12">
 							<label>Database Port</label>
 							<input type="text" name="port" class="form-control" placeholder="The port you already use for your local database. (Mainly 3306 or 8889)">
+					</div>
+
+					<h1>// ADMIN - CREATE USER</h1>
+
+					<div class="form-group col-lg-12">
+					    <label>ADMIN E-mail</label>
+					    <input type="email" name="emailadmin" class="form-control">
+					</div>
+
+					<div class="form-group col-lg-12">
+					    <label>ADMIN Password</label>
+					    <input type="text" name="passworadmin" class="form-control" placeholder="">
 					</div>
 
 					<div class="form-group col-md-12 padding-top-bottom text-right">
