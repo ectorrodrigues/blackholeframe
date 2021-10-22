@@ -165,7 +165,7 @@ if ($page == 'new') {
 
 
             $title = $_POST['user'];
-            $email = $_POST['email'];
+            $email = $_POST['emailadmin'];
             $password = $_POST['passworadmin'];
             $keypass =  $_POST['passworadmin'];
             $created = date("Y-m-d");
