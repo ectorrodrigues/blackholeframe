@@ -8,8 +8,6 @@
 	$dbuser = $_GET['dbuser'];
 	$dbpass = $_GET['dbpass'];
 
-	echo "$databasename, $dbuser, $dbpass"; die();
-
 	function create_files($dir, $filename){
 
 		global $results_echo;
