@@ -6,16 +6,16 @@
 		$localhost_check = $_SERVER['HTTP_HOST'];
 		if (strpos($localhost_check, 'localhost') !== false) {
 			$servername	= 'localhost';
-			$dbname		= 'blackholeframe';
-			$username	= 'root';
-			$password	= 'root';
-			$port = 3306;
+			$dbname		= 'databasename';
+			$username	= 'userdb';
+			$password	= 'passdb';
+			$port = portdb;
 		} else {
 			$servername	= 'localhost';
-			$dbname		= 'blackholeframe';
-			$username	= 'root';
-			$password	= '';
-			$port = 3306;
+			$dbname		= 'databasename';
+			$username	= 'userdb';
+			$password	= 'passdb';
+			$port = portdb;
 		}
 
 		try{

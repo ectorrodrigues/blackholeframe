@@ -18,6 +18,15 @@
     if (isset($_POST['db_name'])) {
         $db_name 		= $_POST['db_name'];
     }
+    if (isset($_POST['user'])) {
+        $db_userdb 		= $_POST['user'];
+    }
+    if (isset($_POST['password'])) {
+        $db_passdb 		= $_POST['password'];
+    }
+    if (isset($_POST['port'])) {
+        $db_port 		= $_POST['port'];
+    }
     if (isset($_POST['db_type'])) {
         $db_type 		= $_POST['db_type'];
     }
@@ -67,11 +76,14 @@
     {
         global $results_echo;
         global $db_name;
+        global $db_userdb;
+    		global $db_dbpass;
+        global $db_port;
 
         $appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/'.$dir.$filename);
 
         if ($filename == 'database.php') {
-            $appmodel = str_replace('databasename', $db_name, $appmodel);
+            $appmodel = str_replace(array("databasename", "userdb", "passdb", "portdb"), array($db_name, $db_userdb, $db_dbpass, $db_port), $appmodel);
         }
 
         if (strpos($appmodel, '<pre>') == true) {

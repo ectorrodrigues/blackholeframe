@@ -2,6 +2,3 @@
 - Add the items table to database, with the two items filled.
 - Add the items on CMS and on the MENU tables.
 - Add "empty" record on DB
-- Manage the PORT on Directories (localhost management)
-
-~ When run bigbang, give the same name of the project for the database.
