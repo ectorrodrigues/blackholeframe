@@ -8,6 +8,8 @@
 	$dbuser = $_GET['dbuser'];
 	$dbpass = $_GET['dbpass'];
 
+	echo "$databasename, $dbuser, $dbpass"; die();
+
 	function create_files($dir, $filename){
 
 		global $results_echo;
@@ -16,7 +18,7 @@
 		$appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/'.$dir.'/'.$filename);
 
 		if($filename == 'database.php'){
-			$appmodel = str_replace(array('databasename', 'dbuser', 'dbpass'), array($databasename, $dbuser, $dbpass), $appmodel);
+			$appmodel = str_replace(array("databasename", "dbuser", "dbpass"), array($databasename, $dbuser, $dbpass), $appmodel);
 		}
 
 		if(strpos($appmodel, '<pre>') == true){
