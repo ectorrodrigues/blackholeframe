@@ -12,6 +12,8 @@
 
 		global $results_echo;
 		global $databasename;
+		global $dbuser;
+		global $dbpass;
 
 		$appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/'.$dir.'/'.$filename);
 
