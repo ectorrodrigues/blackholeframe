@@ -83,7 +83,7 @@
         $appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/'.$dir.$filename);
 
         if ($filename == 'database.php') {
-            $appmodel = str_replace(array("databasename", "userdb", "passdb", "portdb"), array($db_name, $db_userdb, $db_dbpass, $db_port), $appmodel);
+            $appmodel = str_replace(array("databasename", "userdb", "passdb", "portdb"), array($db_name, $db_userdb, $db_passdb, $db_port), $appmodel);
         }
 
         if (strpos($appmodel, '<pre>') == true) {
