@@ -485,9 +485,7 @@ if ($page == 'pages') {
     if ($table == 'yes') {
 
         try {
-            include('../../config/database.php');
-
-
+          
             $sql = "CREATE TABLE ".$title;
             $sql .= ' ( id INT(100) UNSIGNED AUTO_INCREMENT PRIMARY KEY, ';
 

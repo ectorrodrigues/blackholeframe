@@ -1,4 +1,3 @@
 - On bigbanging, find a way to download the images or put them online and reference them on layout.
 - Add the items table to database, with the two items filled.
 - Add the items on CMS and on the MENU tables.
-- Add "empty" record on DB
