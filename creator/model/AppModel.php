@@ -77,7 +77,7 @@
         global $results_echo;
         global $db_name;
         global $db_userdb;
-    		global $db_dbpass;
+    		global $db_passdb;
         global $db_port;
 
         $appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/'.$dir.$filename);
