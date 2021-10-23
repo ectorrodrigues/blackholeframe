@@ -27,6 +27,15 @@
 						</a>
 					</div>';
 				}
+				
+				echo '
+				<hr class="mt-5">
+				<div class="menu-item my-3">
+					<a href="'.ROOT.'creator/index.php" style="color:#bbb;" target="_blank">
+					<small><i class="fas fa-cog"></i> open creator</small>
+					</a>
+				</div>';
+
 			?>
 		</aside>
 
