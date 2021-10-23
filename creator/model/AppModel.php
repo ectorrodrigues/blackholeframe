@@ -409,7 +409,7 @@ if ($page == 'new') {
         imagefill($im, 0, 0, $gray);
         $text = 'LOGO';
         imagettftext($im, 46, 0, 2, 47, $white, '../../app/webroot/arial.ttf', $text);
-        imagejpeg($im, '../../app/webroot/img/files/logo.jpg');
+        imagejpeg($im, '../../app/webroot/files/logo.jpg');
 
 
     } catch (PDOException $e) {
