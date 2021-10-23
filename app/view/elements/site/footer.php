@@ -5,7 +5,7 @@
   <div class="row justify-content-center px-5 py-5">
     <div class="col-lg-2 col-12 text-lg-start text-center py-lg-0 py-5">
       <a href="<?=SERVER_DIR?>">
-        <img src="<?=FILES_DIR?>logo.svg" alt="logo" class="col-lg-5 col-5 logo">
+        <img src="<?=FILES_DIR?>logo.jpg" alt="logo" class="col-lg-5 col-5 logo">
       </a>
     </div>
     <nav class="col-lg-10 col-12 text-start my-lg-auto my-5">
