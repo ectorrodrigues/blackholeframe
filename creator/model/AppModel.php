@@ -364,7 +364,7 @@ if ($page == 'new') {
         $white = imagecolorallocate($im, 255, 255, 255);
         imagefill($im, 0, 0, $gray);
         $text = 'Slide 01';
-        imagettftext($im, 36, 0, 600, 220, $white, 'arial.ttf', $text);
+        imagettftext($im, 36, 0, 600, 220, $white, '../../app/webroot/arial.ttf', $text);
         imagejpeg($im, '../../app/webroot/img/banners/banner-01.jpg');
 
         //BANNER 02
@@ -375,7 +375,7 @@ if ($page == 'new') {
         $white = imagecolorallocate($im, 255, 255, 255);
         imagefill($im, 0, 0, $gray);
         $text = 'Slide 02';
-        imagettftext($im, 36, 0, 600, 220, $white, 'arial.ttf', $text);
+        imagettftext($im, 36, 0, 600, 220, $white, '../../app/webroot/arial.ttf', $text);
         imagejpeg($im, '../../app/webroot/img/banners/banner-02.jpg');
 
         //ITEM 01
@@ -386,7 +386,7 @@ if ($page == 'new') {
         $white = imagecolorallocate($im, 180, 180, 180);
         imagefill($im, 0, 0, $gray);
         $text = 'Item 01';
-        imagettftext($im, 36, 0, 130, 210, $white, 'arial.ttf', $text);
+        imagettftext($im, 36, 0, 130, 210, $white, '../../app/webroot/arial.ttf', $text);
         imagejpeg($im, '../../app/webroot/img/items/item-01.jpg');
 
         //ITEM 01
@@ -397,7 +397,7 @@ if ($page == 'new') {
         $white = imagecolorallocate($im, 180, 180, 180);
         imagefill($im, 0, 0, $gray);
         $text = 'Item 02';
-        imagettftext($im, 36, 0, 130, 210, $white, 'arial.ttf', $text);
+        imagettftext($im, 36, 0, 130, 210, $white, '../../app/webroot/arial.ttf', $text);
         imagejpeg($im, '../../app/webroot/img/items/item-02.jpg');
 
         //LOGO
@@ -408,7 +408,7 @@ if ($page == 'new') {
         $white = imagecolorallocate($im, 0, 0, 0);
         imagefill($im, 0, 0, $gray);
         $text = 'LOGO';
-        imagettftext($im, 46, 0, 2, 47, $white, 'arial.ttf', $text);
+        imagettftext($im, 46, 0, 2, 47, $white, '../../app/webroot/arial.ttf', $text);
         imagejpeg($im, '../../app/webroot/img/files/logo.jpg');
 
 
