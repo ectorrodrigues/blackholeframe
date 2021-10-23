@@ -237,7 +237,7 @@ if ($page == 'new') {
             $pdo->exec($sql);
             $results_echo .= "<strong>Menu</strong> Table sucessfully created.<br />";
 
-            $query 	= $pdo->prepare("INSERT INTO menu (title, link) VALUES ('home', 'home'), ('item', 'item') ");
+            $query 	= $pdo->prepare("INSERT INTO menu (title, link) VALUES ('home', 'home'), ('items', 'items') ");
             $query->execute();
             $results_echo .= "<strong>Menu</strong> Table Updated.<br />";
 
@@ -259,13 +259,13 @@ if ($page == 'new') {
 
 
             // Create the config table and update it. Here's the data that will be fetched by our config.php file
-            $sql = "CREATE TABLE items ( id INT(255) UNSIGNED AUTO_INCREMENT PRIMARY KEY, title VARCHAR(50), description LONGTEXT )";
+            $sql = "CREATE TABLE items ( id INT(255) UNSIGNED AUTO_INCREMENT PRIMARY KEY, title VARCHAR(50), img VARCHAR(300), description LONGTEXT )";
             $pdo->exec($sql);
             $results_echo .= "<strong>Config</strong> Items sucessfully created.<br />";
 
             $query 	= $pdo->prepare("INSERT INTO items (title, description) VALUES
-		    	('Item 01', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et augue odio. Sed nec justo quam. Nam congue dignissim congue. Proin eros urna, cursus sit amet sem non, ultricies ultricies dolor. Nullam nec mauris nisi. Pellentesque a mauris eget odio commodo rutrum. Mauris scelerisque enim non risus auctor consequat vitae vehicula orci. In quis nibh ante. Donec massa purus, congue eget nisl finibus, luctus laoreet leo. Aliquam elementum felis nec pellentesque maximus. Donec id nisl at mauris varius bibendum sit amet eu urna.'),
-		    	('Item 02', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et augue odio. Sed nec justo quam. Nam congue dignissim congue. Proin eros urna, cursus sit amet sem non, ultricies ultricies dolor. Nullam nec mauris nisi. Pellentesque a mauris eget odio commodo rutrum. Mauris scelerisque enim non risus auctor consequat vitae vehicula orci. In quis nibh ante. Donec massa purus, congue eget nisl finibus, luctus laoreet leo. Aliquam elementum felis nec pellentesque maximus. Donec id nisl at mauris varius bibendum sit amet eu urna.')
+		    	('Item 01', 'item-01.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et augue odio. Sed nec justo quam. Nam congue dignissim congue. Proin eros urna, cursus sit amet sem non, ultricies ultricies dolor. Nullam nec mauris nisi. Pellentesque a mauris eget odio commodo rutrum. Mauris scelerisque enim non risus auctor consequat vitae vehicula orci. In quis nibh ante. Donec massa purus, congue eget nisl finibus, luctus laoreet leo. Aliquam elementum felis nec pellentesque maximus. Donec id nisl at mauris varius bibendum sit amet eu urna.'),
+		    	('Item 02', 'item-02.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et augue odio. Sed nec justo quam. Nam congue dignissim congue. Proin eros urna, cursus sit amet sem non, ultricies ultricies dolor. Nullam nec mauris nisi. Pellentesque a mauris eget odio commodo rutrum. Mauris scelerisque enim non risus auctor consequat vitae vehicula orci. In quis nibh ante. Donec massa purus, congue eget nisl finibus, luctus laoreet leo. Aliquam elementum felis nec pellentesque maximus. Donec id nisl at mauris varius bibendum sit amet eu urna.')
 		    	");
             $query->execute();
             $results_echo .= "<strong>Items</strong> Table Updated.<br />";
