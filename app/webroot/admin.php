@@ -47,7 +47,7 @@
 
 							echo '
 							<a href="'.ROOT.ADMIN.'add'.DS.$id_item.'">
-								<div class="bt_add btn">+ Adicionar Item</div>
+								<div class="bt_add btn">+ Add Item</div>
 							</a>';
 
 							if(strpos($url,"add") == true || strpos($url,"edit") == true || strpos($url,"delete") == true){
