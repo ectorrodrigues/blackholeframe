@@ -8,7 +8,7 @@
 
     <div class="row justify-content-center pt-5 mb-lg-0 mb-5">
       <div class="col-12 text-center my-lg-0 my-5">
-        <img src="<?=FILES_DIR?>logo.svg" alt="logo" class="logo col-1">
+        <img src="<?=FILES_DIR?>logo.jpg" alt="logo" class="logo col-1">
       </div>
     </div>
 
