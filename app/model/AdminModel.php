@@ -53,7 +53,7 @@
 				$_UP['folder']	= '../webroot/img/'.$table.'/';
 				move_uploaded_file($_FILES['img']['tmp_name'], $_UP['folder'] . $img);
 
-				include ('../../app/vendor/rosell-dk/webp-convert/webpconvert.php');
+				//include ('../../app/vendor/rosell-dk/webp-convert/webpconvert.php');
 
 			}
 
@@ -105,7 +105,7 @@
 					$query 	= $conn->prepare("INSERT INTO ".$table."_gallery (title, img, id_".$table.") VALUES ( '".$fileimgname."', '".$fileimgname."', '".$id_last."')");
 					$query->execute();
 
-					include ('../../app/vendor/rosell-dk/webp-convert/webpconvert.php');
+					//include ('../../app/vendor/rosell-dk/webp-convert/webpconvert.php');
 
 					$i++;
 				}
@@ -157,9 +157,9 @@
 					$file		= $_FILES[$field]['name'];
 					$img		= uniqid().$file;
 
-					$_UP['folder']	= IMG_REL_DIR . $table . DS;
+					$_UP['folder']	= '../webroot/img/'.$table.'/';
 					move_uploaded_file($_FILES[$field]['tmp_name'], $_UP['folder'] . $img);
-					include ('../../app/vendor/rosell-dk/webp-convert/webpconvert.php');
+					//include ('../../app/vendor/rosell-dk/webp-convert/webpconvert.php');
 
 					$columns_val	.= $field." = '".$img."', ";
 				}
@@ -211,7 +211,7 @@
 					$query 	= $conn->prepare("INSERT INTO ".$table."_gallery (id_".$table.", title, img) VALUES ('".$id."', '".$fileimgname."', '".$fileimgname."')");
 					$query->execute();
 
-					include ('../../app/vendor/rosell-dk/webp-convert/webpconvert.php');
+					//include ('../../app/vendor/rosell-dk/webp-convert/webpconvert.php');
 
 					$i++;
 				}
@@ -289,7 +289,7 @@
 	if($action == 'result' || $action == 'confirm' || $action == 'confirmdelete'){
 		$redirect_url = SERVER_DIR . ADMIN . '1';
 	} else {
-		$redirect_url = SERVER_DIR . ADMIN . 'edit/' . $_GET['id'] . '/0';
+		$redirect_url = SERVER_DIR . ADMIN . $_GET['id'];
 	}
 
 header('Location:'. $redirect_url);

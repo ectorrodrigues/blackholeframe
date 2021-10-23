@@ -112,7 +112,7 @@
     echo $inputs;
   }
 
-  if(in_array($title, $array_galeries, TRUE)){
+  if(in_array($title, $array_galleries, TRUE)){
 
     if($action == 'add'){
 
