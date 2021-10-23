@@ -5,7 +5,7 @@
     <div class="col-lg-8 col-12 py-5">
       <h1>Hello World!</h1>
       <p>
-        Welcome, this is the homepage of blackholeframe.
+        Welcome, this is the homepage of blackholeframe.<br>
       </p>
     </div>
   </div>

@@ -6,7 +6,7 @@
 				<sql>where= id = '<?= $_GET['id']?>' ;limit=1; </sql>
 
 				<div class="row justify-content-center">
-					<img src="<?=IMG_DIR.$_GET['page']?>/{img}" alt="{title}" class="col-lg-6 col-12">
+					<img src="IMG_DIR<?=$_GET['page']?>/{img}" alt="{title}" class="col-lg-6 col-12">
 				</div>
 
 				<div class="row justify-content-center mt-5 py-5">

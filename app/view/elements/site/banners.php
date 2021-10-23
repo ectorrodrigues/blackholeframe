@@ -6,12 +6,16 @@
 		    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
 		  </div>
 		  <div class="carousel-inner">
-		    <div class="carousel-item active">
-		      <img src="<?=IMG_DIR?>banners/banner-01.webp" class="d-block w-100" alt="banner_01">
-		    </div>
-		    <div class="carousel-item">
-		      <img src="<?=IMG_DIR?>banners/banner-02.webp" class="d-block w-100" alt="banner_02">
-		    </div>
+
+
+				<loop>
+				  <sql>table=banners;</sql>
+					<div class="carousel-item {function->activebanner->id}">
+			      <img src="<?=IMG_DIR?>banners/{img}" class="d-block w-100" alt="{title}">
+			    </div>
+				</loop>
+
+
 		  </div>
 		  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
 		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>

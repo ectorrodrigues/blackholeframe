@@ -237,11 +237,11 @@ if ($page == 'new') {
             $pdo->exec($sql);
             $results_echo .= "<strong>Menu</strong> Table sucessfully created.<br />";
 
-            $query 	= $pdo->prepare("INSERT INTO menu (title, link) VALUES ('home', 'home') ");
+            $query 	= $pdo->prepare("INSERT INTO menu (title, link) VALUES ('home', 'home'), ('item', 'item') ");
             $query->execute();
             $results_echo .= "<strong>Menu</strong> Table Updated.<br />";
 
-            $query 	= $pdo->prepare("INSERT INTO cms (title) VALUES ('menu') ");
+            $query 	= $pdo->prepare("INSERT INTO cms (title) VALUES ('menu'), ('banners'), ('items') ");
             $query->execute();
             $results_echo .= "<strong>Menu</strong> Table Added to CMS.<br />";
 
@@ -256,6 +256,32 @@ if ($page == 'new') {
 		    	");
             $query->execute();
             $results_echo .= "<strong>Home</strong> Table Updated.<br />";
+
+
+            // Create the config table and update it. Here's the data that will be fetched by our config.php file
+            $sql = "CREATE TABLE items ( id INT(255) UNSIGNED AUTO_INCREMENT PRIMARY KEY, title VARCHAR(50), description LONGTEXT )";
+            $pdo->exec($sql);
+            $results_echo .= "<strong>Config</strong> Items sucessfully created.<br />";
+
+            $query 	= $pdo->prepare("INSERT INTO items (title, description) VALUES
+		    	('Item 01', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et augue odio. Sed nec justo quam. Nam congue dignissim congue. Proin eros urna, cursus sit amet sem non, ultricies ultricies dolor. Nullam nec mauris nisi. Pellentesque a mauris eget odio commodo rutrum. Mauris scelerisque enim non risus auctor consequat vitae vehicula orci. In quis nibh ante. Donec massa purus, congue eget nisl finibus, luctus laoreet leo. Aliquam elementum felis nec pellentesque maximus. Donec id nisl at mauris varius bibendum sit amet eu urna.'),
+		    	('Item 02', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et augue odio. Sed nec justo quam. Nam congue dignissim congue. Proin eros urna, cursus sit amet sem non, ultricies ultricies dolor. Nullam nec mauris nisi. Pellentesque a mauris eget odio commodo rutrum. Mauris scelerisque enim non risus auctor consequat vitae vehicula orci. In quis nibh ante. Donec massa purus, congue eget nisl finibus, luctus laoreet leo. Aliquam elementum felis nec pellentesque maximus. Donec id nisl at mauris varius bibendum sit amet eu urna.')
+		    	");
+            $query->execute();
+            $results_echo .= "<strong>Items</strong> Table Updated.<br />";
+
+
+            // Create the config table and update it. Here's the data that will be fetched by our config.php file
+            $sql = "CREATE TABLE banners ( id INT(255) UNSIGNED AUTO_INCREMENT PRIMARY KEY, title VARCHAR(50), img VARCHAR(500), link VARCHAR(500) )";
+            $pdo->exec($sql);
+            $results_echo .= "<strong>Banners</strong> table sucessfully created.<br />";
+
+            $query 	= $pdo->prepare("INSERT INTO banners (title, img, link) VALUES
+		    	('Banner 01', 'banner-01.jpg', ''),
+		    	('Banner 02', 'banner-02.jpg', '')
+		    	");
+            $query->execute();
+            $results_echo .= "<strong>Banner</strong> Table Updated.<br />";
 
             //MAKING FOLDERS AND POPULATE THEM WITH FILES
             if (!file_exists('../../index.php')) {
@@ -322,6 +348,24 @@ if ($page == 'new') {
                 fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
             }
             create_files('app/view/pages/home/', 'index.php');
+
+
+            if (!file_exists('../../app/view/pages/items')) {
+                mkdir('../../app/view/pages/items', 0777, true);
+            }
+            $my_file = '../../app/view/pages/items/index.php';
+            if (!file_exists('../../app/view/pages/items/index.php')) {
+                fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
+            }
+            create_files('app/view/pages/items/', 'index.php');
+
+            $my_file = '../../app/view/pages/items/item.php';
+            if (!file_exists('../../app/view/pages/items/item.php')) {
+                fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
+            }
+            create_files('app/view/pages/items/', 'item.php');
+
+
 
             if (!file_exists('../../app/webroot')) {
                 mkdir('../../app/webroot', 0777, true);
