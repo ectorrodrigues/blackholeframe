@@ -21,14 +21,22 @@
       $title = $row['id']." | ". $row['cliente'];
     }
 
-    if(isset($row['img'])){ $img = $row['img'];  $img_size= ""; } else{ $img = ''; $img_size="width:0;"; }
+    if(isset($row['img'])){
+      $img = $row['img'];
+      $col1 = '<div class="col-1 my-auto"><img src="'.IMG_DIR.$title_table.'/'.$img.'" class="col-12" /></div>';
+      $col2 = 'col-9';
+    } else{
+      $col1 = '';
+      $col2 = 'col-10';
+    }
 
     echo '
-    <div class="row justify-content-between text-start px-5 py-4 mt-3 list-item">
-      <div class="col-10">
+    <div class="row justify-content-between text-start px-5 py-4 mt-3 list-item vertical-align">
+      '.$col1.'
+      <div class="'.$col2.' my-auto">
         '.$title.'
       </div>
-      <div class="col-2 text-end">
+      <div class="col-2 text-end my-auto">
         <a href="'.ROOT.ADMIN.'edit'.DS.$id_item.DS.$id.'"><i class="fas fa-pen bt_edit text-warning transition"></i></a>
         <a href="'.DS.ADMIN.'model'.DS.'delete'.DS.$id_item.DS.$id.'"><i class="fa fa-times bt_delete text-danger transition" aria-hidden="true"></i></a>
       </div>
