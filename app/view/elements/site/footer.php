@@ -4,8 +4,8 @@
 
   <div class="row justify-content-center px-5 py-5">
     <div class="col-lg-2 col-12 text-lg-start text-center py-lg-0 py-5">
-      <a href="<?=SERVER_DIR?>">
-        <img src="<?=FILES_DIR?>logo.jpg" alt="logo" class="col-lg-5 col-5 logo">
+      <a href="SERVER_DIR">
+        <img src="FILES_DIRlogo.jpg" alt="logo" class="col-lg-5 col-5 logo">
       </a>
     </div>
     <nav class="col-lg-10 col-12 text-start my-lg-auto my-5">
@@ -18,10 +18,6 @@
       <small>All rights reserved. Powered by <a href="https://github.com/ectorrodrigues/blackholeframe">blackholeframe</a>.</small>
     </div>
   </div>
-
-  <loop><sql>table=config;where= title = 'empty';</sql>
-    {content}
-  </loop>
 
 </footer>
 
