@@ -23,7 +23,8 @@
 		}
 
 		if($filename == 'directories.php'){
-			$appmodel = str_replace("portdb", ':'.$port, $appmodel);
+			if($port == ''){$port = '';} else {$port = ':'.$port;}
+			$appmodel = str_replace("localhostportdb", 'localhost'.$port, $appmodel);
 		}
 
 		if(strpos($appmodel, '<pre>') == true){
