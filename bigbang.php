@@ -24,7 +24,7 @@
 
 		if($filename == 'directories.php'){
 			if($port == ''){$port = '';} else {$port = ':'.$port;}
-			$appmodel = str_replace("localhostportdb", 'localhost'.$port, $appmodel);
+				$appmodel = str_replace(array("localhostportdb"), array("localhost".$port), $appmodel);
 		}
 
 		if(strpos($appmodel, '<pre>') == true){
