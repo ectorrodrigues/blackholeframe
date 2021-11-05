@@ -20,9 +20,11 @@
 
 		if($filename == 'database.php'){
 			$appmodel = str_replace(array("databasename", "dbuser", "dbpass"), array($databasename, $dbuser, $dbpass), $appmodel);
-		}elseif($filename == 'directories.php'){
+		}
+
+		if($filename == 'directories.php'){
 			if($port == ''){$port = '';} else {$port = ':'.$port;}
-				$appmodel = str_replace(array("localhostportdb"), array("localhost".$port), $appmodel);
+				$appmodel = str_replace("localhostportdb", 'localhost'.$port, $appmodel);
 		}
 
 		if(strpos($appmodel, '<pre>') == true){
