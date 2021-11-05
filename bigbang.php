@@ -7,6 +7,7 @@
 	$databasename = $_GET['databasename'];
 	$dbuser = $_GET['dbuser'];
 	$dbpass = $_GET['dbpass'];
+	$port = $_GET['port'];
 
 	function create_files($dir, $filename){
 
@@ -19,6 +20,10 @@
 
 		if($filename == 'database.php'){
 			$appmodel = str_replace(array("databasename", "dbuser", "dbpass"), array($databasename, $dbuser, $dbpass), $appmodel);
+		}
+
+		if($filename == 'directories.php'){
+			$appmodel = str_replace("portdb", ':'.$port, $appmodel);
 		}
 
 		if(strpos($appmodel, '<pre>') == true){

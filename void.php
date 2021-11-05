@@ -88,7 +88,7 @@
     } else {
       var port = ':'+port;
     }
-    alert("http://localhost"+port+"/"+sitename+"/bigbang.php?databasename="+sitename+"&dbuser="+dbuser+"&dbpass="+dbpass);
+    alert("http://localhost"+port+"/"+sitename+"/bigbang.php?databasename="+sitename+"&dbuser="+dbuser+"&dbpass="+dbpass+"&port="+port);
 		//window.location.replace("http://localhost"+port+"/"+sitename+"/bigbang.php?databasename="+sitename+"&dbuser="+dbuser+"&dbpass="+dbpass);
 	}
 </script>
@@ -109,7 +109,8 @@
     				<h2>1.</h2>
     			</div>
     			<div class="col-9 text-left">
-            <label>First of all, make sure you had created a local directory for your project,<br>on your local server.</label>
+            <label>First of all, make sure you had created a local directory for your project,on your local server.<br>
+            And make sure the local server is runing.</label>
     			</div>
     		</div>
 
