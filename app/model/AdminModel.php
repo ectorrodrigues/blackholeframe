@@ -204,8 +204,9 @@
 				foreach ($_FILES['filesToUpload']['name'] as $fileimg) {
 
 					$fileimgname = uniqid().$fileimg;
+					$_UP['folder']	= '../webroot/img/'.$table.'/';
 
-					move_uploaded_file($_FILES['filesToUpload']['tmp_name'][$i], ABSOLUTE_PATH . $table . DS . $fileimgname);
+										move_uploaded_file($_FILES['filesToUpload']['tmp_name'][$i], $_UP['folder'] . $fileimgname);
 
 
 					$query 	= $conn->prepare("INSERT INTO ".$table."_gallery (id_".$table.", title, img) VALUES ('".$id."', '".$fileimgname."', '".$fileimgname."')");

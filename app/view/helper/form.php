@@ -122,18 +122,23 @@
 
       echo '<p><label>Fotos:</label><input type="file" class="form-control" name="filesToUpload[]" id="filesToUpload" multiple></p>';
 
-      foreach($conn->query("SELECT * FROM ".$title."_galeria WHERE id_".$title." = '".$item."' ") as $row) {
+      foreach($conn->query("SELECT * FROM ".$title."_gallery WHERE id_".$title." = '".$item."' ") as $row) {
         $img    = $row['img'];
         $id_img    = $row['id'];
 
 				$server = $_SERVER['DOCUMENT_ROOT'];
 
         echo '
-        <div class="content-item">
-          <div class="content-item-thumb inline" style="background-image:url('.IMG_DIR.$title.DS.$img.');">
+        <div class="row my-auto vertical-align py-3">
+          <div class="col-4 my-auto vertical-align">
+            <img src="'.IMG_DIR.$title.DS.$img.'" class="col-12">
           </div>
-          <div class="col2 inline" align="right">
-            <a href="'.$server.ADMIN.'model'.DS.'gallery'.DS.$id.DS.$id_img.'"><div class="bt_delete inline transition"><i class="fa fa-times" aria-hidden="true"></i></div></a>
+          <div class="col-8 my-auto vertical-align">
+            <a href="/'.SITE_NAME.'/admin/model'.DS.'gallery'.DS.$id.DS.$id_img.'" class="my-auto vertical-align">
+              <div class="text-danger bt_delete transition my-auto vertical-align">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </div>
+            </a>
           </div>
         </div>
         ';
