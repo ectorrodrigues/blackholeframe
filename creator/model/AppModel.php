@@ -86,8 +86,8 @@
             $appmodel = str_replace(array("databasename", "userdb", "passdb", "portdb"), array($db_name, $db_userdb, $db_passdb, $db_port), $appmodel);
         }
 
-        if (strpos($appmodel, '<pre>') == true) {
-            $appmodel = str_replace(array("<pre>", "</pre>"), array("<?php", "?>" ), $appmodel);
+        if (strpos($appmodel, '<?php') == true) {
+            $appmodel = str_replace(array("<?php", "?>"), array("<?php", "?>" ), $appmodel);
         }
 
         file_put_contents('../../'.$dir.$filename, $appmodel);
@@ -593,7 +593,7 @@ if ($page == 'pages') {
         try {
 
             $sql = "CREATE TABLE ".$title;
-            $sql .= ' ( id INT(100) UNSIGNED AUTO_INCREMENT PRIMARY KEY, ';
+            $sql .= ' ( id INT(255) UNSIGNED AUTO_INCREMENT PRIMARY KEY, ';
 
             $i = 0;
 
@@ -602,10 +602,15 @@ if ($page == 'pages') {
                 $db_type_value 		= $_POST['db_type'][$i];
                 $db_lenght_value	= $_POST['db_lenght'][$i];
 
-                if ($db_type_value != "LONGTEXT") {
+
+                if($db_type_value == "LONGTEXT"){
+                     $db_lenght_value = ', ';
+                }
+                elseif($db_type_value == "DATETIME"){
+                     $db_lenght_value = ', ';
+                }
+                else {
                     $db_lenght_value = '('.$db_lenght_value.'), ';
-                } else {
-                    $db_lenght_value = ', ';
                 }
 
                 $sql .= $db_name_value.' '.$db_type_value.$db_lenght_value;
@@ -617,7 +622,7 @@ if ($page == 'pages') {
             $sql .= ' )';
 
             $query = $conn->prepare($sql);
-        		$query->execute();
+        	$query->execute();
 
             $results_echo .= "<strong>Database</strong> sucessfully created.<br />";
         } catch (PDOException $e) {
@@ -677,9 +682,9 @@ if ($page == 'pages') {
         $my_file = '../../app/view/pages/'.$title.'/item.php';
         fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);
         addtext($title, 'item.php');
-        $results_echo .= "<strong>Ver.php</strong> Created.<br />";
+        $results_echo .= "<strong>item.php</strong> Created.<br />";
     } else {
-        $results_echo .= "<strong>Ver.php</strong> NOT Created.<br />";
+        $results_echo .= "<strong>item.php</strong> NOT Created.<br />";
     }
 
     // CREATE GALLERY --------------------------------------------------------------------------------------------
