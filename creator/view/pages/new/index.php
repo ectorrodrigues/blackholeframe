@@ -10,6 +10,13 @@
 
 			<form action="model/AppModel.php?page=new" method="post" enctype="multipart/form-data">
 
+					<h1>// SERVER PORT</h1>
+
+					<div class="form-group col-lg-12">
+						<label>Server Port</label>
+					    <input type="text" name="serverport" class="form-control" placeholder="Your server port (Mainly '80' or '8888')" >
+					</div>
+
 					<h1>// DATABASE</h1>
 
 					<div class="form-group col-lg-12">

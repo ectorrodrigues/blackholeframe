@@ -48,6 +48,9 @@
     if (isset($_POST['gallery'])) {
         $gallery 		= $_POST['gallery'];
     }
+    if (isset($_POST['serverport'])) {
+        $serverport 		= $_POST['serverport'];
+    }
 
     require('../config/database.php');
 
@@ -79,12 +82,17 @@
         global $db_userdb;
         global $db_passdb;
         global $db_port;
+        global $serverport;
 
         $appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/'.$dir.$filename);
 
         if ($filename == 'database.php') {
             $appmodel = str_replace(array("databasename", "userdb", "passdb", "portdb"), array($db_name, $db_userdb, $db_passdb, $db_port), $appmodel);
         }
+
+        if($filename == 'directories.php'){
+			$appmodel = str_replace("localhostportdb", 'localhost:'.$serverport, $appmodel);
+		}
 
         if (strpos($appmodel, '<?php') == true) {
             $appmodel = str_replace(array("<?php", "?>"), array("<?php", "?>" ), $appmodel);
