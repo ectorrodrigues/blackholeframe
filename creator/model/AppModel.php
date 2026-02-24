@@ -27,6 +27,9 @@
     if (isset($_POST['port'])) {
         $db_port 		= $_POST['port'];
     }
+    if (isset($_POST['localhostport'])) {
+        $localhostport 		= $_POST['localhostport'];
+    }
     if (isset($_POST['db_type'])) {
         $db_type 		= $_POST['db_type'];
     }
@@ -79,12 +82,17 @@
         global $db_userdb;
         global $db_passdb;
         global $db_port;
+        global $localhostport;
 
         $appmodel = file_get_contents('https://raw.githubusercontent.com/ectorrodrigues/blackholeframe/master/'.$dir.$filename);
 
         if ($filename == 'database.php') {
             $appmodel = str_replace(array("databasename", "userdb", "passdb", "portdb"), array($db_name, $db_userdb, $db_passdb, $db_port), $appmodel);
         }
+
+        if($filename == 'directories.php'){
+			$appmodel = str_replace("localhostportdb", 'localhost:'.$localhostport, $appmodel);
+		}
 
         if (strpos($appmodel, '<?php') == true) {
             $appmodel = str_replace(array("<?php", "?>"), array("<?php", "?>" ), $appmodel);

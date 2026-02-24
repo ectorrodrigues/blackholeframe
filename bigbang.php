@@ -43,7 +43,6 @@
 
 	if (!file_exists('creator/config')) { mkdir('creator/config', 0777, true); }
 		create_files('creator/config', 'database.php');
-		create_files('creator/config', 'directories.php');
 
 	if (!file_exists('creator/model')) { mkdir('creator/model', 0777, true); }
 		create_files('creator/model', 'AppModel.php');
@@ -135,6 +134,6 @@ echo '
 
 	sleep(5);
 
-	header('Location:creator/index.php');
+	header('Location:creator/index.php?port='.$port);
 
 ?>
