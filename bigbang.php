@@ -23,8 +23,8 @@
 		}
 
 		if($filename == 'directories.php'){
-			if($port == ''){$port = '';} else {$port = ':'.$port;}
-			$appmodel = str_replace("ocalhostportdb", 'ocalhost'.$port, $appmodel);
+			//if($port == ''){$port = '';} else {$port = ':'.$port;}
+			$appmodel = str_replace("ocalhostportdb", 'ocalhost:'.$port, $appmodel);
 		}
 
 		if(strpos($appmodel, '<pre>') == true){
