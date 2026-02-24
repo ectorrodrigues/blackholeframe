@@ -1,5 +1,7 @@
 <?php
 
+	echo $_GET['port']; die();
+
 	//This file gets the creator system, to start everything
 
 	$results_echo = '';
