@@ -41,7 +41,7 @@
 						    	<option value="INT">INT</option>
 						    	<option value="LONGTEXT">LONGTEXT</option>
 						    	<option value="MEDIUMTEXT">MEDIUMTEXT</option>
-						    	<option value="DATE">DATE</option>
+						    	<option value="DATETIME">DATETIME</option>
 						    	<option value="TIMESTAMP">TIMESTAMP</option>
 						    </select>
 						</div>
@@ -127,7 +127,7 @@
 
 <script>
 function AddDbColumn(){
-	$(".db").append('<div class="form-group col-lg-4"><input type="text" name="db_name[]" class="form-control" placeholder="Name"></div><div class="form-group col-lg-4"><select name="db_type[]" class="form-control"><option value="VARCHAR">VARCHAR</option><option value="INT">INT</option><option value="LONGTEXT">LONGTEXT</option><option value="MEDIUMTEXT">MEDIUMTEXT</option><option value="DATE">DATE</option><option value="TIMESTAMP">TIMESTAMP</option></select></div><div class="form-group col-lg-4"><input type="text" name="db_lenght[]" class="form-control" placeholder="Lenght"></div>');
+	$(".db").append('<div class="form-group col-lg-4"><input type="text" name="db_name[]" class="form-control" placeholder="Name"></div><div class="form-group col-lg-4"><select name="db_type[]" class="form-control"><option value="VARCHAR">VARCHAR</option><option value="INT">INT</option><option value="LONGTEXT">LONGTEXT</option><option value="MEDIUMTEXT">MEDIUMTEXT</option><option value="DATETIME">DATETIME</option><option value="TIMESTAMP">TIMESTAMP</option></select></div><div class="form-group col-lg-4"><input type="text" name="db_lenght[]" class="form-control" placeholder="Lenght"></div>');
 
 	var num = parseInt($('.db_num_columns').val());
   	$('.db_num_columns').val(num+1);
