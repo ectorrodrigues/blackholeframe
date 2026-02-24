@@ -204,6 +204,10 @@ function construct_page($page, $archive){
     global $get_result;
     global $items2content;
 
+    // RESET ARRAYS EVERY PAGE LOAD
+    $get_to_replace = [];
+    $get_result = [];
+
     $site   = explode('/', $_SERVER['PHP_SELF']);
     $path   = SERVER_DIR.PAGES_DIR.$page.DS;
     $complement = '?page=';
@@ -258,7 +262,11 @@ function construct_page($page, $archive){
 
           } else {
 
-            parse_str(strtr($sql_options[$x], "=;", "=&"), $value);
+            if (isset($sql_options[$x])) {
+                parse_str(strtr($sql_options[$x], "=;", "=&"), $value);
+            } else {
+                $value = [];
+            }
 
             if(!isset($value['table'])){ $table = ' '.$page.' '; } else { $table = $value['table']; }
             if(!isset($value['where'])){ $where = ' '; } else { $where = $value['where']; }
