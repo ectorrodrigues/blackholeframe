@@ -44,10 +44,6 @@
 					    <input type="text" name="passworadmin" class="form-control" placeholder="">
 					</div>
 
-					<div class="form-group col-lg-12">
-					    <input type="hidden" name="localhostport" value="<?=$_GET['port'];?>" class="form-control">
-					</div>
-
 					<div class="form-group col-md-12 padding-top-bottom text-right">
 						<button type="submit" class="btn btn-primary transition">Create</button>
 					</div>

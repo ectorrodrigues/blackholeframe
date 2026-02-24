@@ -2,7 +2,7 @@
 	<div class="row">
 
 		<div class="col-lg-4 text-center">
-			<a href="&page=new">
+			<a href="?page=new">
 				<div class="button spin circle">
 					1.<br>
 					New
@@ -15,7 +15,7 @@
 		</div>
 
 		<div class="col-lg-4 text-center">
-			<a href="&page=configurations">
+			<a href="?page=configurations">
 				<div class="button spin circle">
 					2.<br>
 					Configs
@@ -29,7 +29,7 @@
 		</div>
 
 		<div class="col-lg-4 text-center">
-			<a href="&page=pages">
+			<a href="?page=pages">
 				<div class="button spin circle">
 					3.<br>
 					Pages

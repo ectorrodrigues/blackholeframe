@@ -134,6 +134,6 @@ echo '
 
 	sleep(5);
 
-	header('Location:creator/index.php?port='.$port);
+	header('Location:creator/index.php');
 
 ?>
