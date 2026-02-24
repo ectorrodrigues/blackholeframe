@@ -1,8 +1,6 @@
 <?php
 	setcookie("status", "", time() - 3600);
 	unset($_COOKIE['status']);
-	setcookie('status', null, -1, '/');
-
 	require (ELEMENTS_DIR .'head.php');
 ?>
 
