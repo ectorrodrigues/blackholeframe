@@ -86,9 +86,8 @@
     if(port == ''){
       var port = '';
     } else {
-      var port = ':'+port;
+      var port = port;
     }
-    //alert("http://localhost"+port+"/"+sitename+"/bigbang.php?databasename="+sitename+"&dbuser="+dbuser+"&dbpass="+dbpass+"&port="+port);
 		window.location.replace("http://localhost"+port+"/"+sitename+"/bigbang.php?databasename="+sitename+"&dbuser="+dbuser+"&dbpass="+dbpass+"&port="+port);
 	}
 </script>
