@@ -90,19 +90,81 @@ and you can start customizing your project.
 <pre>
 /
 │ index.php
+| void.php
+| singularity.php
 │ bigbang.php
+| logout.php
+| .htaccess
 │ README.md
 │
 └── app/
+    |
+    ├── config/
+    │     config.php
+    │     database.php
+    │     directories.php
+    |
     ├── model/
-    │   AppModel.php
+    │     AppModel.php
+    │     AdminModel.php
+    |
+    ├── vendors/
+    │     composer/
+    |     etc.
     │
-    ├── view/
-    │   pages/
-    │     home/
-    │       index.php
-    │     items/
-    │       index.php
+    ─── view/
+        |
+        --- elements/
+            |
+            |── site/
+            |     banners.php
+            |     footer.php
+            |     gallery.php
+            |     head.php
+            |     menu-mobile.php
+            |     menu.php
+            |     top.php
+            |         
+            |── helper/
+            |     form.php
+            |     list.php
+            |
+        |
+        |── pages/
+          |
+          |── home/
+          |     index.php
+          |    
+          |── items/
+          |     index.php
+    |        
+    |─── webroot/
+        |
+        | index.php
+        | admin.php
+        | login.php
+        | logout.php
+        | 
+        |── css/
+        |     style.css
+        |
+        |── files/
+        |     logo.svg
+        |     etc.
+        |
+        |── img/
+            |
+            |── banners/
+            |     banner-01.webp
+            |     etc.
+            |
+            |── items/
+            |     item-01.webp
+            |     etc.
+            |
+        |── js/
+        |     etc.
+    
 </pre>
 
 <hr>
