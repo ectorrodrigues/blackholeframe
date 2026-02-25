@@ -82,6 +82,7 @@ and you can start customizing your project.
 <li>Extremely small core</li>
 <li>Built-in Bootstrap</li>
 <li>Built-in Fontawesome</li>
+<li>Built-in jQuery library</li>
 </ul>
 
 <hr>
