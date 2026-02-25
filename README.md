@@ -1,54 +1,93 @@
-# 🌌 BlackholeFrame
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BlackholeFrame</title>
+</head>
+<body>
 
-BlackholeFrame is an ultra-lightweight PHP framework designed for fast development of dynamic websites using a loop-based templating system.
+<h1>🌌 BlackholeFrame</h1>
 
----
+<p>BlackholeFrame is an ultra-lightweight PHP framework designed for fast development of dynamic websites using a loop-based templating system.</p>
 
+<hr>
 
-<h1 id="usage"><a href="https://github.com/ectorrodrigues/blackholeframe/tree/6b008e79a68dce7e8af77fc2db503017205ee942#usage"></a>USAGE</h1>
-<h2 id="pre-setup"><a href="https://github.com/ectorrodrigues/blackholeframe/tree/6b008e79a68dce7e8af77fc2db503017205ee942#pre-setup"></a>PRE SETUP</h2>
-<p>To start using the only pre setup you need is an server running on your computer aka: Xampp or similar. (of course, php, mysql and that stuff is required, but it is usually already on server defaults)</p>
-<h2 id="setup"><a href="https://github.com/ectorrodrigues/blackholeframe/tree/6b008e79a68dce7e8af77fc2db503017205ee942#setup"></a>SETUP</h2>
-<h2 id="section"><a href="https://github.com/ectorrodrigues/blackholeframe/tree/6b008e79a68dce7e8af77fc2db503017205ee942#0"></a>0</h2>
-<p>Browse to <a href="http://bit.ly/blackholefw">bit.ly/blackholefw</a> There you will find a screen with instructions for instalattion</p>
-<h2 id="section-1"><a href="https://github.com/ectorrodrigues/blackholeframe/tree/6b008e79a68dce7e8af77fc2db503017205ee942#1"></a>1</h2>
-<p>Enter the name of your project, just lowercase letters and numbers, without spaces. This will be use for a full range of things, including the name of the path of your project</p>
-<h2 id="section-2"><a href="https://github.com/ectorrodrigues/blackholeframe/tree/6b008e79a68dce7e8af77fc2db503017205ee942#2"></a>2</h2>
-<p>Right click, and save the file “bigbang.php” on the the root folder of your project. (The folder who have to be the same name you gave above)</p>
-<h2 id="section-3"><a href="https://github.com/ectorrodrigues/blackholeframe/tree/6b008e79a68dce7e8af77fc2db503017205ee942#3"></a>3</h2>
-<p>Click on the indication to start. On doing it all the files will be downloaded to your project folder, and you will be able to start customize your project.</p>
+<h1 id="usage">USAGE</h1>
+
+<h2 id="pre-setup">PRE SETUP</h2>
+
+<p>
+To start using the only pre setup you need is a server running on your computer
+aka: Xampp or similar. (of course, php, mysql and that stuff is required,
+but it is usually already on server defaults)
+</p>
+
+<h2 id="setup">SETUP</h2>
+
+<h2>0</h2>
+
+<p>
+Browse to <a href="http://bit.ly/blackholefw">http://bit.ly/blackholefw</a>.
+There you will find a screen with instructions for installation.
+</p>
+
+<h2>1</h2>
+
+<p>
+Enter the name of your project, just lowercase letters and numbers, without spaces.
+This will be used for many things, including your project folder name.
+</p>
+
+<h2>2</h2>
+
+<p>
+Right click and save the file <strong>bigbang.php</strong> in the root folder of your project
+(the folder must have the same name you provided above).
+</p>
+
+<h2>3</h2>
+
+<p>
+Click the indication to start. All files will be downloaded to your project folder
+and you can start customizing your project.
+</p>
+
 <p>That’s it.</p>
 
+<hr>
 
----
+<h2>It focuses on:</h2>
 
-It focuses on:
+<ul>
+<li>Minimal structure</li>
+<li>Automatic database rendering</li>
+<li>&lt;loop&gt; driven templates</li>
+<li>Inline SQL configuration</li>
+<li>Function filters inside templates</li>
+<li>Zero dependencies</li>
+</ul>
 
-✅ Minimal structure  
-✅ Automatic database rendering  
-✅ `<loop>` driven templates  
-✅ Inline SQL configuration  
-✅ Function filters inside templates  
-✅ Zero dependencies  
+<p><strong>The philosophy is simple: HTML first, PHP invisible.</strong></p>
 
-The philosophy is simple: **HTML first, PHP invisible.**
+<hr>
 
----
+<h1>🚀 Features</h1>
 
-# 🚀 Features
+<ul>
+<li>Automatic routing by folder name</li>
+<li>Database rendering via &lt;loop&gt;</li>
+<li>Inline SQL using &lt;sql&gt;</li>
+<li>Field placeholders {column}</li>
+<li>Function filters {function-&gt;slug-&gt;title}</li>
+<li>PDO MySQL backend</li>
+<li>Extremely small core</li>
+</ul>
 
-- Automatic routing by folder name
-- Database rendering via `<loop>`
-- Inline SQL using `<sql>`
-- Field placeholders `{column}`
-- Function filters `{function->slug->title}`
-- PDO MySQL backend
-- Extremely small core
+<hr>
 
----
+<h1>📁 Folder Structure</h1>
 
-# 📁 Folder Structure
-
+<pre>
 /
 │ index.php
 │ bigbang.php
@@ -64,75 +103,90 @@ The philosophy is simple: **HTML first, PHP invisible.**
     │       index.php
     │     items/
     │       index.php
+</pre>
 
----
+<hr>
 
-# ⚙️ Installation
+<h1>⚙️ Installation</h1>
 
-1. Clone or download this repository.
-2. Make sure you have PHP 7+, MySQL, Apache/Nginx.
-3. Configure DB in app/model/AppModel.php
-4. Visit http://localhost/yourproject
+<ol>
+<li>Clone or download this repository.</li>
+<li>Make sure you have PHP 7+, MySQL, Apache/Nginx.</li>
+<li>Configure DB in app/model/AppModel.php</li>
+<li>Visit http://localhost/yourproject</li>
+</ol>
 
----
+<hr>
 
-# 🌐 Routing
+<h1>🌐 Routing</h1>
 
-/items → /app/view/pages/items/index.php
+<p>/items → /app/view/pages/items/index.php</p>
 
----
+<hr>
 
-# 🔁 Basic Loop
+<h1>🔁 Basic Loop</h1>
 
-<loop>
-  <h1>{title}</h1>
-  <p>{description}</p>
-</loop>
+<pre>
+&lt;loop&gt;
+  &lt;h1&gt;{title}&lt;/h1&gt;
+  &lt;p&gt;{description}&lt;/p&gt;
+&lt;/loop&gt;
+</pre>
 
----
+<hr>
 
-# 🧠 SQL Customization
+<h1>🧠 SQL Customization</h1>
 
-<loop>
-<sql>
+<pre>
+&lt;loop&gt;
+&lt;sql&gt;
 table=items;
 where=category=2;
 orderby=id;
 order=DESC;
 limit=5;
-</sql>
-<h2>{title}</h2>
-</loop>
+&lt;/sql&gt;
+&lt;h2&gt;{title}&lt;/h2&gt;
+&lt;/loop&gt;
+</pre>
 
----
+<hr>
 
-# 🧩 Placeholders
+<h1>🧩 Placeholders</h1>
 
+<pre>
 {title}
 {description}
 {id}
+</pre>
 
----
+<hr>
 
-# 🔧 Function Filters Examples
+<h1>🔧 Function Filters Examples</h1>
 
-{function->slug->title}
-{function->uppercase->title}
-{function->limit_chars_200->description}
+<pre>
+{function-&gt;slug-&gt;title}
+{function-&gt;uppercase-&gt;title}
+{function-&gt;limit_chars_200-&gt;description}
+</pre>
 
----
+<hr>
 
-# 🛠 Internal Flow
+<h1>🛠 Internal Flow</h1>
 
-1. Scan loops
-2. Extract columns
-3. Clean SQL
-4. Query PDO
-5. Apply PHP functions
-6. Replace placeholders
+<ol>
+<li>Scan loops</li>
+<li>Extract columns</li>
+<li>Clean SQL</li>
+<li>Query PDO</li>
+<li>Apply PHP functions</li>
+<li>Replace placeholders</li>
+</ol>
 
+<hr>
 
----
+<p><strong>Author:</strong> Éctor Rodrigues</p>
+<p><strong>License:</strong> MIT</p>
 
-Author: Éctor Rodrigues
-License: MIT
+</body>
+</html>
