@@ -80,6 +80,8 @@ and you can start customizing your project.
 <li>Function filters {function-&gt;slug-&gt;title}</li>
 <li>PDO MySQL backend</li>
 <li>Extremely small core</li>
+<li>Built-in Bootstrap</li>
+<li>Built-in Fontawesome</li>
 </ul>
 
 <hr>
