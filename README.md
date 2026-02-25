@@ -90,12 +90,11 @@ and you can start customizing your project.
 <pre>
 /
 │ index.php
-| void.php
-| singularity.php
-│ bigbang.php
-| logout.php
 | .htaccess
 │ README.md
+| void.php (only for install)
+| singularity.php (only for install)
+│ bigbang.php (only for install)
 │
 └── app/
     |
