@@ -130,14 +130,14 @@ and you can start customizing your project.
             |
         |
         |── pages/
-          |
-          |── home/
-          |     index.php
-          |    
-          |── items/
-          |     index.php
-          |     item.php
-          |
+            |
+            |── home/
+            |     index.php
+            |    
+            |── items/
+            |     index.php
+            |     item.php
+            |
     |        
     |─── webroot/
         |
