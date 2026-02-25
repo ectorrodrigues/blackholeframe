@@ -8,7 +8,7 @@
 
 <h1>🌌 BlackholeFrame</h1>
 
-<p>BlackholeFrame is an ultra-lightweight PHP framework designed for fast development of dynamic websites using a loop-based templating system.</p>
+<p>BlackholeFrame is an ultracondensed PHP framework designed for fast development of dynamic websites using a loop-based templating system.</p>
 
 <hr>
 
@@ -217,6 +217,7 @@ limit=5;
 
 <h1>🧩 Placeholders</h1>
 
+You fetch the data from the database by simply telling the column you want within braces. eg.:
 <pre>
 {title}
 {description}
