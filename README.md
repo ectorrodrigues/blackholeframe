@@ -83,6 +83,7 @@ and you can start customizing your project.
 <li>Built-in Bootstrap</li>
 <li>Built-in Fontawesome</li>
 <li>Built-in jQuery library</li>
+<li>Built-in CKEditor</li>
 </ul>
 
 <hr>
