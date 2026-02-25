@@ -136,6 +136,8 @@ and you can start customizing your project.
           |    
           |── items/
           |     index.php
+          |     item.php
+          |
     |        
     |─── webroot/
         |
