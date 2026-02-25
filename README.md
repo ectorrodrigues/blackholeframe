@@ -173,17 +173,17 @@ and you can start customizing your project.
 <h1>⚙️ Installation</h1>
 
 <ol>
-<li>Clone or download this repository.</li>
-<li>Make sure you have PHP 7+, MySQL, Apache/Nginx.</li>
-<li>Configure DB in app/model/AppModel.php</li>
-<li>Visit http://localhost/yourproject</li>
+<li>Make sure you have PHP 7+, MySQL, Apache.</li>
+<li>Access the void.php to start the cloning.</li>
+<li>Follow the steps</li>
+<li>Visit http://localhost{:port}/yourproject</li>
 </ol>
 
 <hr>
 
 <h1>🌐 Routing</h1>
 
-<p>/items → /app/view/pages/items/index.php</p>
+<p>http://localhost/yourproject/items → http://localhost/yourproject/app/view/pages/items/index.php</p>
 
 <hr>
 
