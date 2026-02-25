@@ -205,18 +205,19 @@ and you can start customizing your project.
 
 <pre>
 &lt;loop&gt;
+
   &lt;sql&gt;
     table=items;
     where=category=2;
     orderby=id;
     order=DESC;
-    limit=5;
+    limit=3;
   &lt;/sql&gt;
 
   &lt;h2&gt;
     {title}
   &lt;/h2&gt;
-  
+
 &lt;/loop&gt;
 </pre>
 
